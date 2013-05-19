@@ -11,6 +11,8 @@ This is my first blog using octopress, and github pages as well!
 
 > Hope I will enjoy in the future.  
 
+My Chinese Blog: [iswangheng.wordpress.com](http://iswangheng.wordpress.com)
+
 **Below are some hits on markdown**
   
 ``` python
