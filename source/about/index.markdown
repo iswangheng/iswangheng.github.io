@@ -7,4 +7,5 @@ sharing: true
 footer: true
 ---
 
-Twitter: [@iswangheng](http://twitter.com/iswangheng)
+Twitter: [@iswangheng](http://twitter.com/iswangheng)  
+Chinese: [iswangheng.wordpress.com](http://iswangheng.wordpress.com)
