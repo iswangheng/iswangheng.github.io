@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Swarm's Blog]]></title>
+  <link href="http://iswangheng.github.io/atom.xml" rel="self"/>
+  <link href="http://iswangheng.github.io/"/>
+  <updated>2013-05-19T18:01:47+08:00</updated>
+  <id>http://iswangheng.github.io/</id>
+  <author>
+    <name><![CDATA[Swarm]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[First Post Using Octopress]]></title>
+    <link href="http://iswangheng.github.io/blog/2013/05/19/first-post-using-octopress/"/>
+    <updated>2013-05-19T17:23:00+08:00</updated>
+    <id>http://iswangheng.github.io/blog/2013/05/19/first-post-using-octopress</id>
+    <content type="html"><![CDATA[<h4>Hello Octopress!</h4>
+
+<p>This is my first blog using octopress, and gihub pages as well!</p>
+
+<blockquote><p>Hope I will enjoy in the future.</p></blockquote>
+
+<p><strong>Below are some hits on markdown</strong></p>
+
+<p>4 &lt; 5</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="k">class</span> <span class="nc">TestPython</span><span class="p">:</span>
+</span><span class='line'>    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">para</span><span class="p">):</span>
+</span><span class='line'>      <span class="bp">self</span><span class="o">.</span><span class="n">para</span> <span class="o">=</span> <span class="n">para</span>
+</span><span class='line'>  
+</span><span class='line'>  <span class="k">def</span> <span class="nf">foo</span><span class="p">(</span><span class="n">para</span><span class="p">):</span>
+</span><span class='line'>      <span class="k">return</span> <span class="s">&#39;</span><span class="si">%s</span><span class="s"> is an idiot! LOL&#39;</span> <span class="o">%</span> <span class="nb">str</span><span class="p">(</span><span class="n">para</span><span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<blockquote><p>This is a blockquote.</p>
+
+<p>This is the second paragraph in the blockquote.</p>
+
+<h2>This is an H2 in a blockquote</h2>
+
+<h2>This is a header.</h2>
+
+<ol>
+<li> This is the first list item.</li>
+<li> This is the second list item.</li>
+</ol>
+
+
+<p>Here&rsquo;s some example code:</p>
+
+<pre><code>return shell_exec("echo $input | $markdown_script");
+</code></pre></blockquote>
+
+<p>LISTS</p>
+
+<p>Markdown supports ordered (numbered) and unordered (bulleted) lists.</p>
+
+<p>Unordered lists use asterisks, pluses, and hyphens — interchangably — as list markers:</p>
+
+<ul>
+<li>Red</li>
+<li>Green</li>
+<li>Blue</li>
+</ul>
+
+
+<p>is equivalent to:</p>
+
+<ul>
+<li>Red</li>
+<li>Green</li>
+<li>Blue</li>
+</ul>
+
+
+<p>and:</p>
+
+<ul>
+<li>Red</li>
+<li>Green</li>
+<li>Blue</li>
+</ul>
+
+
+<p>Ordered lists use numbers followed by periods:</p>
+
+<ol>
+<li>Bird</li>
+<li>McHale</li>
+<li>Parish</li>
+</ol>
+
+
+<p>It’s important to note that the actual numbers you use to mark the list have no effect on the HTML output Markdown produces. The HTML Markdown produces from the above list is:</p>
+
+<ol>
+<li>Bird</li>
+<li>McHale</li>
+<li>Parish</li>
+</ol>
+
+
+<p>If you instead wrote the list in Markdown like this:</p>
+
+<ol>
+<li>Bird</li>
+<li>McHale</li>
+<li>Parish</li>
+</ol>
+
+
+<p>or even:</p>
+
+<ol>
+<li>Bird</li>
+<li>McHale</li>
+<li>Parish</li>
+</ol>
+
+
+<p>you’d get the exact same HTML output. The point is, if you want to, you can use ordinal numbers in your ordered Markdown lists, so that the numbers in your source match the numbers in your published HTML. But if you want to be lazy, you don’t have to.</p>
+
+<p>If you do use lazy list numbering, however, you should still start the list with the number 1. At some point in the future, Markdown may support starting ordered lists at an arbitrary number.</p>
+
+<p>List markers typically start at the left margin, but may be indented by up to three spaces. List markers must be followed by one or more spaces or a tab.</p>
+
+<p>To make lists look nice, you can wrap items with hanging indents:</p>
+
+<ul>
+<li>Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
+Aliquam hendrerit mi posuere lectus. Vestibulum enim wisi,
+viverra nec, fringilla in, laoreet vitae, risus.</li>
+<li>Donec sit amet nisl. Aliquam semper ipsum sit amet velit.
+Suspendisse id sem consectetuer libero luctus adipiscing.</li>
+</ul>
+
+]]></content>
+  </entry>
+  
+</feed>
