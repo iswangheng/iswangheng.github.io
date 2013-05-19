@@ -37,6 +37,8 @@ class TestPython:
 > 
 >     return shell_exec("echo $input | $markdown_script");
 
+<!-- more -->
+
 LISTS
 
 Markdown supports ordered (numbered) and unordered (bulleted) lists.
