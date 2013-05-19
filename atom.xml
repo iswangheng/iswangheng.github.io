@@ -4,7 +4,7 @@
   <title><![CDATA[Swarm's Blog]]></title>
   <link href="http://iswangheng.github.io/atom.xml" rel="self"/>
   <link href="http://iswangheng.github.io/"/>
-  <updated>2013-05-19T19:30:40+08:00</updated>
+  <updated>2013-05-19T21:12:59+08:00</updated>
   <id>http://iswangheng.github.io/</id>
   <author>
     <name><![CDATA[Swarm]]></name>
@@ -49,6 +49,10 @@
 
 <!-- more -->
 
+
+<h4>Test Image</h4>
+
+<p><img src="http://iswangheng.github.io/images/email.png" title="email" alt="Should be an img here" /></p>
 
 <blockquote><p>This is a blockquote.</p>
 
