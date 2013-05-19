@@ -4,7 +4,7 @@
   <title><![CDATA[Category: others | Swarm's Blog]]></title>
   <link href="http://iswangheng.github.io/blog/categories/others/atom.xml" rel="self"/>
   <link href="http://iswangheng.github.io/"/>
-  <updated>2013-05-19T19:01:16+08:00</updated>
+  <updated>2013-05-19T19:13:24+08:00</updated>
   <id>http://iswangheng.github.io/</id>
   <author>
     <name><![CDATA[Swarm]]></name>
@@ -40,6 +40,9 @@ def foo(para):
 
 <p>```</p>
 
+<!-- more -->
+
+
 <blockquote><p>This is a blockquote.</p>
 
 <p>This is the second paragraph in the blockquote.</p>
@@ -58,9 +61,6 @@ def foo(para):
 
 <pre><code> return shell_exec("echo $input | $markdown_script");
 </code></pre>
-
-<!-- more -->
-
 
 <p>LISTS</p>
 
