@@ -4,7 +4,7 @@
   <title><![CDATA[Category: others | Swarm's Blog]]></title>
   <link href="http://iswangheng.github.io/blog/categories/others/atom.xml" rel="self"/>
   <link href="http://iswangheng.github.io/"/>
-  <updated>2013-05-22T12:13:04+08:00</updated>
+  <updated>2013-05-22T12:23:08+08:00</updated>
   <id>http://iswangheng.github.io/</id>
   <author>
     <name><![CDATA[Swarm]]></name>
@@ -42,17 +42,30 @@ def foo(para):
 
 <p>```</p>
 
-<p>{% codeblock Test Codeblock in Octopress lang: python <a href="http://python.org">http://python.org</a> Python Official Site %}
-class TestPython:</p>
+<p>what the fuck</p>
 
-<pre><code>def __init__(self, para):
-    self.para = para
-
-def foo(para):
-    return '%s is so damn cool! LOL' % str(para)
-</code></pre>
-
-<p>{% endcodeblock %}</p>
+<p><div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span>Test Codeblock in Octopress <a href="http://python.org">http://python.org</a> Python Official Site </span></figcaption>
+ <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="k">class</span> <span class="nc">TestPython</span><span class="p">:</span><span class="o">&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">pre</span><span class="o">&gt;&lt;</span><span class="n">code</span><span class="o">&gt;</span><span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">para</span><span class="p">):</span>
+</span><span class='line'>    <span class="bp">self</span><span class="o">.</span><span class="n">para</span> <span class="o">=</span> <span class="n">para</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">def</span> <span class="nf">foo</span><span class="p">(</span><span class="n">para</span><span class="p">):</span>
+</span><span class='line'>    <span class="k">return</span> <span class="s">&#39;</span><span class="si">%s</span><span class="s"> is so damn cool! LOL&#39;</span> <span class="o">%</span> <span class="nb">str</span><span class="p">(</span><span class="n">para</span><span class="p">)</span>
+</span><span class='line'><span class="o">&lt;/</span><span class="n">code</span><span class="o">&gt;&lt;/</span><span class="n">pre</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
 
 <!-- more -->
 
