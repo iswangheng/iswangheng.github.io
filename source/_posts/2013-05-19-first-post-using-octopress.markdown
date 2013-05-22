@@ -26,7 +26,21 @@ class TestPython:
         return '%s is an idiot! LOL' % str(para)
 ```
 
+what the fuck
+
+{% codeblock Test Codeblock in Octopress lang:python http://python.org Python Official Site %}
+class TestPython:
+    def __init__(self, para):
+        self.para = para
+
+    def foo(para):
+        return '%s is so damn cool! LOL' % str(para)
+{% endcodeblock %}
+
 <!-- more -->
+
+#### Test Image
+![Should be an img here](/images/email.png "email")
 
 > This is a blockquote.
 > 
