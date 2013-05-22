@@ -1,4 +1,4 @@
 User-agent: *
 Disallow: 
 
-Sitemap: http://iswangheng.github.io/sitemap.xml 
+Sitemap: http://stevewang.info/sitemap.xml 

@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: others | Swarm's Blog]]></title>
-  <link href="http://iswangheng.github.io/blog/categories/others/atom.xml" rel="self"/>
-  <link href="http://iswangheng.github.io/"/>
-  <updated>2013-05-22T17:41:56+08:00</updated>
-  <id>http://iswangheng.github.io/</id>
+  <link href="http://stevewang.info/blog/categories/others/atom.xml" rel="self"/>
+  <link href="http://stevewang.info/"/>
+  <updated>2013-05-22T17:46:03+08:00</updated>
+  <id>http://stevewang.info/</id>
   <author>
     <name><![CDATA[Swarm]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[start with email, end with email]]></title>
-    <link href="http://iswangheng.github.io/blog/2013/05/22/start-with-email-end-with-email/"/>
+    <link href="http://stevewang.info/blog/2013/05/22/start-with-email-end-with-email/"/>
     <updated>2013-05-22T12:45:00+08:00</updated>
-    <id>http://iswangheng.github.io/blog/2013/05/22/start-with-email-end-with-email</id>
+    <id>http://stevewang.info/blog/2013/05/22/start-with-email-end-with-email</id>
     <content type="html"><![CDATA[<p>Last night, or more precisely, this early morning, I had a strong feeling to write a letter to my boss to talk about my leaving again.<br/>
 The thing is, I have talked with him on Monday, however, he insisted me to stay of course.<br/>
 After a long talk, I comprised somehow and agreed to stay for one more year.<br/>
@@ -42,9 +42,9 @@ Below is the letter one year ago:</p>
   
   <entry>
     <title type="html"><![CDATA[First Post Using Octopress]]></title>
-    <link href="http://iswangheng.github.io/blog/2013/05/19/first-post-using-octopress/"/>
+    <link href="http://stevewang.info/blog/2013/05/19/first-post-using-octopress/"/>
     <updated>2013-05-19T17:23:00+08:00</updated>
-    <id>http://iswangheng.github.io/blog/2013/05/19/first-post-using-octopress</id>
+    <id>http://stevewang.info/blog/2013/05/19/first-post-using-octopress</id>
     <content type="html"><![CDATA[<h4>Hello Octopress!</h4>
 
 <p>This is my first blog using octopress, and github pages as well!</p>
