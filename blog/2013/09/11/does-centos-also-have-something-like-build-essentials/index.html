@@ -107,9 +107,12 @@
 <div class="entry-content"><p>&lsquo;Build essential&rsquo; is a Ubuntu / Debian package.   <br/>
 The official definition of build essential package is as follows:</p>
 
-<blockquote><p>If you do not plan to build Debian packages, you don&rsquo;t need this package. Starting with dpkg (>= 1.14.18) this package is required for building Debian packages.</p>
+<blockquote><p>If you do not plan to build Debian packages, you don&rsquo;t need this package. Starting with dpkg (>= 1.14.18) this package is required for building Debian packages.</p></blockquote>
 
-<p>This package contains an informational list of packages which are considered essential for building Debian packages. This package also depends on the packages on that list, to make it easy to have the build-essential packages installed.</p>
+<!-- more -->
+
+
+<blockquote><p>This package contains an informational list of packages which are considered essential for building Debian packages. This package also depends on the packages on that list, to make it easy to have the build-essential packages installed.</p>
 
 <p>If you have this package installed, you only need to install whatever a package specifies as its build-time dependencies to build the package. Conversely, if you are determining what your package needs to build-depend on, you can always leave out the packages this package depends on.</p>
 
@@ -120,7 +123,7 @@ The official definition of build essential package is as follows:</p>
 <pre><code>yum groupinstall "Development Tools"
 </code></pre>
 
-<p>Reference:
+<p>Reference: <br/>
 1. <a href="http://www.asim.pk/2010/05/28/build-essentials-in-centos/">build essentials in centos</a></p>
 </div>
 
