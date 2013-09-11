@@ -4,7 +4,7 @@
   <title><![CDATA[Swarm's Blog]]></title>
   <link href="http://stevewang.info/atom.xml" rel="self"/>
   <link href="http://stevewang.info/"/>
-  <updated>2013-08-06T12:55:46+08:00</updated>
+  <updated>2013-09-11T20:06:15+08:00</updated>
   <id>http://stevewang.info/</id>
   <author>
     <name><![CDATA[Swarm]]></name>
@@ -12,6 +12,32 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Does CentOS Also Have Something Like 'Build-Essentials?']]></title>
+    <link href="http://stevewang.info/blog/2013/09/11/does-centos-also-have-something-like-build-essentials/"/>
+    <updated>2013-09-11T19:49:00+08:00</updated>
+    <id>http://stevewang.info/blog/2013/09/11/does-centos-also-have-something-like-build-essentials</id>
+    <content type="html"><![CDATA[<p>&lsquo;Build essential&rsquo; is a Ubuntu / Debian package.   <br/>
+The official definition of build essential package is as follows:</p>
+
+<blockquote><p>If you do not plan to build Debian packages, you don&rsquo;t need this package. Starting with dpkg (>= 1.14.18) this package is required for building Debian packages.</p>
+
+<p>This package contains an informational list of packages which are considered essential for building Debian packages. This package also depends on the packages on that list, to make it easy to have the build-essential packages installed.</p>
+
+<p>If you have this package installed, you only need to install whatever a package specifies as its build-time dependencies to build the package. Conversely, if you are determining what your package needs to build-depend on, you can always leave out the packages this package depends on.</p>
+
+<p>This package is NOT the definition of what packages are build-essential; the real definition is in the Debian Policy Manual. This package contains merely an informational list, which is all most people need. However, if this package and the manual disagree, the manual is correct.</p></blockquote>
+
+<p>Well, on CentOS, we can do the following to achieve similar goals:</p>
+
+<pre><code>yum groupinstall "Development Tools"
+</code></pre>
+
+<p>Reference:
+1. <a href="http://www.asim.pk/2010/05/28/build-essentials-in-centos/">build essentials in centos</a></p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[start with email, end with email]]></title>
