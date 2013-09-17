@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Python | Swarm's Blog]]></title>
   <link href="http://stevewang.info/blog/categories/python/atom.xml" rel="self"/>
   <link href="http://stevewang.info/"/>
-  <updated>2013-09-17T14:23:52+08:00</updated>
+  <updated>2013-09-17T14:24:22+08:00</updated>
   <id>http://stevewang.info/</id>
   <author>
     <name><![CDATA[Swarm]]></name>
@@ -62,9 +62,9 @@
 <p>What do we do? There are two ways to copy a list correctly in Python:</p>
 
 <ol>
-<li><p>we use
+<li><p>we use  <br/>
  new = old[:]  # not so elegant</p></li>
-<li><p>we can use list()
+<li><p>we can use list() <br/>
  new = list(old)</p></li>
 </ol>
 
