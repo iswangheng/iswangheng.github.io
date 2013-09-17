@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Python | Swarm's Blog]]></title>
   <link href="http://stevewang.info/blog/categories/python/atom.xml" rel="self"/>
   <link href="http://stevewang.info/"/>
-  <updated>2013-09-17T14:23:24+08:00</updated>
+  <updated>2013-09-17T14:23:52+08:00</updated>
   <id>http://stevewang.info/</id>
   <author>
     <name><![CDATA[Swarm]]></name>
@@ -59,15 +59,13 @@
 
 <p>a and b really do point to the same memory address. c points to a new empty list, different from the one referenced by a and b.</p>
 
-<p>What do we do? There are two ways to copy a list correctly in Python:
-1. we use</p>
-
-<pre><code>new = old[:]  # not so elegant
-</code></pre>
+<p>What do we do? There are two ways to copy a list correctly in Python:</p>
 
 <ol>
-<li>we can use list()
- new = list(old)</li>
+<li><p>we use
+ new = old[:]  # not so elegant</p></li>
+<li><p>we can use list()
+ new = list(old)</p></li>
 </ol>
 
 
