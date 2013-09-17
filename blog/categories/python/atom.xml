@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Python | Swarm's Blog]]></title>
   <link href="http://stevewang.info/blog/categories/python/atom.xml" rel="self"/>
   <link href="http://stevewang.info/"/>
-  <updated>2013-09-17T14:20:57+08:00</updated>
+  <updated>2013-09-17T14:22:00+08:00</updated>
   <id>http://stevewang.info/</id>
   <author>
     <name><![CDATA[Swarm]]></name>
@@ -40,6 +40,9 @@
 &gt;&gt;&gt; print b   
 [1, 2, 3, 4]   
 </code></pre>
+
+<!-- more -->
+
 
 <p>The built-in function id() helps keeping track of all this. It returns the object’s unique id. This id is the object’s memory address.</p>
 
