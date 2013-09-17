@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Python | Swarm's Blog]]></title>
   <link href="http://stevewang.info/blog/categories/python/atom.xml" rel="self"/>
   <link href="http://stevewang.info/"/>
-  <updated>2013-09-17T14:28:35+08:00</updated>
+  <updated>2013-09-17T14:30:56+08:00</updated>
   <id>http://stevewang.info/</id>
   <author>
     <name><![CDATA[Swarm]]></name>
@@ -20,15 +20,18 @@
     <id>http://stevewang.info/blog/2013/09/17/copy-python-list-correctly</id>
     <content type="html"><![CDATA[<p>Consider the following statement:</p>
 
-<pre><code>a = [1, 2, 3]    
+<p><code>python
+a = [1, 2, 3]
+</code>
+It means that a points to the list [1, 2, 3] we just created, but a is not the list. If we do:</p>
+
+<p>``` python</p>
+
+<pre><code>b = a
 </code></pre>
 
-<p>It means that a points to the list [1, 2, 3] we just created, but a is not the list. If we do:</p>
-
-<pre><code>b = a    
-</code></pre>
-
-<p>We didn’t copy the list referenced by a. We just created a new tag b and attached it to the list pointed by a.</p>
+<p>```
+We didn’t copy the list referenced by a. We just created a new tag b and attached it to the list pointed by a.</p>
 
 <p>If you modify a, you also modify b, since they point to the same list:</p>
 
@@ -63,13 +66,19 @@
 
 <p>First, we can use</p>
 
-<pre><code>new = old[:]    
+<p>``` python</p>
+
+<pre><code>new = old[:]
 </code></pre>
 
-<p>Second, we can use list()</p>
+<p><code>
+Second, we can use list()   
+</code> python</p>
 
-<pre><code>new = list(old)    
+<pre><code>new = list(old)
 </code></pre>
+
+<p>```</p>
 
 <p>list() is the list constructor. It will construct a new list based of the passed sequence. The sequence doesn’t necessarily need to be a list, it can be any kind of sequence.</p>
 

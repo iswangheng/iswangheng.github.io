@@ -9,7 +9,9 @@
   <meta name="author" content="Swarm">
 
   
-  <meta name="description" content="Consider the following statement: a = [1, 2, 3] It means that a points to the list [1, 2, 3] we just created, but a is not the list. If we do: b = a &hellip;">
+  <meta name="description" content="Consider the following statement: 1
+a = [1, 2, 3] It means that a points to the list [1, 2, 3] we just created, but a is not the list. If we do: 1
+b &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -109,13 +111,17 @@
 
   <div class="entry-content"><p>Consider the following statement:</p>
 
-<pre><code>a = [1, 2, 3]    
-</code></pre>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
+</span></code></pre></td></tr></table></div></figure>
+
 
 <p>It means that a points to the list [1, 2, 3] we just created, but a is not the list. If we do:</p>
 
-<pre><code>b = a    
-</code></pre>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="n">b</span> <span class="o">=</span> <span class="n">a</span>
+</span></code></pre></td></tr></table></div></figure>
+
 
 <p>We didn’t copy the list referenced by a. We just created a new tag b and attached it to the list pointed by a.</p>
 
