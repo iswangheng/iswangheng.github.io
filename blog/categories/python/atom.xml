@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Python | Swarm's Blog]]></title>
+  <link href="http://stevewang.info/blog/categories/python/atom.xml" rel="self"/>
+  <link href="http://stevewang.info/"/>
+  <updated>2013-09-17T14:20:57+08:00</updated>
+  <id>http://stevewang.info/</id>
+  <author>
+    <name><![CDATA[Swarm]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Copy Python List Correctly]]></title>
+    <link href="http://stevewang.info/blog/2013/09/17/copy-python-list-correctly/"/>
+    <updated>2013-09-17T14:13:00+08:00</updated>
+    <id>http://stevewang.info/blog/2013/09/17/copy-python-list-correctly</id>
+    <content type="html"><![CDATA[<p>Consider the following statement:</p>
+
+<pre><code>a = [1, 2, 3]    
+</code></pre>
+
+<p>It means that a points to the list [1, 2, 3] we just created, but a is not the list. If we do:</p>
+
+<pre><code>b = a    
+</code></pre>
+
+<p>We didn’t copy the list referenced by a. We just created a new tag b and attached it to the list pointed by a.</p>
+
+<p>If you modify a, you also modify b, since they point to the same list:</p>
+
+<pre><code>&gt;&gt;&gt; a.append(4)
+
+&gt;&gt;&gt; print a    
+[1, 2, 3, 4]    
+
+&gt;&gt;&gt; print b   
+[1, 2, 3, 4]   
+</code></pre>
+
+<p>The built-in function id() helps keeping track of all this. It returns the object’s unique id. This id is the object’s memory address.</p>
+
+<pre><code>&gt;&gt;&gt; id(a)   
+3080501452L   
+
+&gt;&gt;&gt; id(b)   
+3080501452L   
+
+&gt;&gt;&gt; c = []  # Create a new list   
+&gt;&gt;&gt; id(c)   
+3080609228L   
+</code></pre>
+
+<p>a and b really do point to the same memory address. c points to a new empty list, different from the one referenced by a and b.</p>
+
+<p>What do we do? There are 2 two ways to copy a list correctly in Python:
+1. we use</p>
+
+<pre><code>new = old[:]  # not so elegant
+</code></pre>
+
+<ol>
+<li>we can use list()
+ new = list(old)</li>
+</ol>
+
+
+<p>list() is the list constructor. It will construct a new list based of the passed sequence. The sequence doesn’t necessarily need to be a list, it can be any kind of sequence.</p>
+
+<pre><code>&gt;&gt;&gt; my_tuple = (1, 2, 3)
+&gt;&gt;&gt; my_list = list(my_tuple)
+&gt;&gt;&gt; print my_list
+[1, 2, 3]
+</code></pre>
+
+<p>And it works with generators. [:] doesn’t work on generators since they are unsubscriptable —you can’t do generator[0], for example.</p>
+
+<pre><code>&gt;&gt;&gt; generator = (x * 3 for x in range(4))
+&gt;&gt;&gt; list(generator)
+[0, 3, 6, 9]
+</code></pre>
+]]></content>
+  </entry>
+  
+</feed>

@@ -5,13 +5,11 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Blog Archive - Swarm's Blog</title>
+  <title>Copy Python List Correctly - Swarm's Blog</title>
   <meta name="author" content="Swarm">
 
   
-  <meta name="description" content="Blog Archive 2013 Copy Python List Correctly
-Sep 17 2013 posted in Python Does CentOS Also Have Something Like &#8216;Build-Essentials?&#8217;
-Sep &hellip;">
+  <meta name="description" content="Consider the following statement: a = [1, 2, 3] It means that a points to the list [1, 2, 3] we just created, but a is not the list. If we do: b = a &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -20,7 +18,7 @@ Sep &hellip;">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://stevewang.info/archives">
+  <link rel="canonical" href="http://stevewang.info/blog/2013/09/17/copy-python-list-correctly">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="/atom.xml" rel="alternate" title="Swarm's Blog" type="application/atom+xml">
@@ -79,78 +77,154 @@ Sep &hellip;">
   <div id="main">
     <div id="content">
       <div>
-<article role="article">
+<article class="hentry" role="article">
   
   <header>
-    <h1 class="entry-title">Blog Archive</h1>
+    
+      <h1 class="entry-title">Copy Python List Correctly</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-09-17T14:13:00+08:00" pubdate data-updated="true">Sep 17<span>th</span>, 2013</time>
+        
+      </p>
     
   </header>
-  
-  <div id="blog-archives">
 
 
+<div class="entry-content"><p>Consider the following statement:</p>
 
-  
-  <h2>2013</h2>
+<pre><code>a = [1, 2, 3]    
+</code></pre>
 
-<article>
-  
-<h1><a href="/blog/2013/09/17/copy-python-list-correctly/">Copy Python List Correctly</a></h1>
-<time datetime="2013-09-17T14:13:00+08:00" pubdate><span class='month'>Sep</span> <span class='day'>17</span> <span class='year'>2013</span></time>
+<p>It means that a points to the list [1, 2, 3] we just created, but a is not the list. If we do:</p>
 
-<footer>
-  <span class="categories">posted in <a class='category' href='/blog/categories/python/'>Python</a></span>
-</footer>
+<pre><code>b = a    
+</code></pre>
 
+<p>We didn’t copy the list referenced by a. We just created a new tag b and attached it to the list pointed by a.</p>
 
-</article>
+<p>If you modify a, you also modify b, since they point to the same list:</p>
 
+<pre><code>&gt;&gt;&gt; a.append(4)
 
+&gt;&gt;&gt; print a    
+[1, 2, 3, 4]    
 
-<article>
-  
-<h1><a href="/blog/2013/09/11/does-centos-also-have-something-like-build-essentials/">Does CentOS Also Have Something Like &#8216;Build-Essentials?&#8217;</a></h1>
-<time datetime="2013-09-11T19:49:00+08:00" pubdate><span class='month'>Sep</span> <span class='day'>11</span> <span class='year'>2013</span></time>
+&gt;&gt;&gt; print b   
+[1, 2, 3, 4]   
+</code></pre>
 
-<footer>
-  <span class="categories">posted in <a class='category' href='/blog/categories/centos/'>CentOS</a></span>
-</footer>
+<p>The built-in function id() helps keeping track of all this. It returns the object’s unique id. This id is the object’s memory address.</p>
 
+<pre><code>&gt;&gt;&gt; id(a)   
+3080501452L   
 
-</article>
+&gt;&gt;&gt; id(b)   
+3080501452L   
 
+&gt;&gt;&gt; c = []  # Create a new list   
+&gt;&gt;&gt; id(c)   
+3080609228L   
+</code></pre>
 
+<p>a and b really do point to the same memory address. c points to a new empty list, different from the one referenced by a and b.</p>
 
-<article>
-  
-<h1><a href="/blog/2013/05/22/start-with-email-end-with-email/">start with email, end with email</a></h1>
-<time datetime="2013-05-22T12:45:00+08:00" pubdate><span class='month'>May</span> <span class='day'>22</span> <span class='year'>2013</span></time>
+<p>What do we do? There are 2 two ways to copy a list correctly in Python:
+1. we use</p>
 
-<footer>
-  <span class="categories">posted in <a class='category' href='/blog/categories/others/'>others</a></span>
-</footer>
+<pre><code>new = old[:]  # not so elegant
+</code></pre>
 
-
-</article>
-
-
-
-<article>
-  
-<h1><a href="/blog/2013/05/19/first-post-using-octopress/">First Post Using Octopress</a></h1>
-<time datetime="2013-05-19T17:23:00+08:00" pubdate><span class='month'>May</span> <span class='day'>19</span> <span class='year'>2013</span></time>
-
-<footer>
-  <span class="categories">posted in <a class='category' href='/blog/categories/others/'>others</a></span>
-</footer>
+<ol>
+<li>we can use list()
+ new = list(old)</li>
+</ol>
 
 
-</article>
+<p>list() is the list constructor. It will construct a new list based of the passed sequence. The sequence doesn’t necessarily need to be a list, it can be any kind of sequence.</p>
 
+<pre><code>&gt;&gt;&gt; my_tuple = (1, 2, 3)
+&gt;&gt;&gt; my_list = list(my_tuple)
+&gt;&gt;&gt; print my_list
+[1, 2, 3]
+</code></pre>
+
+<p>And it works with generators. [:] doesn’t work on generators since they are unsubscriptable —you can’t do generator[0], for example.</p>
+
+<pre><code>&gt;&gt;&gt; generator = (x * 3 for x in range(4))
+&gt;&gt;&gt; list(generator)
+[0, 3, 6, 9]
+</code></pre>
 </div>
 
+
+  <footer>
+    <p class="meta">
+      
   
+
+<span class="byline author vcard">Posted by <span class="fn">Swarm</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-09-17T14:13:00+08:00" pubdate data-updated="true">Sep 17<span>th</span>, 2013</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/python/'>Python</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://stevewang.info/blog/2013/09/17/copy-python-list-correctly/" data-via="iswangheng" data-counturl="http://stevewang.info/blog/2013/09/17/copy-python-list-correctly/" >Tweet</a>
+  
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2013/09/11/does-centos-also-have-something-like-build-essentials/" title="Previous Post: Does CentOS Also Have Something Like 'Build-Essentials?'">&laquo; Does CentOS Also Have Something Like 'Build-Essentials?'</a>
+      
+      
+    </p>
+  </footer>
 </article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
 
 
 </div>
@@ -231,7 +305,10 @@ Sep &hellip;">
       var disqus_shortname = 'swarmsblog';
       
         
-        var disqus_script = 'count.js';
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://stevewang.info/blog/2013/09/17/copy-python-list-correctly/';
+        var disqus_url = 'http://stevewang.info/blog/2013/09/17/copy-python-list-correctly/';
+        var disqus_script = 'embed.js';
       
     (function () {
       var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
