@@ -4,7 +4,7 @@
   <title><![CDATA[Swarm's Blog]]></title>
   <link href="http://stevewang.info/atom.xml" rel="self"/>
   <link href="http://stevewang.info/"/>
-  <updated>2013-10-18T01:18:09+08:00</updated>
+  <updated>2013-10-18T01:18:46+08:00</updated>
   <id>http://stevewang.info/</id>
   <author>
     <name><![CDATA[Swarm]]></name>
@@ -25,12 +25,16 @@ I decided to use <a href="https://github.com/clowwindy/shadowsocks">Shadowsocks<
 
 
 <ol>
-<li>First we need to update the CentOS system.
-&lsquo;&rsquo;&lsquo;
- yum -y update
- yum install build-essential autoconf libtool gcc -y <br/>
-&rsquo;&lsquo;&rsquo;</li>
+<li>First we need to update the CentOS system.</li>
 </ol>
+
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>yum -y update
+</span><span class='line'>yum install build-essential autoconf libtool gcc -y   </span></code></pre></td></tr></table></div></figure>
+
+
 
 ]]></content>
   </entry>
