@@ -4,7 +4,7 @@
   <title><![CDATA[Swarm's Blog]]></title>
   <link href="http://stevewang.info/atom.xml" rel="self"/>
   <link href="http://stevewang.info/"/>
-  <updated>2013-10-18T01:15:11+08:00</updated>
+  <updated>2013-10-18T01:16:42+08:00</updated>
   <id>http://stevewang.info/</id>
   <author>
     <name><![CDATA[Swarm]]></name>
@@ -18,16 +18,17 @@
     <link href="http://stevewang.info/blog/2013/10/18/install-shadowsocks-on-centos-server-and-macos-client/"/>
     <updated>2013-10-18T01:10:00+08:00</updated>
     <id>http://stevewang.info/blog/2013/10/18/install-shadowsocks-on-centos-server-and-macos-client</id>
-    <content type="html"><![CDATA[<p>Yesterday I bought a linode 1024 VPS for many reasons, including break GFW&hellip;
+    <content type="html"><![CDATA[<p>Yesterday I bought a linode 1024 VPS for many reasons, including break GFW  <br/>
 I decided to use <a href="https://github.com/clowwindy/shadowsocks">Shadowsocks</a> to achieve this goal.</p>
 
 <!-- more -->
 
 
 <ol>
-<li>First we need to update the CentOS system.
- yum -y update
- yum install build-essential autoconf libtool gcc -y</li>
+<li><p>First we need to update the CentOS system.</p>
+
+<p> yum -y update
+ yum install build-essential autoconf libtool gcc -y</p></li>
 </ol>
 
 ]]></content>
