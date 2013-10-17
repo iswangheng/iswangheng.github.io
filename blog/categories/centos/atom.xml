@@ -4,7 +4,7 @@
   <title><![CDATA[Category: CentOS | Swarm's Blog]]></title>
   <link href="http://stevewang.info/blog/categories/centos/atom.xml" rel="self"/>
   <link href="http://stevewang.info/"/>
-  <updated>2013-10-18T01:23:00+08:00</updated>
+  <updated>2013-10-18T01:25:27+08:00</updated>
   <id>http://stevewang.info/</id>
   <author>
     <name><![CDATA[Swarm]]></name>
@@ -35,6 +35,17 @@ I decided to use <a href="https://github.com/clowwindy/shadowsocks">Shadowsocks<
  yum install python-setuptools
  easy_install pip
  pip install shadowsocks
+</code></p></li>
+<li><p>On the server (CentOS), Create a file named config.json, with the following content.
+<code>javascript
+ {
+     "server":"my_server_ip",
+     "server_port":8388,
+     "local_port":1080,
+     "password":"barfoo!",
+     "timeout":600,
+     "method":"table"
+ }
 </code></p></li>
 </ol>
 
