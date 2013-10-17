@@ -4,7 +4,7 @@
   <title><![CDATA[Category: CentOS | Swarm's Blog]]></title>
   <link href="http://stevewang.info/blog/categories/centos/atom.xml" rel="self"/>
   <link href="http://stevewang.info/"/>
-  <updated>2013-10-18T01:32:06+08:00</updated>
+  <updated>2013-10-18T01:45:02+08:00</updated>
   <id>http://stevewang.info/</id>
   <author>
     <name><![CDATA[Swarm]]></name>
@@ -53,6 +53,8 @@ I decided to use <a href="https://github.com/clowwindy/shadowsocks">Shadowsocks<
 </code></p></li>
 <li><p><code>cd</code> into the directory of <code>config.json</code>. Run <code>ssserver</code> on your server.  <br/>
 To run it in the background, run <code>nohup ssserver &gt; log &amp;</code>.</p></li>
+<li><p>On Mac which is the client side, things are much easier.  <br/>
+Just take a look at this <a href="https://github.com/ohdarling/GoAgentX">GoAgentX</a></p></li>
 </ul>
 
 ]]></content>
