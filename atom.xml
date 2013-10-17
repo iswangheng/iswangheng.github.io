@@ -4,7 +4,7 @@
   <title><![CDATA[Swarm's Blog]]></title>
   <link href="http://stevewang.info/atom.xml" rel="self"/>
   <link href="http://stevewang.info/"/>
-  <updated>2013-10-18T01:29:34+08:00</updated>
+  <updated>2013-10-18T01:32:06+08:00</updated>
   <id>http://stevewang.info/</id>
   <author>
     <name><![CDATA[Swarm]]></name>
@@ -21,9 +21,9 @@
     <content type="html"><![CDATA[<p>Yesterday I bought a linode 1024 VPS for many reasons, including break GFW  <br/>
 I decided to use <a href="https://github.com/clowwindy/shadowsocks">Shadowsocks</a> to achieve this goal.</p>
 
-<ol>
+<ul>
 <li>First we need to update the CentOS system.</li>
-</ol>
+</ul>
 
 
 <figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
@@ -32,9 +32,9 @@ I decided to use <a href="https://github.com/clowwindy/shadowsocks">Shadowsocks<
 </span><span class='line'>yum install build-essential autoconf libtool gcc -y   </span></code></pre></td></tr></table></div></figure>
 
 
-<ol>
+<ul>
 <li>Then install python-setuptools (which contains easy_install), pip, shadowsocks.</li>
-</ol>
+</ul>
 
 
 <figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
@@ -50,9 +50,9 @@ I decided to use <a href="https://github.com/clowwindy/shadowsocks">Shadowsocks<
 <!-- more -->
 
 
-<ol>
+<ul>
 <li>On the server (CentOS), Create a file named config.json, with the following content.</li>
-</ol>
+</ul>
 
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
@@ -74,10 +74,10 @@ I decided to use <a href="https://github.com/clowwindy/shadowsocks">Shadowsocks<
 </span></code></pre></td></tr></table></div></figure>
 
 
-<ol>
+<ul>
 <li><code>cd</code> into the directory of <code>config.json</code>. Run <code>ssserver</code> on your server.  <br/>
 To run it in the background, run <code>nohup ssserver &gt; log &amp;</code>.</li>
-</ol>
+</ul>
 
 ]]></content>
   </entry>
