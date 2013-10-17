@@ -4,7 +4,7 @@
   <title><![CDATA[Swarm's Blog]]></title>
   <link href="http://stevewang.info/atom.xml" rel="self"/>
   <link href="http://stevewang.info/"/>
-  <updated>2013-09-17T17:35:48+08:00</updated>
+  <updated>2013-10-18T01:15:11+08:00</updated>
   <id>http://stevewang.info/</id>
   <author>
     <name><![CDATA[Swarm]]></name>
@@ -12,6 +12,26 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Install shadowsocks on CentOS(server) and MacOS(client)]]></title>
+    <link href="http://stevewang.info/blog/2013/10/18/install-shadowsocks-on-centos-server-and-macos-client/"/>
+    <updated>2013-10-18T01:10:00+08:00</updated>
+    <id>http://stevewang.info/blog/2013/10/18/install-shadowsocks-on-centos-server-and-macos-client</id>
+    <content type="html"><![CDATA[<p>Yesterday I bought a linode 1024 VPS for many reasons, including break GFW&hellip;
+I decided to use <a href="https://github.com/clowwindy/shadowsocks">Shadowsocks</a> to achieve this goal.</p>
+
+<!-- more -->
+
+
+<ol>
+<li>First we need to update the CentOS system.
+ yum -y update
+ yum install build-essential autoconf libtool gcc -y</li>
+</ol>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Copy Python List Correctly]]></title>

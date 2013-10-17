@@ -5,11 +5,12 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Does CentOS Also Have Something Like 'Build-Essentials?' - Swarm's Blog</title>
+  <title>Install shadowsocks on CentOS(server) and MacOS(client) - Swarm's Blog</title>
   <meta name="author" content="Swarm">
 
   
-  <meta name="description" content="&lsquo;Build essential&rsquo; is a Ubuntu / Debian package. The official definition of build essential package is as follows: If you do not plan to &hellip;">
+  <meta name="description" content="Yesterday I bought a linode 1024 VPS for many reasons, including break GFW&hellip;
+I decided to use Shadowsocks to achieve this goal. First we need &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -18,7 +19,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://stevewang.info/blog/2013/09/11/does-centos-also-have-something-like-build-essentials">
+  <link rel="canonical" href="http://stevewang.info/blog/2013/10/18/install-shadowsocks-on-centos-server-and-macos-client">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="/atom.xml" rel="alternate" title="Swarm's Blog" type="application/atom+xml">
@@ -81,7 +82,7 @@
   
   <header>
     
-      <h1 class="entry-title">Does CentOS Also Have Something Like 'Build-Essentials?'</h1>
+      <h1 class="entry-title">Install Shadowsocks on CentOS(server) and MacOS(client)</h1>
     
     
       <p class="meta">
@@ -97,34 +98,25 @@
   
 
 
-<time datetime="2013-09-11T19:49:00+08:00" pubdate data-updated="true">Sep 11<span>th</span>, 2013</time>
+<time datetime="2013-10-18T01:10:00+08:00" pubdate data-updated="true">Oct 18<span>th</span>, 2013</time>
         
       </p>
     
   </header>
 
 
-<div class="entry-content"><p>&lsquo;Build essential&rsquo; is a Ubuntu / Debian package.   <br/>
-The official definition of build essential package is as follows:</p>
-
-<blockquote><p>If you do not plan to build Debian packages, you don&rsquo;t need this package. Starting with dpkg (>= 1.14.18) this package is required for building Debian packages.</p></blockquote>
+<div class="entry-content"><p>Yesterday I bought a linode 1024 VPS for many reasons, including break GFW&hellip;
+I decided to use <a href="https://github.com/clowwindy/shadowsocks">Shadowsocks</a> to achieve this goal.</p>
 
 <!-- more -->
 
 
-<blockquote><p>This package contains an informational list of packages which are considered essential for building Debian packages. This package also depends on the packages on that list, to make it easy to have the build-essential packages installed.</p>
+<ol>
+<li>First we need to update the CentOS system.
+ yum -y update
+ yum install build-essential autoconf libtool gcc -y</li>
+</ol>
 
-<p>If you have this package installed, you only need to install whatever a package specifies as its build-time dependencies to build the package. Conversely, if you are determining what your package needs to build-depend on, you can always leave out the packages this package depends on.</p>
-
-<p>This package is NOT the definition of what packages are build-essential; the real definition is in the Debian Policy Manual. This package contains merely an informational list, which is all most people need. However, if this package and the manual disagree, the manual is correct.</p></blockquote>
-
-<p>Well, on CentOS, we can do the following to achieve similar goals:</p>
-
-<pre><code>yum groupinstall "Development Tools"
-</code></pre>
-
-<p>Reference: <br/>
-1. <a href="http://www.asim.pk/2010/05/28/build-essentials-in-centos/">build essentials in centos</a></p>
 </div>
 
 
@@ -147,7 +139,7 @@ The official definition of build essential package is as follows:</p>
   
 
 
-<time datetime="2013-09-11T19:49:00+08:00" pubdate data-updated="true">Sep 11<span>th</span>, 2013</time>
+<time datetime="2013-10-18T01:10:00+08:00" pubdate data-updated="true">Oct 18<span>th</span>, 2013</time>
       
 
 <span class="categories">
@@ -161,7 +153,7 @@ The official definition of build essential package is as follows:</p>
     
       <div class="sharing">
   
-  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://stevewang.info/blog/2013/09/11/does-centos-also-have-something-like-build-essentials/" data-via="iswangheng" data-counturl="http://stevewang.info/blog/2013/09/11/does-centos-also-have-something-like-build-essentials/" >Tweet</a>
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://stevewang.info/blog/2013/10/18/install-shadowsocks-on-centos-server-and-macos-client/" data-via="iswangheng" data-counturl="http://stevewang.info/blog/2013/10/18/install-shadowsocks-on-centos-server-and-macos-client/" >Tweet</a>
   
   
   
@@ -170,10 +162,8 @@ The official definition of build essential package is as follows:</p>
     
     <p class="meta">
       
-        <a class="basic-alignment left" href="/blog/2013/05/22/start-with-email-end-with-email/" title="Previous Post: start with email, end with email">&laquo; start with email, end with email</a>
+        <a class="basic-alignment left" href="/blog/2013/09/17/copy-python-list-correctly/" title="Previous Post: Copy Python List Correctly">&laquo; Copy Python List Correctly</a>
       
-      
-        <a class="basic-alignment right" href="/blog/2013/09/17/copy-python-list-correctly/" title="Next Post: Copy Python List Correctly">Copy Python List Correctly &raquo;</a>
       
     </p>
   </footer>
@@ -269,8 +259,8 @@ The official definition of build essential package is as follows:</p>
       
         
         // var disqus_developer = 1;
-        var disqus_identifier = 'http://stevewang.info/blog/2013/09/11/does-centos-also-have-something-like-build-essentials/';
-        var disqus_url = 'http://stevewang.info/blog/2013/09/11/does-centos-also-have-something-like-build-essentials/';
+        var disqus_identifier = 'http://stevewang.info/blog/2013/10/18/install-shadowsocks-on-centos-server-and-macos-client/';
+        var disqus_url = 'http://stevewang.info/blog/2013/10/18/install-shadowsocks-on-centos-server-and-macos-client/';
         var disqus_script = 'embed.js';
       
     (function () {
