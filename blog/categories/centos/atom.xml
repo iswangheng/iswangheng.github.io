@@ -4,7 +4,7 @@
   <title><![CDATA[Category: CentOS | Swarm's Blog]]></title>
   <link href="http://stevewang.info/blog/categories/centos/atom.xml" rel="self"/>
   <link href="http://stevewang.info/"/>
-  <updated>2013-10-18T01:25:27+08:00</updated>
+  <updated>2013-10-18T01:29:34+08:00</updated>
   <id>http://stevewang.info/</id>
   <author>
     <name><![CDATA[Swarm]]></name>
@@ -21,9 +21,6 @@
     <content type="html"><![CDATA[<p>Yesterday I bought a linode 1024 VPS for many reasons, including break GFW  <br/>
 I decided to use <a href="https://github.com/clowwindy/shadowsocks">Shadowsocks</a> to achieve this goal.</p>
 
-<!-- more -->
-
-
 <ol>
 <li><p>First we need to update the CentOS system.
 <code>
@@ -36,6 +33,13 @@ I decided to use <a href="https://github.com/clowwindy/shadowsocks">Shadowsocks<
  easy_install pip
  pip install shadowsocks
 </code></p></li>
+</ol>
+
+
+<!-- more -->
+
+
+<ol>
 <li><p>On the server (CentOS), Create a file named config.json, with the following content.
 <code>javascript
  {
@@ -47,6 +51,8 @@ I decided to use <a href="https://github.com/clowwindy/shadowsocks">Shadowsocks<
      "method":"table"
  }
 </code></p></li>
+<li><p><code>cd</code> into the directory of <code>config.json</code>. Run <code>ssserver</code> on your server.  <br/>
+To run it in the background, run <code>nohup ssserver &gt; log &amp;</code>.</p></li>
 </ol>
 
 ]]></content>

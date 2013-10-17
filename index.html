@@ -9,7 +9,7 @@
   <meta name="author" content="Swarm">
 
   
-  <meta name="description" content="Yesterday I bought a linode 1024 VPS for many reasons, including break GFW I decided to use Shadowsocks to achieve this goal. ">
+  <meta name="description" content="Yesterday I bought a linode 1024 VPS for many reasons, including break GFW I decided to use Shadowsocks to achieve this goal. First we need to update &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -109,6 +109,32 @@
 
   <div class="entry-content"><p>Yesterday I bought a linode 1024 VPS for many reasons, including break GFW  <br/>
 I decided to use <a href="https://github.com/clowwindy/shadowsocks">Shadowsocks</a> to achieve this goal.</p>
+
+<ol>
+<li>First we need to update the CentOS system.</li>
+</ol>
+
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>yum -y update
+</span><span class='line'>yum install build-essential autoconf libtool gcc -y   </span></code></pre></td></tr></table></div></figure>
+
+
+<ol>
+<li>Then install python-setuptools (which contains easy_install), pip, shadowsocks.</li>
+</ol>
+
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>yum install python-setuptools
+</span><span class='line'>easy_install pip
+</span><span class='line'>pip install shadowsocks</span></code></pre></td></tr></table></div></figure>
+
+
+
 
 </div>
   

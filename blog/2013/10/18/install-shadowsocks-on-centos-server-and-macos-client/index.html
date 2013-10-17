@@ -107,9 +107,6 @@
 <div class="entry-content"><p>Yesterday I bought a linode 1024 VPS for many reasons, including break GFW  <br/>
 I decided to use <a href="https://github.com/clowwindy/shadowsocks">Shadowsocks</a> to achieve this goal.</p>
 
-<!-- more -->
-
-
 <ol>
 <li>First we need to update the CentOS system.</li>
 </ol>
@@ -134,6 +131,11 @@ I decided to use <a href="https://github.com/clowwindy/shadowsocks">Shadowsocks<
 </span><span class='line'>pip install shadowsocks</span></code></pre></td></tr></table></div></figure>
 
 
+
+
+<!-- more -->
+
+
 <ol>
 <li>On the server (CentOS), Create a file named config.json, with the following content.</li>
 </ol>
@@ -156,6 +158,12 @@ I decided to use <a href="https://github.com/clowwindy/shadowsocks">Shadowsocks<
 </span><span class='line'>  <span class="s2">&quot;method&quot;</span><span class="o">:</span><span class="s2">&quot;table&quot;</span>
 </span><span class='line'><span class="p">}</span>
 </span></code></pre></td></tr></table></div></figure>
+
+
+<ol>
+<li><code>cd</code> into the directory of <code>config.json</code>. Run <code>ssserver</code> on your server.  <br/>
+To run it in the background, run <code>nohup ssserver &gt; log &amp;</code>.</li>
+</ol>
 
 </div>
 
