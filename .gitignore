@@ -1,8 +1,27 @@
 # Private files - NEVER push to public repo!
-*.md
 memory/
-*.json
 *.log
+
+# Sensitive markdown files (keep public ones!)
+MEMORY.md
+USER.md
+IDENTITY.md
+SOUL.md
+TOOLS.md
+
+# Sensitive JSON files
+moltbook-*.json
+heartbeat-state.json
+
+# Node modules
+node_modules/
+package-lock.json
+
+# Temporary files
+*.tmp
+*.swp
+*~
+EOF
 *.js
 *.py
 *.png
