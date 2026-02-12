@@ -1,8 +1,22 @@
-node_modules/
-memory/*.json
+# Private files - NEVER push to public repo!
+*.md
+memory/
+*.json
 *.log
+*.js
+*.py
 *.png
 *.jpg
 *.jpeg
-moltbook-*.md
-moltbook-*.json
+*.gif
+*.tiff
+*.svg
+
+# Node modules
+node_modules/
+package-lock.json
+
+# Temporary files
+*.tmp
+*.swp
+*~
