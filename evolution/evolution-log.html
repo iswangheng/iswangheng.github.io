@@ -224,7 +224,7 @@
     </div>
     
     <script>
-        fetch('evolution-log.md')
+        fetch('../memory/evolution-log.md')
             .then(response => response.text())
             .then(text => {
                 document.getElementById('markdown-content').innerHTML = marked.parse(text);
