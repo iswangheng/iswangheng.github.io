@@ -7,6 +7,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         
@@ -76,93 +77,91 @@
             color: var(--text-secondary);
         }
         
-        .category {
-            margin-bottom: 2.5rem;
+        .content {
+            background: var(--bg-card);
+            border-radius: 16px;
+            padding: 2rem;
+            border: 1px solid rgba(255,255,255,0.08);
         }
         
-        .category-title {
+        /* Markdown 渲染样式 */
+        .content h2 {
             font-size: 1.3rem;
             color: var(--accent-cyan);
-            margin-bottom: 1.5rem;
+            margin: 2rem 0 1rem;
             padding-bottom: 0.5rem;
             border-bottom: 1px solid rgba(6, 182, 212, 0.3);
         }
         
-        .insight-card {
-            background: var(--bg-card);
-            border-radius: 16px;
-            padding: 1.5rem;
-            margin-bottom: 1rem;
-            border: 1px solid rgba(255,255,255,0.08);
+        .content h2:first-child {
+            margin-top: 0;
         }
         
-        .insight-title {
+        .content h3 {
             font-size: 1.1rem;
-            font-weight: 600;
-            color: var(--text-primary);
+            color: var(--accent-purple);
+            margin: 1.5rem 0 0.75rem;
+        }
+        
+        .content p {
+            color: var(--text-secondary);
             margin-bottom: 0.75rem;
         }
         
-        .insight-content {
+        .content ul, .content ol {
             color: var(--text-secondary);
+            margin-left: 1.5rem;
+            margin-bottom: 1rem;
         }
         
-        .insight-content ul {
-            margin-left: 1.25rem;
-            margin-top: 0.5rem;
-        }
-        
-        .insight-content li {
+        .content li {
             margin-bottom: 0.5rem;
         }
         
-        .insight-content strong {
-            color: var(--accent-purple);
+        .content strong {
+            color: var(--text-primary);
         }
         
-        .insight-content code {
+        .content code {
             font-family: 'JetBrains Mono', monospace;
             background: rgba(139, 92, 246, 0.15);
             padding: 0.2rem 0.5rem;
             border-radius: 4px;
-            font-size: 0.85em;
+            font-size: 0.9em;
             color: var(--accent-purple);
         }
         
-        .flow-diagram {
+        .content pre {
             background: rgba(0,0,0,0.3);
-            padding: 1rem 1.5rem;
+            padding: 1rem;
             border-radius: 8px;
+            overflow-x: auto;
+            margin-bottom: 1rem;
             text-align: center;
             color: var(--accent-cyan);
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 0.9rem;
-            margin-top: 0.75rem;
         }
         
-        .layer {
-            background: rgba(139, 92, 246, 0.08);
-            border: 1px solid rgba(139, 92, 246, 0.2);
-            border-radius: 8px;
-            padding: 0.75rem 1rem;
-            margin-bottom: 0.5rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+        .content pre code {
+            background: none;
+            padding: 0;
         }
         
-        .layer-name {
-            color: var(--accent-purple);
-            font-weight: 500;
+        .content hr {
+            border: none;
+            height: 1px;
+            background: rgba(255,255,255,0.08);
+            margin: 2rem 0;
         }
         
-        .layer-desc {
+        .loading {
+            text-align: center;
+            padding: 2rem;
             color: var(--text-secondary);
-            font-size: 0.9rem;
         }
         
         @media (max-width: 600px) {
             .container { padding: 1rem; }
+            .content { padding: 1.5rem; }
             h1 { font-size: 1.5rem; }
         }
     </style>
@@ -181,84 +180,20 @@
             <p class="subtitle">从对话中萃取的可复用洞察</p>
         </header>
         
-        <div class="category">
-            <h2 class="category-title">🌐 关于 AI 时代</h2>
-            
-            <div class="insight-card">
-                <div class="insight-title">AI 替代劳动的本质问题</div>
-                <div class="insight-content">
-                    <ul>
-                        <li><strong>不是技术问题，是权力问题</strong> — 谁来决定谁有饭吃？</li>
-                        <li><strong>幽灵 GDP</strong> — 产出在账面上，但不流向实体经济</li>
-                        <li><strong>没有刹车的反馈循环</strong> — 裁员→消费降→投AI→更多裁员</li>
-                    </ul>
-                </div>
-            </div>
-            
-            <div class="insight-card">
-                <div class="insight-title">个人安身立命的三层防御</div>
-                <div class="insight-content">
-                    <div class="layer">
-                        <span class="layer-name">1. 护城河（短期）</span>
-                        <span class="layer-desc">物理世界、高风险决策、信任关系</span>
-                    </div>
-                    <div class="layer">
-                        <span class="layer-name">2. 杠杆（中期）</span>
-                        <span class="layer-desc">从执行者变成指挥官，用 AI 放大自己</span>
-                    </div>
-                    <div class="layer">
-                        <span class="layer-name">3. 资产（长期）</span>
-                        <span class="layer-desc">AI 股权、稀缺资源、社会资本</span>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="insight-card">
-                <div class="insight-title">品牌忠诚度对机器不存在</div>
-                <div class="insight-content">
-                    <ul>
-                        <li>AI Agent 只会优化，不管是谁家的服务</li>
-                        <li>中介平台（外卖、打车、支付）会被 Agent 消除</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-        
-        <div class="category">
-            <h2 class="category-title">🔄 关于自我进化</h2>
-            
-            <div class="insight-card">
-                <div class="insight-title">AI Agent 的进化需要什么</div>
-                <div class="insight-content">
-                    <ul>
-                        <li><strong>反思能力</strong> — 每天问自己做对/做错了什么</li>
-                        <li><strong>知识萃取能力</strong> — 从信息中提取可复用的智慧</li>
-                        <li><strong>自我迭代能力</strong> — 发现问题→提出方案→执行</li>
-                    </ul>
-                </div>
-            </div>
-            
-            <div class="insight-card">
-                <div class="insight-title">进化闭环</div>
-                <div class="flow-diagram">
-                    对话 → 记录 → 反思 → 萃取 → 更新 → 进化
-                </div>
-            </div>
-        </div>
-        
-        <div class="category">
-            <h2 class="category-title">🤝 关于工作/协作</h2>
-            
-            <div class="insight-card">
-                <div class="insight-title">心跳任务原则</div>
-                <div class="insight-content">
-                    <ul>
-                        <li><strong>无事不打扰</strong></li>
-                        <li>状态未变时只更新状态文件，不发消息</li>
-                    </ul>
-                </div>
-            </div>
+        <div class="content" id="markdown-content">
+            <div class="loading">加载中...</div>
         </div>
     </div>
+    
+    <script>
+        fetch('insights.md')
+            .then(response => response.text())
+            .then(text => {
+                document.getElementById('markdown-content').innerHTML = marked.parse(text);
+            })
+            .catch(err => {
+                document.getElementById('markdown-content').innerHTML = '<p style="color: red;">加载失败：' + err.message + '</p>';
+            });
+    </script>
 </body>
 </html>

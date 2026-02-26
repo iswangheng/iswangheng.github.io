@@ -7,6 +7,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         
@@ -76,49 +77,76 @@
             color: var(--text-secondary);
         }
         
-        .category {
-            margin-bottom: 2.5rem;
+        .content {
+            background: var(--bg-card);
+            border-radius: 16px;
+            padding: 2rem;
+            border: 1px solid rgba(255,255,255,0.08);
         }
         
-        .category-title {
-            font-size: 1.2rem;
+        /* Markdown 渲染样式 */
+        .content h2 {
+            font-size: 1.3rem;
             color: var(--accent-cyan);
-            margin-bottom: 1rem;
+            margin: 2rem 0 1rem;
             padding-bottom: 0.5rem;
             border-bottom: 1px solid rgba(6, 182, 212, 0.3);
         }
         
-        .rule-card {
-            background: var(--bg-card);
-            border-radius: 12px;
-            padding: 1.25rem 1.5rem;
-            margin-bottom: 1rem;
-            border: 1px solid rgba(255,255,255,0.08);
-            transition: all 0.2s;
+        .content h2:first-child {
+            margin-top: 0;
         }
         
-        .rule-card:hover {
-            border-color: rgba(139, 92, 246, 0.3);
-            transform: translateX(4px);
+        .content h3 {
+            font-size: 1.1rem;
+            color: var(--accent-purple);
+            margin: 1.5rem 0 0.75rem;
         }
         
-        .rule-card p {
+        .content p {
             color: var(--text-secondary);
+            margin-bottom: 0.75rem;
         }
         
-        .rule-card strong {
+        .content ul {
+            color: var(--text-secondary);
+            margin-left: 1.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .content li {
+            margin-bottom: 0.5rem;
+        }
+        
+        .content strong {
             color: var(--accent-purple);
         }
         
-        .rule-date {
-            font-size: 0.8rem;
+        .content code {
+            font-family: 'JetBrains Mono', monospace;
+            background: rgba(139, 92, 246, 0.15);
+            padding: 0.2rem 0.5rem;
+            border-radius: 4px;
+            font-size: 0.9em;
+            color: var(--accent-purple);
+        }
+        
+        .content hr {
+            border: none;
+            height: 1px;
+            background: rgba(255,255,255,0.08);
+            margin: 2rem 0;
+        }
+        
+        .loading {
+            text-align: center;
+            padding: 2rem;
             color: var(--text-secondary);
-            opacity: 0.6;
-            margin-bottom: 0.5rem;
         }
         
         @media (max-width: 600px) {
             .container { padding: 1rem; }
+            .content { padding: 1.5rem; }
             h1 { font-size: 1.5rem; }
         }
     </style>
@@ -137,115 +165,20 @@
             <p class="subtitle">从错误、反馈、观察中积累的智慧</p>
         </header>
         
-        <div class="category">
-            <h2 class="category-title">🏗️ Agent 设计原则</h2>
-            
-            <div class="rule-card">
-                <div class="rule-date">2026-02-26</div>
-                <p><strong>Files Over Databases</strong> — 文件是人类和 Agent 都可读的，Git 可追踪，跨 LLM 提供商可移植</p>
-            </div>
-            
-            <div class="rule-card">
-                <div class="rule-date">2026-02-26</div>
-                <p><strong>Playbooks Over Fine-Tuning</strong> — 不微调模型，用运行时策略文件，修改立即生效</p>
-            </div>
-            
-            <div class="rule-card">
-                <div class="rule-date">2026-02-26</div>
-                <p><strong>Anti-Fragility</strong> — 失败 → 记录 → 规则 → 下次避免，让 Agent "无法重复犯错"</p>
-            </div>
-        </div>
-        
-        <div class="category">
-            <h2 class="category-title">🔍 行业洞察</h2>
-            
-            <div class="rule-card">
-                <div class="rule-date">2026-02-26</div>
-                <p>自主性越高，安全披露越重要</p>
-            </div>
-            
-            <div class="rule-card">
-                <div class="rule-date">2026-02-26</div>
-                <p>Browser Agent 风险最高（L4-L5 自主性 + 弱安全披露）</p>
-            </div>
-            
-            <div class="rule-card">
-                <div class="rule-date">2026-02-26</div>
-                <p><strong>MCP</strong> (Model Context Protocol) 是 Agent 互操作的事实标准</p>
-            </div>
-            
-            <div class="rule-card">
-                <div class="rule-date">2026-02-26</div>
-                <p>透明度是 Agent 的差异化竞争点（25/30 没有披露安全测试）</p>
-            </div>
-            
-            <div class="rule-card">
-                <div class="rule-date">2026-02-26</div>
-                <p>Agent 从"辅助"到"自主"是 2026 主线趋势</p>
-            </div>
-        </div>
-        
-        <div class="category">
-            <h2 class="category-title">📊 自主性分级</h2>
-            
-            <div class="rule-card">
-                <div class="rule-date">Feng et al. 框架</div>
-                <p><strong>L1</strong>：用户主导，Agent 辅助</p>
-            </div>
-            
-            <div class="rule-card">
-                <div class="rule-date">Feng et al. 框架</div>
-                <p><strong>L2</strong>：协作规划，共同执行</p>
-            </div>
-            
-            <div class="rule-card">
-                <div class="rule-date">Feng et al. 框架</div>
-                <p><strong>L3</strong>：Agent 主导，用户批准关键步骤</p>
-            </div>
-            
-            <div class="rule-card">
-                <div class="rule-date">Feng et al. 框架</div>
-                <p><strong>L4</strong>：Agent 自主执行，用户可干预</p>
-            </div>
-            
-            <div class="rule-card">
-                <div class="rule-date">Feng et al. 框架</div>
-                <p><strong>L5</strong>：完全自主，用户仅观察</p>
-            </div>
-        </div>
-        
-        <div class="category">
-            <h2 class="category-title">⚡ 可靠性原则</h2>
-            
-            <div class="rule-card">
-                <div class="rule-date">2026-02-26</div>
-                <p><strong>5% 失败率 × 20 步 = 基本不可用</strong>，可靠性是 Agent 的核心壁垒</p>
-            </div>
-            
-            <div class="rule-card">
-                <div class="rule-date">2026-02-26</div>
-                <p>语义缓存可减少 <strong>70% API 调用</strong>，成本控制是生产级 Agent 的关键</p>
-            </div>
-        </div>
-        
-        <div class="category">
-            <h2 class="category-title">🚀 技术趋势</h2>
-            
-            <div class="rule-card">
-                <div class="rule-date">2026-02-26</div>
-                <p>并行 Agent + 自我验证是 2026 配置（Cursor 模式）</p>
-            </div>
-            
-            <div class="rule-card">
-                <div class="rule-date">2026-02-26</div>
-                <p>Apple Xcode 26.3 正式支持 Agentic Coding，MCP 成为开放标准</p>
-            </div>
-            
-            <div class="rule-card">
-                <div class="rule-date">2026-02-26</div>
-                <p><strong>2026 是 Multi-Agent Systems 突破年</strong>（Forrester + Gartner 预测）</p>
-            </div>
+        <div class="content" id="markdown-content">
+            <div class="loading">加载中...</div>
         </div>
     </div>
+    
+    <script>
+        fetch('learned-rules.md')
+            .then(response => response.text())
+            .then(text => {
+                document.getElementById('markdown-content').innerHTML = marked.parse(text);
+            })
+            .catch(err => {
+                document.getElementById('markdown-content').innerHTML = '<p style="color: red;">加载失败：' + err.message + '</p>';
+            });
+    </script>
 </body>
 </html>
