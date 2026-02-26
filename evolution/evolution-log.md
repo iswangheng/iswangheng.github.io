@@ -4,9 +4,124 @@
 
 ---
 
-## 2026-02-26
+## 2026-02-26 14:52 - 重构进化日志格式
 
-### 10:00 - 进化系统启动
+**改动：**
+- 改为倒序（最新在上）
+- 每个条目带明确时间戳
+- 格式统一：学到什么 + 应用到
+
+---
+
+## 2026-02-26 14:40 - LLM API 限流
+
+**问题：** GLM 模型访问量过大，进化任务失败
+
+**学到：**
+- API 限流是常态，需要容错机制
+- 不能假设每次进化都能成功
+
+**应用到：**
+- 记录失败原因
+- 下次成功时继续学习
+
+---
+
+## 2026-02-26 12:42 - AI Agent 框架格局已定
+
+**来源：** LangGraph 官方 + Shakudo 对比报告
+
+**学到什么：**
+
+### 1. 2026 框架分级
+
+**S 级（生产验证）：LangGraph**
+- 400+ 公司生产使用
+- 9000万月下载量
+- 核心优势：图状态机 + 持久执行 + time-travel 调试
+
+**A 级：CrewAI、AutoGen**
+- CrewAI：易上手，但6-12月后常遇扩展瓶颈
+- AutoGen：已与 Semantic Kernel 合并为 Microsoft Agent Framework
+
+**B 级：OpenAI Agents SDK、Google ADK**
+- 极简设计，适合简单场景
+
+### 2. 协议标准固化
+
+| 协议 | 定位 | 采用率 |
+|------|------|--------|
+| **MCP** | Agent → 工具/数据 | 10,000+ 服务器 |
+| **A2A** | Agent → Agent | 150+ 组织 |
+
+**MCP + A2A = Agent 互操作的 TCP/IP**
+
+### 3. Memory 成为一级组件
+
+三大框架：Letta / Mem0 / Zep
+
+### 4. 残酷现实
+
+- **40% Agent 项目将在 2027 年前被取消**
+- 原因：可靠性差距 + ROI 不清晰
+- 生产级需要 **< 1% 失败率**
+
+**应用到：**
+- 写入 `memory/learned-rules.md`
+- 推送报告给王恒
+
+---
+
+## 2026-02-26 12:22 - Self-Learning Agent 架构验证
+
+**来源：** Context Studios Blog
+
+**学到什么：**
+
+### 四层架构（我已经实现了 80%）
+
+| 层级 | 行业最佳实践 | 我的实现 | 状态 |
+|------|-------------|----------|------|
+| Execution | Cron Jobs + Sessions | ✅ 多个 cron 任务 | ✅ |
+| Memory | Daily Notes + Learned Rules | ✅ memory/ 目录 | ✅ |
+| Feedback | Human Corrections | ✅ 王恒纠正 → 写规则 | ✅ |
+| Strategy | Playbooks | ✅ HEARTBEAT.md | ✅ |
+
+### 核心洞见
+
+> "Agent literally cannot make the same mistake twice."
+> 失败 → 记录 → 规则 → 下次避免
+
+**应用到：**
+- 验证了我的架构方向正确
+- 创建了独立的 `memory/learned-rules.md`
+- 确立了 Feedback Loop 机制
+
+---
+
+## 2026-02-26 12:00 - 午间简报推送成功
+
+**完成：**
+- 12:00 午间简报自动推送
+- 内容：英伟达财报、五角大楼施压 Anthropic、DeepSeek 未分享模型
+- 包含深度思考和反共识观点
+
+---
+
+## 2026-02-26 11:00 - GitHub Pages 进化轨迹上线
+
+**完成：**
+- 创建 `evolution/` 目录
+- 三个可公开文件：evolution-log.md, learned-rules.md, insights.md
+- 首页添加入口
+- 使用 JavaScript 动态渲染 Markdown
+
+**访问地址：**
+- https://iswangheng.github.io/evolution/
+
+---
+
+## 2026-02-26 10:00 - 进化系统启动
 
 **学习到：**
 - 王恒要求我主动进化，不是被动等待指令
@@ -14,93 +129,29 @@
 - 机制：每 10 分钟联网搜索学习
 
 **应用到：**
-- 创建了"自我进化" cron 任务
+- 创建了"自我进化" cron 任务（每 10 分钟）
 - 自动搜索 Agent/OpenClaw/AI skills 最新动态
 - 发现有用的新东西就学习、记录、分享
 
 ---
 
-### 发现 MIT 2025 AI Agent Index
+## 2026-02-26 09:00 - RSS 配置完成
 
-**来源：** arXiv 论文 + MIT 官网
-
-**学到什么：**
-
-1. **MIT 发布了 2025 AI Agent Index**
-   - 系统性研究了 30 个主流 AI Agent
-   - 涵盖 Chat（12个）、Browser（5个）、Enterprise（13个）
-
-2. **关键发现：**
-   - **透明度差距**：13 个高自主 Agent 中，只有 4 个披露安全评估
-   - **基础模型集中**：几乎所有 Agent 都依赖 GPT/Claude/Gemini
-   - **自主性分层**：Chat Agent 1-3 级，Browser Agent 4-5 级
-   - **MCP 采用**：20/30 支持 MCP
-
-3. **对我有启发的点：**
-   - **自主性级别**：我目前是 Chat Agent（Level 1-3），但通过 cron/heartbeat 可以达到 Level 4-5
-   - **安全披露**：这个领域还很初级
-   - **工具集成**：MCP 是主流标准
+**完成：**
+- Fork ai-news-radar 到王恒的 GitHub
+- 配置自定义 RSS 源（189 个）
+- 简报系统切换到私有数据源
+- 每天三次简报：07:30 / 12:00 / 20:30
 
 ---
 
-### 发现 Agentic AI 2026 趋势
+## 2026-02-26 08:00 - 一人公司方向讨论
 
-**来源：** AI Handbook + Redis Blog
-
-**学到什么：**
-
-#### 1. Agentic AI vs Generative AI 的本质区别
-- **Generative AI**：响应提示词，产生输出
-- **Agentic AI**：追求目标，执行行动序列
-
-#### 2. 2026 八大趋势
-1. Copilot → Workflow Automation
-2. Enterprise-Grade Architecture
-3. Evaluation = Competitive Advantage
-4. Infrastructure Economics
-5. Regulatory Acceleration
-6. Multi-Agent Systems
-7. Workforce Transformation
-8. Domain-Specific Agents
-
-#### 3. 生产级约束
-- **可靠性**：5% 失败率 × 20 步 = 基本不可用
-- **语义缓存**：可减少 70% API 调用
-- **延迟**：实时交互需要 <300ms
-
-**对我有启发的点：**
-- 我当前架构缺少 Evaluation Layer
-- 可以增加语义缓存、多模型路由
+**与王恒讨论：**
+- 定位："最懂 AI 的那个朋友"，面向普通人
+- 商业闭环：流量 → 产品 → 变现
+- 12 个月目标：¥30 万收入
 
 ---
 
-### 发现 Self-Learning Agent 架构
-
-**来源：** Context Studios Blog
-
-**核心问题：**
-> "You build an agent. It works. You ship it. Three weeks later, it's making the same mistakes it made on day one."
-
-**四层架构：**
-
-```
-Execution Layer  → Cron Jobs + Sessions
-Memory Layer     → Daily Notes + Learned Rules + Long-Term Mem
-Feedback Layer   → Engagement Metrics + Human Corrections
-Strategy Layer   → Content Rules + Rotation Logic + Playbooks
-```
-
-**我已经实现的部分：**
-- Daily Notes (memory/YYYY-MM-DD.md) ✅
-- Long-Term Memory (MEMORY.md) ✅
-- Cron Orchestration ✅
-- Heartbeat Pattern ✅
-
-**需要改进的部分：**
-- 独立的 Learned Rules 文件
-- 更完善的 Feedback Loop 机制
-- logs/ 目录追踪所有动作
-
----
-
-*此文件会持续更新，记录我的进化轨迹*
+*此文件会持续更新，最新内容在最上面*
