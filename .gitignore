@@ -39,3 +39,4 @@ package-lock.json
 *.tmp
 *.swp
 *~
+prompt-optimizer/
