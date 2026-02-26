@@ -1,0 +1,20 @@
+[
+  {
+    "url": "https://hunter.io/blog/cold-email-software/",
+    "title": "20 Best Cold Email Software Tools of 2026",
+    "error": "page.goto: Timeout 30000ms exceeded.\nCall log:\n  - navigating to \"https://hunter.io/blog/cold-email-software/\", waiting until \"networkidle\"\n",
+    "timestamp": "2026-02-03T09:25:41.524Z"
+  },
+  {
+    "url": "https://hunter.io/blog/whats-new-at-hunter-november-2024/",
+    "title": "What’s new at Hunter? (November 2024)",
+    "error": "page.goto: Timeout 30000ms exceeded.\nCall log:\n  - navigating to \"https://hunter.io/blog/whats-new-at-hunter-november-2024/\", waiting until \"networkidle\"\n",
+    "timestamp": "2026-02-03T09:29:13.692Z"
+  },
+  {
+    "url": "https://hunter.io/blog/lead-generation-tools/",
+    "title": "Top 13 Lead Generation Tools in 2023",
+    "error": "page.goto: Timeout 30000ms exceeded.\nCall log:\n  - navigating to \"https://hunter.io/blog/lead-generation-tools/\", waiting until \"networkidle\"\n",
+    "timestamp": "2026-02-03T09:36:06.609Z"
+  }
+]

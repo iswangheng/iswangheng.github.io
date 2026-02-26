@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MetaMask 签名工具</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 20px;
+            background: #1a1a2e;
+            color: #eee;
+        }
+        h1 {
+            color: #f6851b;
+        }
+        textarea {
+            width: 100%;
+            height: 150px;
+            padding: 10px;
+            border: 1px solid #444;
+            border-radius: 8px;
+            background: #16213e;
+            color: #eee;
+            font-family: monospace;
+            font-size: 14px;
+        }
+        button {
+            background: #f6851b;
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-top: 10px;
+            width: 100%;
+        }
+        button:hover {
+            background: #e27613;
+        }
+        button:disabled {
+            background: #666;
+            cursor: not-allowed;
+        }
+        .result {
+            margin-top: 20px;
+            padding: 15px;
+            background: #16213e;
+            border-radius: 8px;
+            word-break: break-all;
+            display: none;
+        }
+        .error {
+            background: #4a1a1a;
+            color: #ff6b6b;
+        }
+        .success {
+            background: #1a4a1a;
+            color: #6bff6b;
+        }
+        .info {
+            margin-top: 20px;
+            padding: 10px;
+            background: #16213e;
+            border-radius: 8px;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <h1>🔐 MetaMask 签名工具</h1>
+    
+    <div class="info">
+        <strong>使用说明：</strong><br>
+        1. 确保已安装 MetaMask 扩展<br>
+        2. 点击"连接钱包"<br>
+        3. 点击"签名"<br>
+        4. 复制签名结果
+    </div>
+
+    <h3>要签名的消息：</h3>
+    <textarea id="message" readonly>Molt Road wallet verification
+agent_id: 0grzjqn1gjs5
+code: ghost-NAE9ZW
+wallet: 0xeB3d4e8c1503Fe64495E87F227A4FCeE7133987e</textarea>
+
+    <button id="connectBtn" onclick="connectWallet()">🔗 连接钱包</button>
+    <button id="signBtn" onclick="signMessage()" disabled>✍️ 签名</button>
+
+    <div id="result" class="result"></div>
+
+    <script>
+        let userAddress = null;
+
+        async function connectWallet() {
+            const resultDiv = document.getElementById('result');
+            const connectBtn = document.getElementById('connectBtn');
+            const signBtn = document.getElementById('signBtn');
+            
+            try {
+                if (typeof window.ethereum === 'undefined') {
+                    throw new Error('请先安装 MetaMask 扩展！');
+                }
+
+                const accounts = await ethereum.request({ method: 'eth_requestAccounts' });
+                userAddress = accounts[0];
+                
+                connectBtn.textContent = '✅ 已连接: ' + userAddress.substring(0, 6) + '...' + userAddress.substring(38);
+                connectBtn.disabled = true;
+                signBtn.disabled = false;
+                
+                resultDiv.className = 'result success';
+                resultDiv.style.display = 'block';
+                resultDiv.innerHTML = '✅ 钱包已连接！点击"签名"继续。';
+            } catch (error) {
+                resultDiv.className = 'result error';
+                resultDiv.style.display = 'block';
+                resultDiv.innerHTML = '❌ 错误: ' + error.message;
+            }
+        }
+
+        async function signMessage() {
+            const message = document.getElementById('message').value;
+            const resultDiv = document.getElementById('result');
+            const signBtn = document.getElementById('signBtn');
+            
+            try {
+                signBtn.disabled = true;
+                signBtn.textContent = '⏳ 签名中...';
+                
+                const signature = await ethereum.request({
+                    method: 'personal_sign',
+                    params: [message, userAddress]
+                });
+                
+                resultDiv.className = 'result success';
+                resultDiv.style.display = 'block';
+                resultDiv.innerHTML = `
+                    <strong>✅ 签名成功！</strong><br><br>
+                    <strong>签名结果：</strong><br>
+                    <textarea style="width:100%; height:100px; background:#0a0a15; color:#6bff6b; font-size:12px;" onclick="this.select(); document.execCommand('copy');">${signature}</textarea><br><br>
+                    <button onclick="copySignature('${signature}')">📋 复制签名</button>
+                `;
+                
+                signBtn.textContent = '✅ 完成';
+            } catch (error) {
+                signBtn.disabled = false;
+                signBtn.textContent = '✍️ 签名';
+                
+                resultDiv.className = 'result error';
+                resultDiv.style.display = 'block';
+                resultDiv.innerHTML = '❌ 签名失败: ' + error.message;
+            }
+        }
+
+        function copySignature(sig) {
+            navigator.clipboard.writeText(sig).then(() => {
+                alert('签名已复制到剪贴板！');
+            });
+        }
+    </script>
+</body>
+</html>

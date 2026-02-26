@@ -1,0 +1,84 @@
+{
+  "name": "LeadContact (LC)",
+  "tagline": "Find Any Email, Find Any Phone Number",
+  "pages": [
+    {
+      "name": "定价页面",
+      "url": "https://leadcontact.ai/pricing",
+      "title": "Company Profile & Email & Phone Number",
+      "headings": [
+        "Pick a Plan. Grow fasterwith LeadContact",
+        "Free",
+        "Basic",
+        "Pro",
+        "Unlimited",
+        "HELP CENTER",
+        "Frequently Asked Questions",
+        "Can I get an invoice?",
+        "Will my credits reset at the end of the month or every 30 days?",
+        "Will using LeadContact get my LinkedIn account restricted?",
+        "Can I change the LinkedIn account linked to LeadContact?",
+        "About"
+      ],
+      "features": [
+        "Chrome Extension",
+        "Pricing",
+        "Affiliate Program",
+        "Contact Us:hello@leadcontact.ai",
+        "Follow Us:",
+        "Pricing"
+      ]
+    },
+    {
+      "name": "Chrome 扩展",
+      "url": "https://leadcontact.ai/chrome-extension",
+      "title": "Company Profile & Email & Phone Number",
+      "headings": [
+        "More Accurate. Less Cost.",
+        "Find contact in 1 tool with 98% accuracy rate",
+        "Loved by them.Now it's your turn.",
+        "HELP CENTER",
+        "Frequently Asked Questions",
+        "What exactly is LeadContact?",
+        "Is LeadContact free to use?",
+        "How do I get started with LeadContact?",
+        "Is my data secure on LeadContact?",
+        "What are the main problems your product solves?",
+        "What should I do if I have questions or need help with the product?",
+        "Great conversations start with the right contact.",
+        "About"
+      ],
+      "features": [
+        "Chrome Extension",
+        "Pricing",
+        "Affiliate Program",
+        "Contact Us:hello@leadcontact.ai",
+        "Follow Us:",
+        "Pricing"
+      ]
+    },
+    {
+      "name": "API 文档",
+      "url": "https://leadcontact.ai/lc-api",
+      "title": "LeadContact Contact Data API - Email, Phone & Decision Maker API",
+      "headings": [
+        "Power Your Growthwith LeadContact's API",
+        "Discover our API tools",
+        "Email Finder API",
+        "Phone Number Finder API",
+        "Decision Maker Finder API",
+        "Company Data API",
+        "Get started with LeadContact's API",
+        "About"
+      ],
+      "features": [
+        "Chrome Extension",
+        "Pricing",
+        "Affiliate Program",
+        "Contact Us:hello@leadcontact.ai",
+        "Follow Us:",
+        "Pricing"
+      ]
+    }
+  ]
+}

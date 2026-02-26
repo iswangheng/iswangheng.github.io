@@ -1,0 +1,33 @@
+{
+  "version": 1,
+  "skills": {
+    "nano-banana-pro-2": {
+      "version": "0.1.0",
+      "installedAt": 1770912087558
+    },
+    "find-skills": {
+      "version": "0.1.0",
+      "installedAt": 1770912241416
+    },
+    "frontend-design-ultimate": {
+      "version": "1.0.0",
+      "installedAt": 1770953065477
+    },
+    "ui-ux-pro-max": {
+      "version": "0.1.0",
+      "installedAt": 1770953072353
+    },
+    "elite-longterm-memory": {
+      "version": "1.2.3",
+      "installedAt": 1771127947227
+    },
+    "moltbook-interact": {
+      "version": "1.0.1",
+      "installedAt": 1771127953247
+    },
+    "telegram": {
+      "version": "1.0.1",
+      "installedAt": 1771127955739
+    }
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "etherscan_api_key": "1BQ35BS5SQ6DY5APYDS3D5Y4RZQ51VH9ER",
+  "solscan_api_key": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJjcmVhdGVkQXQiOjE3NzExNjE5OTY3NzQsImVtYWlsIjoiaXN3YW5naGVuZ0BnbWFpbC5jb20iLCJhY3Rpb24iOiJ0b2tlbi1hcGkiLCJhcGlWZXJzaW9uIjoidjIiLCJpYXQiOjE3NzExNjE5OTZ9.iUb7Yr-Gcjjdpv1guNXL8Ac4iO2Rym3EN8Q3ol46weg",
+  "telegram_bot_token": "8533471373:AAH1nXe1MDbuNBWtfHPhUvDvESZW7S_1hhI",
+  "telegram_chat_id": "5958281885",
+  "min_transfer_usd": 50000,
+  "smart_wallet_threshold": 0.7,
+  "min_liquidity_usd": 100000,
+  "scan_interval_minutes": 3,
+  "tracking_intervals_hours": [1, 6, 24],
+  "enable_eth": true,
+  "enable_sol": true,
+  "enable_new_tokens": false,
+  "enable_honeypot_check": true,
+  "enable_risk_scoring": true,
+  "dexscreener_api": "https://api.dexscreener.com/latest",
+  "etherscan_api": "https://api.etherscan.io/api",
+  "solscan_api": "https://public-api.solscan.io"
+}

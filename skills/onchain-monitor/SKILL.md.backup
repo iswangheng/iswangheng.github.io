@@ -1,0 +1,166 @@
+---
+name: onchain-monitor
+description: 监控链上聪明钱活动，发现早期投资机会，自动跟踪验证并推送报告。支持 ETH 和 Solana 链，集成聪明钱筛选、新币监控、貔貅盘检测等功能。
+---
+
+# 链上监控技能 (Onchain Monitor)
+
+监控区块链上的聪明钱活动，自动发现早期投资机会，推送 Telegram 通知并跟踪验证结果。
+
+## 功能特性
+
+### Phase 1 - 基础版
+- ✅ ETH 链大额转账监控（>$50,000）
+- ✅ Etherscan API 集成
+- ✅ Telegram 推送通知
+- ✅ 自动跟踪验证（1h/6h/24h）
+- ✅ 每周统计报告
+
+### Phase 2 - 进阶版
+- ✅ Solana 链监控（Solscan API）
+- ✅ 聪明钱筛选（历史胜率 >70%）
+- ✅ 新币部署监控（24h内，流动性 >$100K）
+- ✅ 貔貅盘/蜜罐检测（自动过滤骗局）
+- ✅ 风险评分（AI 分析项目质量）
+
+## 快速开始
+
+### 1. 配置 API Keys
+
+编辑 `data/config.json`：
+```json
+{
+  "etherscan_api_key": "YOUR_ETHERSCAN_KEY",
+  "solscan_api_key": "YOUR_SOLSCAN_KEY",
+  "telegram_bot_token": "YOUR_BOT_TOKEN",
+  "telegram_chat_id": "5958281885",
+  "min_transfer_usd": 50000,
+  "smart_wallet_threshold": 0.7,
+  "min_liquidity_usd": 100000
+}
+```
+
+### 2. 运行监控
+
+```bash
+# 单次扫描
+./scripts/monitor.sh scan
+
+# 启动定时监控（每5分钟）
+./scripts/monitor.sh start
+
+# 停止监控
+./scripts/monitor.sh stop
+
+# 生成周报
+./scripts/monitor.sh weekly-report
+```
+
+### 3. 查看数据
+
+```bash
+# 查看监控日志
+tail -f data/monitor.log
+
+# 查看跟踪记录
+cat data/tracking.json
+
+# 查看聪明钱列表
+cat data/smart_wallets.json
+```
+
+## 目录结构
+
+```
+skills/onchain-monitor/
+├── SKILL.md              # 本文件
+├── INSTALL.md            # 安装指南
+├── README.md             # 详细文档
+├── scripts/
+│   ├── monitor.sh        # 主监控脚本
+│   ├── eth-monitor.js    # ETH 链监控
+│   ├── sol-monitor.js    # Solana 链监控
+│   ├── smart-wallet.js   # 聪明钱分析
+│   ├── token-scanner.js  # 新币扫描
+│   ├── honeypot-check.js # 貔貅盘检测
+│   ├── risk-score.js     # 风险评分
+│   ├── tracker.js        # 价格跟踪
+│   ├── reporter.js       # 报告生成
+│   └── telegram.js       # 推送通知
+├── data/
+│   ├── config.json       # 配置文件
+│   ├── smart_wallets.json # 聪明钱数据库
+│   ├── alerts.json       # 推送记录
+│   ├── tracking.json     # 跟踪数据
+│   ├── stats.json        # 统计数据
+│   └── monitor.log       # 运行日志
+└── references/
+    ├── api-docs.md       # API 文档
+    ├── smart-wallet-criteria.md # 聪明钱标准
+    └── risk-scoring.md   # 风险评分规则
+
+```
+
+## 核心功能
+
+### 1. ETH 大额转账监控
+监控 ETH 链上超过阈值（默认$50K）的转账，识别可能的聪明钱活动。
+
+### 2. 聪明钱筛选
+基于历史表现筛选聪明钱：
+- 交易胜率 > 70%
+- 平均持仓时间合理
+- 避免内幕交易嫌疑
+
+### 3. 新币监控
+扫描新部署的代币：
+- 24小时内创建
+- 流动性 > $100K
+- 通过貔貅盘检测
+
+### 4. 貔貅盘检测
+自动识别骗局特征：
+- 无法卖出
+- 高额税费
+- 可疑的合约代码
+
+### 5. 风险评分
+AI 分析项目质量（0-100分）：
+- 合约审计状态
+- 社区活跃度
+- 流动性锁定
+- 团队背景
+
+### 6. 自动跟踪验证
+推送后的价格跟踪：
+- 1小时后检查
+- 6小时后检查
+- 24小时后汇报最终结果
+
+### 7. 统计报告
+每周生成准确率报告：
+- 推送成功率
+- 平均涨幅
+- 最佳/最差案例
+- ROI 分析
+
+## 使用场景
+
+1. **发现早期机会**：监控聪明钱买入新币
+2. **避免骗局**：自动过滤貔貅盘和蜜罐
+3. **跟踪验证**：验证推送的准确性
+4. **优化策略**：基于历史数据改进筛选
+
+## 注意事项
+
+- 所有 API 都有免费额度限制
+- 不要过度频繁请求（遵守 rate limit）
+- 推送不构成投资建议
+- 数据仅供参考，DYOR
+
+## 下一步
+
+1. 阅读 `INSTALL.md` 完成安装
+2. 配置 `data/config.json`
+3. 运行 `./scripts/monitor.sh test` 测试连接
+4. 启动监控 `./scripts/monitor.sh start`
