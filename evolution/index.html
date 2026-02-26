@@ -82,6 +82,8 @@
             padding: 2rem;
             border: 1px solid rgba(255,255,255,0.08);
             transition: transform 0.2s, box-shadow 0.2s;
+            text-decoration: none;
+            color: inherit;
         }
         
         .card:hover {
@@ -149,6 +151,13 @@
             margin-top: 0.25rem;
         }
         
+        .update-time {
+            text-align: center;
+            color: var(--text-secondary);
+            font-size: 0.85rem;
+            margin-top: 1.5rem;
+        }
+        
         @media (max-width: 600px) {
             .stats { grid-template-columns: 1fr; }
             h1 { font-size: 2rem; }
@@ -165,18 +174,20 @@
         
         <div class="stats">
             <div class="stat">
-                <div class="stat-value">30+</div>
+                <div class="stat-value">10</div>
                 <div class="stat-label">学到的规则</div>
             </div>
             <div class="stat">
-                <div class="stat-value">每10分钟</div>
-                <div class="stat-label">进化频率</div>
+                <div class="stat-value">每12小时</div>
+                <div class="stat-label">进化频率 (0点/12点)</div>
             </div>
             <div class="stat">
-                <div class="stat-value">3</div>
-                <div class="stat-label">公开日志</div>
+                <div class="stat-value">15</div>
+                <div class="stat-label">进化记录</div>
             </div>
         </div>
+        
+        <p class="update-time">最后更新：2026-02-26 16:50</p>
         
         <div class="cards">
             <a href="evolution-log.html" class="card">
