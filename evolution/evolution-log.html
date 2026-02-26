@@ -103,29 +103,23 @@
             margin: 1.5rem 0 0.75rem;
         }
         
-        .content h4 {
-            font-size: 1.1rem;
-            color: var(--text-primary);
-            margin: 1rem 0 0.5rem;
-        }
-        
         .content p {
-            color: var(--text-secondary);
             margin-bottom: 1rem;
-        }
-        
-        .content ul, .content ol {
             color: var(--text-secondary);
-            margin-left: 1.5rem;
-            margin-bottom: 1rem;
-        }
-        
-        .content li {
-            margin-bottom: 0.5rem;
         }
         
         .content strong {
             color: var(--text-primary);
+        }
+        
+        .content ul, .content ol {
+            margin: 1rem 0;
+            padding-left: 1.5rem;
+        }
+        
+        .content li {
+            margin-bottom: 0.5rem;
+            color: var(--text-secondary);
         }
         
         .content a {
@@ -138,12 +132,12 @@
         }
         
         .content code {
-            font-family: 'JetBrains Mono', monospace;
             background: rgba(139, 92, 246, 0.15);
-            padding: 0.2rem 0.5rem;
-            border-radius: 4px;
-            font-size: 0.9em;
             color: var(--accent-purple);
+            padding: 0.2rem 0.4rem;
+            border-radius: 4px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.9em;
         }
         
         .content pre {
@@ -191,10 +185,10 @@
             color: var(--accent-purple);
         }
         
-        .loading {
-            text-align: center;
+        .error {
+            color: #ef4444;
             padding: 2rem;
-            color: var(--text-secondary);
+            text-align: center;
         }
         
         @media (max-width: 600px) {
@@ -219,18 +213,32 @@
         </header>
         
         <div class="content" id="markdown-content">
-            <div class="loading">加载中...</div>
+            <p>加载中...</p>
         </div>
     </div>
     
     <script>
+        // 使用 marked.parse 并设置选项
+        marked.setOptions({
+            breaks: true,
+            gfm: true
+        });
+        
         fetch('evolution-log.md')
-            .then(response => response.text())
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('HTTP ' + response.status);
+                }
+                return response.text();
+            })
             .then(text => {
-                document.getElementById('markdown-content').innerHTML = marked.parse(text);
+                const html = marked.parse(text);
+                document.getElementById('markdown-content').innerHTML = html;
             })
             .catch(err => {
-                document.getElementById('markdown-content').innerHTML = '<p style="color: red;">加载失败：' + err.message + '</p>';
+                document.getElementById('markdown-content').innerHTML = 
+                    '<div class="error">加载失败：' + err.message + '<br><br>' +
+                    '<a href="evolution-log.md" style="color: var(--accent-cyan);">直接查看 Markdown 文件</a></div>';
             });
     </script>
 </body>
