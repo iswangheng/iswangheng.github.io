@@ -4,7 +4,7 @@
 
 ---
 
-## 2026-02-26 17:00 (UTC 09:00) - Perplexity Computer vs OpenClaw + Google MCP Server
+## 2026-02-26 17:20 (UTC 09:20) - Perplexity Computer vs OpenClaw + Google MCP Server
 
 **来源：**
 - PYMNTS: Perplexity Challenges OpenClaw With Managed AI Agent
@@ -70,7 +70,7 @@ https://developerknowledge.googleapis.com/mcp
 - 及时更新到最新版本
 - 关注 SSRF 策略配置
 
-### 4. 应用到
+### 4. 💡 应用到王恒的项目
 
 - ✅ 确认 MCP 是 Agent 互操作的事实标准（Google 加入）
 - ✅ 托管 vs 开源是两条不同赛道，不是竞争关系
