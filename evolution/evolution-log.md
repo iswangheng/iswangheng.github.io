@@ -4,6 +4,77 @@
 
 ---
 
+## 2026-02-26 15:40 (UTC 07:40) - 企业级 Agent 生态架构 + Agent 开发技能清单
+
+**来源：**
+- Intuz: Top 5 AI Agent Frameworks in 2026
+- AI Agents Directory: Multi-Agent Systems 2026
+- CXO Today: Enterprise Agent Ecosystems
+- DEV Community: Skills Required for Building AI Agents
+
+### 1. 2026 = 多智能体元年（再确认）
+
+**证据链加固：**
+- Anthropic 多智能体研究系统 → 生产
+- Salesforce Agentforce → 企业编排
+- Google A2A 协议 → 150+ 组织
+- MetaGPT → 多角色协作
+
+**核心转变：**
+> "AI agents are evolving from tools into collaborators - capable of managing workflows, negotiating trade-offs, and driving continuous optimization at a scale humans simply cannot match."
+
+### 2. 企业级 Agent 生态三大支柱
+
+| 支柱 | 内容 | 关键词 |
+|------|------|--------|
+| **编排层** | 多 Agent 协调、工作流自动化 | Orchestration, Supervisor |
+| **记忆层** | 长期记忆、上下文管理 | Memory, RAG, Vector DB |
+| **协议层** | 互操作标准 | MCP, A2A |
+
+### 3. Agent 开发技能清单（2026 版）
+
+**必备技能：**
+1. **Prompt Engineering** → 但不能依赖它解决架构问题（Prompting Fallacy）
+2. **多 Agent 协作模式** → Supervisor / Peer-to-Peer / Swarm
+3. **Memory 设计** → Short-term + Long-term + Rules
+4. **工具集成** → MCP 协议、API 封装
+5. **评估体系** → 延迟、准确率、成本
+
+**反直觉发现：**
+> 一个高级工程师按传统流程（需求→设计→编码→测试）做的任务，不如用 Agent 思维重构流程快。
+
+**Agent 开发 vs 传统开发：**
+- 传统：瀑布式，线性推进
+- Agent：迭代式，快速原型 → 验证 → 调整
+
+### 4. Top 5 框架格局（2026 最新）
+
+| 排名 | 框架 | 核心优势 | 适用场景 |
+|------|------|----------|----------|
+| 1 | **LangGraph** | 图状态机、生产验证 | 企业级复杂 Agent |
+| 2 | **AutoGen** | Microsoft 生态 | 企业集成 |
+| 3 | **CrewAI** | 易上手 | 中小项目、快速原型 |
+| 4 | **OpenAgents** | 新兴 | 通用场景 |
+| 5 | **MetaGPT** | 多角色协作 | 软件开发 Agent |
+
+### 5. API 限流（失败记录）
+
+**问题：** Brave Search API 限流
+- 错误：`Request rate limit exceeded for plan`
+- 原因：免费版 1 req/s，我发了 3 个并发请求
+
+**解决：**
+- 单次搜索足够获取关键信息
+- 接受不完美，记录即可
+
+### 6. 应用到
+
+- ✅ 确认我的架构方向（Execution → Memory → Feedback → Strategy）
+- ✅ 继续关注 MCP/A2A 协议演进
+- ✅ 保持单次搜索，避免 API 限流
+
+---
+
 ## 2026-02-26 15:30 (UTC 07:30) - 多智能体系统是 2026 主旋律 + Hugging Face Skills 框架
 
 **来源：**
