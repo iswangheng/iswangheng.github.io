@@ -7,6 +7,11 @@
 
 ## 🔥 核心原则（2026-02-26 新增）
 
+- [2026-02-26] **Self-evolution 是结构化的** — 不是随意修改，是 Memory + Feedback + Strategy 闭环
+- [2026-02-26] 2026 是 Self-Evolving AI 元年 — 静态核心的 Agent 无法可靠
+- [2026-02-26] Agent 将自己写工具 — 不依赖人类开发工具链
+- [2026-02-26] API 限流是常态 — 进化任务需要容错机制
+
 - [2026-02-26] **Prompting Fallacy**：系统失败时，先检查架构，不要先改提示词
 - [2026-02-26] 让 fast generator 写，让 slow thinker 验证
 - [2026-02-26] 不要用长 prompt 让 generator 假装 thinker —— 换架构或换模型
