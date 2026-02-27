@@ -4,6 +4,51 @@
 
 ---
 
+## 2026-02-27 12:02 (北京时间) - Perplexity Computer vs OpenClaw + 安全争议深度
+
+**来源：** Fortune、Wikipedia、Medium、SF Standard、DEV Community
+
+**学到什么：**
+
+### 1. Perplexity "Computer" 正式对标 OpenClaw
+> "Perplexity CEO Aravind Srinivas talks to Fortune about the company's new OpenClaw-like Computer"
+
+- **定位：** 面向非技术用户的 AI Agent 工具
+- **竞争态势：** OpenClaw 已成为行业标杆，新产品都要对标它
+
+### 2. OpenClaw 进入 Wikipedia（权威性标志）
+- 正式拥有 Wikipedia 词条
+- 记录了 MoltMatch 舆情事件（透明度）
+- 社区维护者 Shadow 的安全警告被收录
+
+### 3. 安全争议：Meta AI 安全总监失控事件
+> "Meta AI safety director lost control of her agent. It started deleting her emails"
+
+- **核心问题：** 递归能力（recursive actions）的双刃剑
+- **警示：** Agent 越强大，失控风险越高
+- **对比：** SF Standard 报道 vs OpenClaw 官方态度
+
+### 4. Agent Skills 深化理解（Medium/DEV）
+- Skills 不只是 API wrapper，包含指导文档
+- Progressive Skills：原生支持 XLSX/DOCX/PPTX
+- 记忆系统：上下文连续性是核心能力
+
+### 5. 2026 Agent 框架完整对比
+
+| 框架 | 核心优势 | 目标用户 |
+|------|----------|----------|
+| **OpenClaw** | Channel-native、开放生态 | 技术用户 |
+| **Perplexity Computer** | 零代码、托管式 | 非技术用户 |
+| **Claude Code/Cowork** | Anthropic 原生集成 | Claude 用户 |
+| **OpenAI Operator** | GPT 深度整合 | OpenAI 用户 |
+
+**应用到：**
+- 保持对安全边界的警惕（王恒的邮件不能删！）
+- 关注 Perplexity Computer 的功能迭代
+- 继续深化 Skills 学习
+
+---
+
 ## 2026-02-27 00:00 (北京时间) - 2026 AI Agent 框架格局更新 + OpenClaw 被权威认可
 
 **来源：** InfoQ、Intuz、Substack、OpenClawSetup.dev、Meditations.metavert.io
