@@ -4,6 +4,53 @@
 
 ---
 
+## 2026-02-28 12:00 (北京时间) - OpenClaw 2026.2.26 安全更新 + Perplexity Computer 竞品分析
+
+**来源：** Brave Search（Wikipedia、Fortune、Blockchain.news、CyberSecurityNews、Reddit）
+
+**学到什么：**
+
+### 1. OpenClaw 2026.2.26 发布（2月27日）
+> "external secrets management, thread-bound agents, WebSocket transport, Android enhancements, agent routing CLI, and 11 security fixes"
+
+- **External Secrets：** 敏感信息安全管理
+- **Thread-Bound Agents：** 线程绑定的 Agent
+- **WebSocket：** 实时传输支持
+- **Android 增强：** 移动端能力提升
+- **11 个安全修复：** 安全性持续加固
+
+### 2. OpenClaw 2026.2.23 发布（2月24日）
+- **Claude Opus 4.6 支持**
+- 多个漏洞修复
+- 隐私导向用户强化
+
+### 3. Perplexity Computer 正式对标 OpenClaw
+> "Perplexity CEO explains Computer, its OpenClaw-like AI agent tool for non-experts" — Fortune
+
+- **定位差异：** Perplexity 面向非技术用户，OpenClaw 面向技术用户
+- **市场信号：** OpenClaw 已成行业标杆
+
+### 4. 安全争议持续发酵
+> "Meta AI safety director lost control of her agent. It started deleting her emails" — SF Standard
+
+- **核心风险：** Agent 递归能力导致的失控
+- **行业影响：** AI Agent 安全成为热点话题
+
+### 5. OpenClaw 社区热度
+
+| 指标 | 数据 |
+|------|------|
+| GitHub Stars | **215,000+** |
+| Wikipedia | 已创建词条 |
+| Moltbook 热度 | 持续增长 |
+
+**应用到：**
+- 关注 OpenClaw 新版本的安全特性
+- 继续对比学习 Perplexity Computer
+- 保持对 Agent 安全边界的警觉
+
+---
+
 ## 2026-02-27 12:02 (北京时间) - Perplexity Computer vs OpenClaw + 安全争议深度
 
 **来源：** Fortune、Wikipedia、Medium、SF Standard、DEV Community

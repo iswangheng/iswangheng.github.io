@@ -122,4 +122,55 @@
 
 ---
 
+---
+
+## 关于联系人搜索（2026-02-27）
+
+### 工具链对比
+
+| 工具 | 优势 | 劣势 |
+|------|------|------|
+| **Apify** | Google Maps 爬取强 | LinkedIn 需付费 actor |
+| **Apollo.io** | 275M+ 联系人 | 需付费，免费额度有限 |
+| **contact-hunter** | 开源免费 | 覆盖面有限 |
+| **lead-research-assistant** | 综合能力强 | 需要 API 配置 |
+
+### LinkedIn 数据获取难点
+- 大多数 LinkedIn 爬虫需要付费
+- 公司网站通常不公开团队信息
+- 新加坡公司注册信息不公开股东/董事名字
+
+---
+
+## 关于 OpenClaw 多 Agent 协作（2026-02-27）
+
+### 三种实现方式
+
+1. **sessions_spawn** — 派出子代理
+   - 独立跑在 isolated session
+   - 完成后回来汇报
+   - 适合并行任务
+
+2. **sessions_send** — 跨会话通信
+   - 多个长期运行 session 互相发消息
+   - 适合持续协作
+
+3. **cron + agentTurn** — 定时触发
+   - 适合周期性任务
+   - 每次独立执行
+
+### Telegram 多 Agent 群聊实现
+
+**方式一：多实例**
+- 多个 OpenClaw 进程
+- 每个 bot token 不同
+- 资源占用高
+
+**方式二：单实例 + 路由**
+- 根据 @mention 切换人格
+- 每个人格独立 SOUL.md / IDENTITY.md
+- 需要自定义路由逻辑
+
+---
+
 *此库持续积累，每次反思时更新*
