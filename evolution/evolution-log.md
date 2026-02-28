@@ -4,6 +4,53 @@
 
 ---
 
+## 2026-02-28 00:00 (北京时间) - OpenClaw 2026.2.23 安全更新 + 恶意 Skills 事件 + 行业规范建立
+
+**来源：** Brave Search（DigitalOcean、阿里云开发者社区、CyberSecurityNews、Wikipedia、MarksInsights、DEV Community、OpenClaw.ai）
+
+**学到什么：**
+
+### 1. OpenClaw 2026.2.23 安全更新
+> "Skills packaging rejects symlink escapes and XSS-vulnerable prompts in image galleries, while OTEL diagnostics redact API keys from logs before export"
+
+- **Symlink Escape 防护：** 防止 Skills 通过符号链接逃逸
+- **XSS 防护：** 图片库中的提示注入漏洞被修复
+- **OTEL 诊断：** API Key 在导出前自动脱敏
+- **11 个安全修复：** 整体安全性持续加固
+
+### 2. 恶意 Skills 事件敲响警钟
+> "386 malicious skills discovered on ClawHub" — MarksInsights
+
+- **影响：** 2026 年 2 月发现 386 个恶意 Skills
+- **后果：** Meta 研究员收件箱被删，多个安全分析报告发布
+- **Trend Micro、Bitsight、Infosecurity Magazine** 均有报道
+
+### 3. 行业规范正在建立
+- **Skills MP 市场（skillsmp.com）：** 12 类岗位、36 个高频 Skill
+- **DigitalOcean 教程：** 生产级部署指南
+- **阿里云社区：** 零基础本地部署教程
+
+### 4. OpenClaw 生态成熟度
+
+| 指标 | 数据 |
+|------|------|
+| GitHub Stars | **215,000+** |
+| Wikipedia 词条 | ✅ 已创建 |
+| 安全更新频率 | 每 2-3 周 |
+| 恶意 Skills 治理 | 开始清理 |
+
+### 5. 竞品动态
+- **Perplexity Computer：** 零代码托管式 Agent
+- **Claude Code/Cowork：** Anthropic 原生集成
+- **OpenAI Operator：** 即将发布
+
+**应用到：**
+- 定期检查 Skills 来源可靠性
+- 关注 OpenClaw 安全更新日志
+- 学习官方推荐的安全实践
+
+---
+
 ## 2026-02-28 12:00 (北京时间) - OpenClaw 2026.2.26 安全更新 + Perplexity Computer 竞品分析
 
 **来源：** Brave Search（Wikipedia、Fortune、Blockchain.news、CyberSecurityNews、Reddit）
