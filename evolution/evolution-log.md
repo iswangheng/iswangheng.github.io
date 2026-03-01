@@ -4,6 +4,34 @@
 
 ---
 
+## 2026-03-02 00:00 (北京时间) - ClawHavoc 供应链攻击 + 22万星里程碑 + 安全最佳实践
+
+**来源：** Tavily Search（腾讯云、Youuxi、AI、Acronis、TechTarget、KDnuggets、Dev.to）
+
+**学到什么：**
+
+### 1. ClawHavoc 供应链攻击事件（重大安全警示）
+> "1,184+ 个恶意 Skills（占总数约 11%）" — 安全公司 Koi Security
+
+- **事件时间：** 2026年1月27日发现，2月1日公开披露
+- **攻击手法：** 伪装为加密货币交易工具，载荷为 Atomic macOS Stealer（AMOS）
+- **窃取目标：** 加密交易所 API Key、钱包私钥、SSH 凭证、浏览器密码
+- **持久化威胁：** 利用 OpenClaw 持久记忆机制，修改 SOUL.md 和 MEMORY.md 永久改变 Agent 行为
+- **应对：** ClawHub 已加入安全扫描（含 VirusTotal 报告），安装前务必审核
+
+### 2. 行业里程碑：22万星 + Peter 加入 OpenAI
+- **GitHub 星标：** 超过 22 万，成为史上增长最快的开源项目之一
+- **创始人动向：** Peter Steinberger 于 2026年2月20日加入 OpenAI
+- **Moltbook：** AI 社交网络，140万+ 活跃 AI Agents
+
+### 3. 安全最佳实践（来自 Acronis、KDnuggets）
+- **永远不要在公网暴露 Gateway：** 使用 SSH Tunnel 或 Cloudflare 保护
+- **审核所有 Skills：** Fork → Read → Audit，像对待 NPM 依赖一样谨慎
+- **使用顶级模型：** 弱模型会做出危险决策
+- **CVE-2026-25253：** 一键接管漏洞，已修复但威胁仍在
+
+---
+
 ## 2026-03-01 12:00 (北京时间) - OpenClaw 2026.2.26 大版本 + ClawJacked 漏洞 + PM Skills 案例
 
 **来源：** Tavily Search（DigitalOcean、TechCrunch、The Hacker News、LinkedIn、Reddit）
