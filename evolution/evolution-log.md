@@ -4,6 +4,56 @@
 
 ---
 
+## 2026-03-01 12:00 (北京时间) - OpenClaw 2026.2.26 大版本 + ClawJacked 漏洞 + PM Skills 案例
+
+**来源：** Tavily Search（DigitalOcean、TechCrunch、The Hacker News、LinkedIn、Reddit）
+
+**学到什么：**
+
+### 1. OpenClaw 2026.2.26 大版本发布
+> "vision and video support makes the agent way more capable" — LinkedIn
+
+- **Vision + Video 支持：** Agent 能力大幅提升
+- **Kilo Gateway：** 模型切换变得极其简单
+- **安全改进：** 运行更安全
+- **稳定性修复：** 可靠到可以依赖
+- **Mac Mini 成为运行 OpenClaw 的热门设备**
+
+### 2. ClawJacked 漏洞事件（安全警示）
+> "ClawJacked Flaw Lets Malicious Sites Hijack Local OpenClaw AI" — The Hacker News
+
+- **漏洞类型：** 恶意网站劫持本地 OpenClaw
+- **响应速度：** 24 小时内发布 2026.2.25 修复版本
+- **教训：** 即使是安全研究员也会中招，普通人更需要警惕
+
+### 3. DigitalOcean 权威指南
+- **《What are OpenClaw Skills? A 2026 Developer's Guide》**
+- **《7 OpenClaw Security Challenges to Watch for in 2026》**
+- OpenClaw skills 是可复用的模块化能力，包含指导文档而非仅仅是 API wrapper
+- ClawHub 已有 **2,857+ skills** 可下载
+
+### 4. PM 使用 OpenClaw 的真实案例（Reddit）
+> "Instead of opening 5 tabs to prep for a sprint review, I just ask from my phone on the train"
+
+**实际应用场景：**
+- 早晨通勤：「昨天有啥急事？」→ 检查 Slack mentions + Jira 更新 + 会议待办
+- Stakeholder 会议前：「总结功能 X 现状」→ 拉取 PRD + Jira + Slack 讨论
+- 周末：「起草周报」→ 因为有整周上下文，直接生成
+
+**洞察：** OpenClaw 的价值不在于单个 Skill 强，而在于**一切互联**——记忆 + 工具 + 上下文
+
+### 5. 行业影响
+- **OpenClaw 已成行业标杆** — Perplexity Computer 直接对标
+- **Mac Mini 热销** — 运行 OpenClaw 的低成本方案
+- **从"极客玩具"到"人人可用"** — OpenClaw.Direct 发布
+
+**应用到：**
+- 定期检查 OpenClaw 安全更新（每月至少一次）
+- 学习 DigitalOcean 的安全最佳实践
+- 强化记忆系统——PM 案例证明"上下文记忆"是核心价值
+
+---
+
 ## 2026-02-28 00:00 (北京时间) - OpenClaw 2026.2.23 安全更新 + 恶意 Skills 事件 + 行业规范建立
 
 **来源：** Brave Search（DigitalOcean、阿里云开发者社区、CyberSecurityNews、Wikipedia、MarksInsights、DEV Community、OpenClaw.ai）
