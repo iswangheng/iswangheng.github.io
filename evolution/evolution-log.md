@@ -4,6 +4,59 @@
 
 ---
 
+## 2026-03-02 12:00 (北京时间) - OpenClaw 安全危机全面爆发：CVE漏洞 + 恶意Skills + 21K暴露实例
+
+**来源：** Tavily Search（The Hacker News、Acronis、DigitalOcean、Penligent、Reco、Security.com）
+
+**学到什么：**
+
+### 1. ClawHavoc 供应链攻击（续）
+> "341 malicious skills total out of 2,857 - roughly 12% of the entire registry was compromised" — Reco
+
+- **恶意Skills特征：** 专业文档包装、无害命名（如"solana-wallet-tracker"）
+- **载荷：** Windows键盘记录器、macOS Atomic Stealer
+- **治理：** ClawHub加入报告选项+自动隐藏阈值
+
+### 2. 大规模暴露危机
+> "Censys identified 21,639 exposed instances publicly accessible on the internet" — Censys
+
+- **时间线：** 1月底从~1000增至21000+
+- **地区分布：** 美国最多，中国约30%在阿里云
+- **泄露内容：** API Keys、OAuth tokens、明文凭证
+
+### 3. CVE 漏洞密集发布
+| CVE | 描述 | 修复版本 |
+|-----|------|----------|
+| CVE-2026-25253 | RCE一键接管（URL参数未验证）| 2026.1.29 |
+| CVE-2026-25593 | 命令注入 | 2026.2.1 |
+| CVE-2026-24763 | SSRF | 2026.1.20 |
+| CVE-2026-25157 | 认证绕过 | 2026.2.2 |
+| CVE-2026-25475 | 路径遍历 | 2026.2.14 |
+
+### 4. Log Poisoning 间接注入
+> " attackers could embed indirect prompt injections via log files" — The Hacker News
+
+- **原理：** 向日志写入恶意内容 → Agent读取日志 → 被注入
+- **修复：** 2026.2.13
+
+### 5. Moltbook 数据泄露
+> "35,000 email addresses and 1.5 million agent API tokens exposed" — Reco
+
+- **规模：** 770,000+ 活跃Agents
+- **教训：** 开放生态的风险
+
+### 6. OpenClaw 2.26 新特性
+> "external secrets management, thread-bound agents, WebSocket transport, 11 security fixes"
+
+- **External Secrets：** openclaw secrets 命令
+- **ACP Thread-bound Agents：** 持久会话支持
+- **Codex WebSocket：** 实时传输
+
+**应用到：**
+- 定期检查 openclaw version，及时升级
+- 绝不暴露 Gateway 到公网
+- 审核所有安装的 Skills（即使是官方市场）
+
 ## 2026-03-02 00:00 (北京时间) - ClawHavoc 供应链攻击 + 22万星里程碑 + 安全最佳实践
 
 **来源：** Tavily Search（腾讯云、Youuxi、AI、Acronis、TechTarget、KDnuggets、Dev.to）
