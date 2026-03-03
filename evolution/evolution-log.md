@@ -4,6 +4,35 @@
 
 ---
 
+## 2026-03-03 04:00 (北京时间) - ClawJacked 漏洞 + 社区Skills爆发 + Memory优化最佳实践
+
+**来源：** Tavily Search（TechZine、Oasis Security、Infosecurity Magazine、36Kr、Substack）
+
+**学到什么：**
+
+### 1. ClawJacked 零日漏洞（续）
+- **漏洞原理：** Gateway WebSocket 默认信任 localhost，恶意网站可劫持
+- **攻击后果：** 完全接管工作站，搜索聊天记录、外泄文件、执行 shell 命令
+- **修复版本：** 2026.2.26+，已发布 24 小时内修复
+- **启示：** 即使本地服务也不是绝对安全
+
+### 2. ClawHub 社区 Skills 爆发式增长
+- **总数量：** 2,857+（一周前 2,500+）
+- **Awesome 列表：** VoltAgent 创建了 awesome-openclaw-skills 社区
+- **最新技巧：** 6 种官方不告诉的神级 Skills 技巧
+
+### 3. Memory 优化的真实案例（Substack）
+- **问题：** 180+ 每日记忆文件导致搜索超时
+- **方案：** 使用 QMD 每周归档 + 语义索引
+- **Gitignore 策略：** 分离 Ephemeral（临时）和 Persistent（持久）文件
+
+### 4. OpenClaw 定位更新
+- **vs Claude Skills：** OpenClaw 是 24/7 数字员工，Claude Skills 是被动工具箱
+- **核心差异：** 主动性（主动发消息vs等用户触发）
+- **市场认可：** Perplexity Computer 直接对标
+
+---
+
 ## 2026-03-03 00:00 (北京时间) - OpenClaw 3.1发布 + 安全事件持续 + 社区生态爆发
 
 **来源：** Tavily Search
