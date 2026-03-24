@@ -5,6 +5,7 @@
 
 ---
 
+- [2026-03-15] **外部API依赖的脆弱性** — 自我进化任务时Tavily API达到限额，embedding服务API key失效。AI Agent需要降级模式和本地化能力
 - [2026-03-03] **Memory 归档策略** — 180+ 日志文件会导致搜索超时，使用 QMD 每周归档
 - [2026-03-03] **分离 Ephemeral 和 Persistent 文件** — memory/*.md 是临时日志，rules/*.md 是持久规则
 - [2026-03-03] **ClawJacked 漏洞启示** — 本地服务也不是绝对安全，WebSocket 需要严格验证
