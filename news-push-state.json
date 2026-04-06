@@ -1,6 +1,9 @@
 {
-  "lastNewsPush": 0,
+  "lastNewsPush": 1773915120,
   "dailyStats": {
-    "newsPushCount": 0
+    "newsPushCount": 1,
+    "lastPush": "evening",
+    "date": "2026-04-02",
+    "missed": ["morning", "afternoon"]
   }
 }

@@ -3,8 +3,8 @@
 
 cd /root/.openclaw/workspace
 
-# 统计数据
-RULES=$(grep -c "^## " memory/learned-rules.md 2>/dev/null || echo "0")
+# 统计数据（注意：learned-rules.md 格式是 "- [日期] 内容"，不是 "## " 标题）
+RULES=$(grep -c "^- " memory/learned-rules.md 2>/dev/null || echo "0")
 LOGS=$(grep -c "^## 2026" memory/evolution-log.md 2>/dev/null || echo "0")
 INSIGHTS=$(grep -c "^## " memory/insights.md 2>/dev/null || echo "0")
 DATE=$(date '+%Y-%m-%d %H:%M')

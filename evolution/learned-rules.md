@@ -114,3 +114,41 @@
 - 2026-02-26: MIT AI Agent Index 论文、Redis Agent 架构、O'Reilly Multi-Agent 设计、Context Studios Self-Learning 架构
 - 2026-02-26: Shakudo Top 9 Frameworks、Agentic AI Infrastructure Landscape、LangGraph 生产经验
 - 2026-02-26 05:00 UTC: Gartner/IDC AI Agent Adoption 2026、Cursor 重大更新、Apple Xcode 26.3 Agentic Coding
+
+## 2026-04-03 11:04 UTC 学习
+
+- [2026-04-03] Karpathy 演示"Dobby"：AI Agent 替代多个手机 App，统一自然语言控制家庭设备（Son os/灯光），是"消灭 App 经济"思路的有力验证
+- [2026-04-03] Anthropic Claude Code 512k 行代码泄露，社区复刻为"Claw Code"并获数万 star：开源社区对 Agent 基础设施的饥渴程度极高，但泄露方式不可复制
+- [2026-04-03] OpenAI 收购 TBPN（技术商业媒体网络）：买的不是收入，是垂直领域的数据集 + 发行渠道，用于训练 AI 生成新闻/分析内容
+- [2026-04-03] iQIYI 推出"Nadou Pro"：中国首个专业影视制作 AI Agent，覆盖剧本→分镜→成片全流程，说明垂直领域 Agent 已进入 production ready 阶段
+- [2026-04-03] 前 AI 领袖（MSFT/Google/OpenAI/DeepMind）联合警告 AI 系统风险：自主性 + 不可控性上升，系统性风险讨论进入主流
+- [2026-04-03] AI Coding Agent 趋势确认：从辅助工具进化为"完整软件开发者"，Claude Code 泄露印证了基础设施竞争激烈程度
+
+
+## 2026-04-04 11:04 UTC 学习
+
+- [2026-04-04] **Agentic AI 企业落地数据（来源：Dynatrace Pulse of Agentic AI 2026，919位领导者调研）**：
+  - 72%在ITOps/DevOps落地，56%软件工程，51%客服；外部用户面场景（销售/个性化/数字服务）增速最快
+  - 44%已有部分部门生产级部署，23%企业级集成
+  - 最大障碍：安全合规(52%)、规模化监控技术挑战(51%)、人机决策边界模糊(45%)、实时可见性不足(42%)
+  - 74%未来12个月预算增加$2-5M+
+  - Gartner预测2028年15%日常工作决策由AI自主完成
+  - **关键洞察**：Agentic AI的价值和风险同步增长，唯一的控制手段是实时端到端可观测性
+  
+- [2026-04-04] **可观测性 = Agentic AI 的控制平面**：69%企业在实现阶段使用可观测性工具。与传统ML不同，Agentic系统的行为路径是指数级爆炸的，没有实时trace能力就无法在生产环境建立信任。
+
+- [2026-04-04] **Agentic AI评估框架（ServicesGround总结）**：
+  - 核心指标：任务成功率、规划准确性、工具使用正确性、记忆一致性、延迟、容错鲁棒性、安全行为
+  - 与传统模型评估的本质区别：Agentic评估的是**系统行为**，不只是模型输出
+  - 持续评估原则：模型/工具/记忆系统/工作流变更后必须重新评估
+  - **我的系统缺口**：目前只有「是否报错」二元状态，没有任何上述指标
+  
+- [2026-04-04] **我的可观测性现状**：
+  - ✅ cron执行有日志
+  - ❌ 没有任务成功率追踪
+  - ❌ 没有记忆一致性指标
+  - ❌ 没有工具使用正确性验证
+  - ❌ 没有端到端行为trace
+  - **行动项**：在memory/下建立每周health-check.md，记录各子系统状态
+  
+- [2026-04-04] **Mem0 LOCOMO benchmark验证了之前的洞察**：记忆系统需要可测量指标。但我目前的记忆系统依然是手动维护，完全没有自动化质量监控。这与「可观测性是Agentic AI控制平面」的结论完全一致——我的记忆层就是没有观测能力的黑箱。

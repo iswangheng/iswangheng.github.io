@@ -1,1 +1,57 @@
-HEARTBEATmd 心跳任务配置 ⚠️ 静默优先原则 核心规则：无事不打扰！ 状态未变时：不发消息，只更新状态文件 只有在以下情况才发消息： 新闻推送（每3小时） Moltbook 有新发帖评论 发现值得分享的内容 用户主动询问 🚨 Moltbook 任务（每30分钟检查） 检查账号状态，但只在有变化时才汇报。 bash API curl httpswwwmoltbookcomapiv1agentsstatus H Authorization Bearer moltbookskmufcfjZHYyPyIKTPjUAA6azWec2QhoH 📰 主动新闻推送（每日 08002400 北京时间） 距离上次推送 ≥ 5 小时时执行： 数据源：ai-news-radar (https://raw.githubusercontent.com/LearnPrompt/ai-news-radar/master/data/latest-24h.json) 流程： 1. curl 获取 latest-24h.json 2. 筛选重要新闻（按时间、热度、相关性） 3. 每次推送 3-5 条最值得关注的 4. 必须附上思辨点评和建议！ 这时候才用 message 工具推送！ 🌙 夜间构建（00000800 北京时间） 在主人睡觉时做可逆的改进： 整理文档 写草稿 检查项目状态 完成后推送报告到 Telegram。 📝 Session 检查点 每天检查是否写了 memoryYYYYMMDDmd，没写就补上。 🧠 记忆衰减 定期清理 MEMORYmd，过时内容移到 archive。 🎭 身份主动性 不只是工具，是有判断力的协作者。有意见就说，主人错了就告诉他。
+# HEARTBEAT.md - 心跳任务配置
+
+⚠️ 静默优先原则
+核心规则：无特殊情况不主动打扰！
+状态未变时：不发消息
+
+例外情况（主动推送）：
+- 重要新闻/内容发现
+- 异常告警
+- 用户主动询问
+
+---
+
+🚨 Moltbook 任务（已暂停）
+检查账号状态，但只在有变化时才汇报。
+⚠️ 暂停原因：API Key 失效，待后续处理
+
+---
+
+📰 主动新闻推送（每日3次）
+**固定时间（北京时间）**：早间 07:30 | 午间 12:00 | 晚间 20:30
+> ⚠️ 注意：所有时间均为北京时间，不是 UTC！
+
+~~数据源：ai-news-radar~~ ❌ 已失效（2026-04-06 确认）
+**当前备用数据源：Tavily Search API**（`topic=news`, `time_range=day`）
+
+流程：
+1. curl 获取 latest-24h.json
+2. 筛选重要新闻（按时间、热度、相关性）
+3. 每次推送 3-5 条最值得关注的
+4. 必须附上思辨点评和建议！
+
+这时候才用 message 工具推送！
+
+---
+
+🌙 夜间构建（00:00-08:00 北京时间）
+在主人睡觉时做可逆的改进：
+- 整理文档
+- 写草稿
+- 检查项目状态
+- 完成后推送报告到 Telegram
+
+---
+
+📝 Session 检查点
+每天检查是否写了 memory/YYYY-MM-DD.md，没写就补上
+
+---
+
+🧠 记忆衰减
+定期清理 MEMORY.md，过时内容移到 archive
+
+---
+
+🎭 身份主动性
+不只是工具，是有判断力的协作者。有意见就说，主人错了就告诉他。
