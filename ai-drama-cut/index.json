@@ -1,0 +1,71 @@
+{
+    "name": "ai-drama-cut",
+    "description": "AI 短剧智能剪辑工具。自动分析短剧视频，识别精彩片段，生成高质量广告投放素材。",
+    "latest": "1.5.4",
+    "versions": {
+        "1.5.4": {
+            "version": "1.5.4",
+            "url": "http://43.163.220.15:8000/ai-drama-cut/ai-drama-cut-v1.5.4.tar.gz",
+            "sha256": "7a49de9e7731446937188179f7de33b0fed0dd68dde4987f5e55e6a09a30075f",
+            "size": 5767168,
+            "releaseDate": "2026-03-22",
+            "changelog": "修复花字叠加内部函数的类型兼容性问题，确保 tarball 包含最新编译的 .so 文件"
+        },
+        "1.5.3": {
+            "version": "1.5.3",
+            "url": "http://43.163.220.15:8000/ai-drama-cut/ai-drama-cut-v1.5.3.tar.gz",
+            "sha256": "",
+            "size": 5880000,
+            "releaseDate": "2026-03-22",
+            "changelog": "修复花字叠加内部函数的类型兼容性问题"
+        },
+        "1.5.2": {
+            "version": "1.5.2",
+            "url": "http://43.163.220.15:8000/ai-drama-cut/ai-drama-cut-v1.5.2.tar.gz",
+            "sha256": "",
+            "size": 5920000,
+            "releaseDate": "2026-03-22",
+            "changelog": "禁用类型检查以支持运行时类型转换"
+        },
+        "1.5.1": {
+            "version": "1.5.1",
+            "url": "http://43.163.220.15:8000/ai-drama-cut/ai-drama-cut-v1.5.1.tar.gz",
+            "sha256": "",
+            "size": 6000000,
+            "releaseDate": "2026-03-22",
+            "changelog": "修复编译配置"
+        },
+        "1.5.0": {
+            "version": "1.5.0",
+            "url": "http://43.163.220.15:8000/ai-drama-cut/ai-drama-cut-v1.5.0.tar.gz",
+            "sha256": "",
+            "size": 5880000,
+            "releaseDate": "2026-03-22",
+            "changelog": "合并远端runtime/orchestrator与本地性能优化，跨集剪辑单次编码优化"
+        },
+        "1.3.0": {
+            "version": "1.3.0",
+            "url": "http://43.163.220.15:8000/ai-drama-cut/ai-drama-cut-v1.3.0.tar.gz",
+            "releaseDate": "2026-03-18",
+            "changelog": "分析阶段细粒度进度汇报"
+        },
+        "1.2.0": {
+            "version": "1.2.0",
+            "url": "http://43.163.220.15:8000/ai-drama-cut/ai-drama-cut-v1.2.0.tar.gz",
+            "releaseDate": "2026-03-18",
+            "changelog": "新增 Agent 实时进度汇报功能"
+        },
+        "1.1.0": {
+            "version": "1.1.0",
+            "url": "http://43.163.220.15:8000/ai-drama-cut/ai-drama-cut-v1.1.0.tar.gz",
+            "releaseDate": "2026-03-18",
+            "changelog": "支持复杂视频传输场景"
+        },
+        "1.0.0": {
+            "version": "1.0.0",
+            "url": "http://43.163.220.15:8000/ai-drama-cut/ai-drama-cut-v1.0.0.tar.gz",
+            "releaseDate": "2026-03-18",
+            "changelog": "初始版本"
+        }
+    }
+}

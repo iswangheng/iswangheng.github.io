@@ -1,0 +1,1949 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>短剧分销生意全链路调研报告</title>
+<style>
+  :root {
+    --bg: #FAFBFD;
+    --card: #FFFFFF;
+    --border: #E8ECF1;
+    --accent: #2563EB;
+    --accent-light: #EFF6FF;
+    --accent-dark: #1D4ED8;
+    --text: #1A1D23;
+    --text-secondary: #5F6B7A;
+    --text-muted: #8896A6;
+    --success: #059669;
+    --success-bg: #ECFDF5;
+    --warning: #D97706;
+    --warning-bg: #FFFBEB;
+    --danger: #DC2626;
+    --danger-bg: #FEF2F2;
+    --info: #0891B2;
+    --info-bg: #ECFEFF;
+    --shadow-sm: 0 1px 2px rgba(0,0,0,0.04);
+    --shadow: 0 1px 3px rgba(0,0,0,0.06), 0 1px 2px rgba(0,0,0,0.04);
+    --shadow-md: 0 4px 6px rgba(0,0,0,0.05), 0 2px 4px rgba(0,0,0,0.04);
+    --shadow-lg: 0 10px 25px rgba(0,0,0,0.06), 0 4px 10px rgba(0,0,0,0.04);
+    --radius: 12px;
+    --radius-sm: 8px;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Helvetica Neue', 'PingFang SC', 'Noto Sans CJK SC', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.7;
+    font-size: 15px;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* Header */
+  .header {
+    background: linear-gradient(135deg, #1E3A5F 0%, #2563EB 50%, #3B82F6 100%);
+    color: white;
+    padding: 60px 0 50px;
+    position: relative;
+    overflow: hidden;
+  }
+  .header::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    right: -20%;
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, rgba(255,255,255,0.08) 0%, transparent 70%);
+    border-radius: 50%;
+  }
+  .header::after {
+    content: '';
+    position: absolute;
+    bottom: -30%;
+    left: -10%;
+    width: 400px;
+    height: 400px;
+    background: radial-gradient(circle, rgba(255,255,255,0.05) 0%, transparent 70%);
+    border-radius: 50%;
+  }
+  .header-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 32px;
+    position: relative;
+    z-index: 1;
+  }
+  .header-badge {
+    display: inline-block;
+    background: rgba(255,255,255,0.15);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255,255,255,0.2);
+    padding: 6px 16px;
+    border-radius: 20px;
+    font-size: 13px;
+    letter-spacing: 0.5px;
+    margin-bottom: 20px;
+  }
+  .header h1 {
+    font-size: 36px;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+    margin-bottom: 12px;
+  }
+  .header p {
+    font-size: 16px;
+    opacity: 0.85;
+    max-width: 600px;
+    line-height: 1.6;
+  }
+  .header-meta {
+    margin-top: 24px;
+    display: flex;
+    gap: 24px;
+    font-size: 13px;
+    opacity: 0.7;
+  }
+
+  /* Container */
+  .container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 32px;
+  }
+
+  /* Navigation */
+  .toc {
+    position: sticky;
+    top: 0;
+    background: rgba(250,251,253,0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+    z-index: 100;
+    padding: 0;
+  }
+  .toc-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 32px;
+    display: flex;
+    gap: 0;
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+  .toc-inner::-webkit-scrollbar { display: none; }
+  .toc a {
+    display: block;
+    padding: 14px 18px;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--text-secondary);
+    text-decoration: none;
+    white-space: nowrap;
+    border-bottom: 2px solid transparent;
+    transition: all 0.2s;
+  }
+  .toc a:hover {
+    color: var(--accent);
+    border-bottom-color: var(--accent);
+  }
+
+  /* Sections */
+  .section {
+    padding: 48px 0;
+    border-bottom: 1px solid var(--border);
+  }
+  .section:last-child { border-bottom: none; }
+
+  .section-header {
+    margin-bottom: 32px;
+  }
+  .section-number {
+    display: inline-block;
+    background: var(--accent);
+    color: white;
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
+    text-align: center;
+    line-height: 32px;
+    font-size: 14px;
+    font-weight: 700;
+    margin-right: 12px;
+    vertical-align: middle;
+  }
+  .section-title {
+    display: inline;
+    font-size: 24px;
+    font-weight: 700;
+    letter-spacing: -0.3px;
+    vertical-align: middle;
+  }
+  .section-desc {
+    margin-top: 8px;
+    color: var(--text-secondary);
+    font-size: 15px;
+    padding-left: 44px;
+  }
+
+  h3 {
+    font-size: 18px;
+    font-weight: 600;
+    margin: 32px 0 16px;
+    color: var(--text);
+  }
+
+  /* Cards */
+  .card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 24px;
+    margin-bottom: 20px;
+    box-shadow: var(--shadow-sm);
+  }
+  .card-title {
+    font-size: 15px;
+    font-weight: 600;
+    margin-bottom: 16px;
+    color: var(--text);
+  }
+
+  /* Stats Grid */
+  .stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 16px;
+    margin-bottom: 24px;
+  }
+  .stat-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 24px;
+    box-shadow: var(--shadow-sm);
+    transition: box-shadow 0.2s;
+  }
+  .stat-card:hover { box-shadow: var(--shadow-md); }
+  .stat-label {
+    font-size: 13px;
+    color: var(--text-muted);
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 8px;
+  }
+  .stat-value {
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--text);
+    letter-spacing: -0.5px;
+  }
+  .stat-note {
+    font-size: 13px;
+    color: var(--text-secondary);
+    margin-top: 4px;
+  }
+  .stat-card.accent { border-left: 3px solid var(--accent); }
+  .stat-card.success { border-left: 3px solid var(--success); }
+  .stat-card.warning { border-left: 3px solid var(--warning); }
+  .stat-card.danger { border-left: 3px solid var(--danger); }
+
+  /* Tables */
+  .table-wrap {
+    overflow-x: auto;
+    margin: 16px 0;
+    border-radius: var(--radius);
+    border: 1px solid var(--border);
+    box-shadow: var(--shadow-sm);
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14px;
+  }
+  thead {
+    background: #F8FAFC;
+  }
+  th {
+    padding: 12px 16px;
+    text-align: left;
+    font-weight: 600;
+    font-size: 13px;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+    border-bottom: 1px solid var(--border);
+    white-space: nowrap;
+  }
+  td {
+    padding: 12px 16px;
+    border-bottom: 1px solid #F1F5F9;
+    color: var(--text);
+  }
+  tr:last-child td { border-bottom: none; }
+  tr:hover td { background: #F8FAFC; }
+
+  /* Flow Chart */
+  .flow {
+    display: flex;
+    align-items: center;
+    gap: 0;
+    padding: 24px 0;
+    overflow-x: auto;
+    flex-wrap: nowrap;
+  }
+  .flow-step {
+    flex-shrink: 0;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 16px 20px;
+    text-align: center;
+    min-width: 130px;
+    box-shadow: var(--shadow-sm);
+  }
+  .flow-step-num {
+    display: inline-block;
+    background: var(--accent-light);
+    color: var(--accent);
+    width: 24px;
+    height: 24px;
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 24px;
+    margin-bottom: 8px;
+  }
+  .flow-step-title {
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 4px;
+  }
+  .flow-step-desc {
+    font-size: 12px;
+    color: var(--text-muted);
+  }
+  .flow-arrow {
+    flex-shrink: 0;
+    color: var(--accent);
+    font-size: 20px;
+    padding: 0 8px;
+  }
+
+  /* Alert Boxes */
+  .alert {
+    border-radius: var(--radius-sm);
+    padding: 16px 20px;
+    margin: 16px 0;
+    font-size: 14px;
+    line-height: 1.6;
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+  }
+  .alert-icon { font-size: 18px; flex-shrink: 0; margin-top: 1px; }
+  .alert-success { background: var(--success-bg); border: 1px solid #A7F3D0; color: #065F46; }
+  .alert-warning { background: var(--warning-bg); border: 1px solid #FDE68A; color: #92400E; }
+  .alert-danger { background: var(--danger-bg); border: 1px solid #FECACA; color: #991B1B; }
+  .alert-info { background: var(--info-bg); border: 1px solid #A5F3FC; color: #155E75; }
+
+  /* Tags */
+  .tag {
+    display: inline-block;
+    padding: 4px 10px;
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: 600;
+  }
+  .tag-blue { background: var(--accent-light); color: var(--accent); }
+  .tag-green { background: var(--success-bg); color: var(--success); }
+  .tag-yellow { background: var(--warning-bg); color: var(--warning); }
+  .tag-red { background: var(--danger-bg); color: var(--danger); }
+
+  /* Two Column */
+  .two-col {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+  }
+  @media (max-width: 768px) {
+    .two-col { grid-template-columns: 1fr; }
+    .flow { flex-wrap: wrap; justify-content: center; }
+    .stats-grid { grid-template-columns: 1fr 1fr; }
+    .header h1 { font-size: 28px; }
+    .header-meta { flex-direction: column; gap: 8px; }
+  }
+
+  /* Lists */
+  .check-list {
+    list-style: none;
+    padding: 0;
+  }
+  .check-list li {
+    padding: 8px 0;
+    padding-left: 28px;
+    position: relative;
+    font-size: 14px;
+    color: var(--text);
+  }
+  .check-list li::before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    color: var(--success);
+    font-weight: 700;
+    font-size: 14px;
+  }
+
+  .x-list li::before {
+    content: '✗';
+    color: var(--danger);
+  }
+
+  /* Progress / Percentage Bar */
+  .pct-bar {
+    height: 8px;
+    background: #F1F5F9;
+    border-radius: 4px;
+    overflow: hidden;
+    margin-top: 8px;
+  }
+  .pct-fill {
+    height: 100%;
+    border-radius: 4px;
+    transition: width 0.6s ease;
+  }
+
+  /* Comparison */
+  .vs-grid {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    gap: 16px;
+    align-items: start;
+    margin: 20px 0;
+  }
+  .vs-divider {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--text-muted);
+    padding-top: 40px;
+  }
+
+  /* Callout */
+  .callout {
+    background: linear-gradient(135deg, var(--accent-light) 0%, #F0F7FF 100%);
+    border: 1px solid #BFDBFE;
+    border-radius: var(--radius);
+    padding: 24px;
+    margin: 20px 0;
+  }
+  .callout-title {
+    font-weight: 700;
+    font-size: 15px;
+    color: var(--accent-dark);
+    margin-bottom: 8px;
+  }
+  .callout-body {
+    font-size: 14px;
+    color: #1E40AF;
+    line-height: 1.7;
+  }
+
+  /* Footer */
+  .footer {
+    text-align: center;
+    padding: 40px 0;
+    color: var(--text-muted);
+    font-size: 13px;
+  }
+  .footer a { color: var(--accent); text-decoration: none; }
+
+  /* Pending Section */
+  .pending {
+    background: linear-gradient(135deg, #F8FAFC, #F1F5F9);
+    border: 2px dashed var(--border);
+    border-radius: var(--radius);
+    padding: 40px;
+    text-align: center;
+    margin: 20px 0;
+  }
+  .pending-icon {
+    font-size: 32px;
+    margin-bottom: 12px;
+  }
+  .pending-title {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--text-secondary);
+    margin-bottom: 4px;
+  }
+  .pending-desc {
+    font-size: 13px;
+    color: var(--text-muted);
+  }
+  .spinner {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    border: 2px solid var(--border);
+    border-top-color: var(--accent);
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+    vertical-align: middle;
+    margin-right: 8px;
+  }
+  @keyframes spin { to { transform: rotate(360deg); } }
+
+  /* Smooth scroll */
+  html { scroll-behavior: smooth; }
+
+  /* Print */
+  @media print {
+    .toc { position: static; }
+    .header { padding: 30px 0; }
+    .section { page-break-inside: avoid; }
+  }
+</style>
+</head>
+<body>
+
+<!-- Header -->
+<div class="header">
+  <div class="header-inner">
+    <div class="header-badge">BUSINESS RESEARCH REPORT</div>
+    <h1>短剧分销生意 · 全链路调研报告</h1>
+    <p>从版权获取、素材制作、广告投放到结算回款——覆盖短剧 CPS/IAA 分销的完整商业闭环分析</p>
+    <div class="header-meta">
+      <span>调研日期：2026年3月</span>
+      <span>版本：v2.0（已交叉验证）</span>
+      <span>数据来源：公开行业报告 / 平台官方</span>
+    </div>
+  </div>
+</div>
+
+<!-- TOC -->
+<nav class="toc">
+  <div class="toc-inner">
+    <a href="#overview">市场概览</a>
+    <a href="#chain">业务链路</a>
+    <a href="#platforms">版权方对比</a>
+    <a href="#distributor">成为分销商</a>
+    <a href="#ad-account">广告投放开户</a>
+    <a href="#ai-content">AI素材制作</a>
+    <a href="#roi">ROI与资金</a>
+    <a href="#qualification">公司资质</a>
+    <a href="#policy">政策监管</a>
+    <a href="#risk">风险分析</a>
+    <a href="#action">行动方案</a>
+  </div>
+</nav>
+
+<div class="container">
+
+  <!-- Section 1: 市场概览 -->
+  <section class="section" id="overview">
+    <div class="section-header">
+      <span class="section-number">1</span>
+      <h2 class="section-title">市场概览</h2>
+      <p class="section-desc">短剧行业正处于千亿级爆发期，但竞争格局加速分化</p>
+    </div>
+
+    <div class="stats-grid">
+      <div class="stat-card accent">
+        <div class="stat-label">2025年市场规模</div>
+        <div class="stat-value">1,000亿+</div>
+        <div class="stat-note">真人剧800亿 + AI漫剧200亿</div>
+      </div>
+      <div class="stat-card success">
+        <div class="stat-label">用户规模</div>
+        <div class="stat-value">~7亿</div>
+        <div class="stat-note">超过一半中国网民</div>
+      </div>
+      <div class="stat-card warning">
+        <div class="stat-label">红果月活</div>
+        <div class="stat-value">2.36亿</div>
+        <div class="stat-note">IAA免费模式王者，接近优酷体量</div>
+      </div>
+      <div class="stat-card danger">
+        <div class="stat-label">盈利项目占比</div>
+        <div class="stat-value">~20%</div>
+        <div class="stat-note">超八成项目亏损（二八定律）</div>
+      </div>
+    </div>
+
+    <h3>平台竞争格局</h3>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr><th>平台</th><th>市场地位</th><th>25Q1热力值</th><th>核心优势</th></tr>
+        </thead>
+        <tbody>
+          <tr><td><strong>番茄/红果</strong>（字节系）</td><td><span class="tag tag-blue">行业第一</span></td><td>15.4亿</td><td>番茄IP → 抖音引流 → 红果变现 闭环</td></tr>
+          <tr><td><strong>点众科技</strong></td><td><span class="tag tag-green">行业第二</span></td><td>6.4亿</td><td>首创快应用分销模式，海外DramaBox</td></tr>
+          <tr><td><strong>九州文化</strong></td><td><span class="tag tag-green">第一梯队</span></td><td>—</td><td>付费短剧小程序，混合模式先行者</td></tr>
+          <tr><td><strong>黑岩网</strong></td><td><span class="tag tag-yellow">IP平台TOP3</span></td><td>—</td><td>400+作品授权改编，悬疑民俗特色</td></tr>
+          <tr><td><strong>麦芽</strong></td><td><span class="tag tag-green">投流TOP5</span></td><td>—</td><td>投流热度高，活跃承制方</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3>变现模式演变（关键趋势）</h3>
+    <div class="two-col">
+      <div class="card">
+        <div class="card-title">CPS 付费模式（传统）</div>
+        <p style="font-size:14px;color:var(--text-secondary);margin-bottom:12px;">用户直接充值付费解锁剧集</p>
+        <div style="display:flex;justify-content:space-between;font-size:13px;margin-bottom:4px;">
+          <span>市场占比</span><span style="font-weight:600;">~45%（下降中）</span>
+        </div>
+        <div class="pct-bar"><div class="pct-fill" style="width:45%;background:var(--accent);"></div></div>
+        <ul style="margin-top:12px;font-size:13px;color:var(--text-secondary);padding-left:16px;">
+          <li>收入爆发力强但不确定性高</li>
+          <li>分销商按充值分佣 50%-80%</li>
+          <li>竞争白热化，ROI压力大</li>
+        </ul>
+      </div>
+      <div class="card">
+        <div class="card-title">IAA 免费模式（趋势）</div>
+        <p style="font-size:14px;color:var(--text-secondary);margin-bottom:12px;">用户免费看剧，看广告解锁下一集</p>
+        <div style="display:flex;justify-content:space-between;font-size:13px;margin-bottom:4px;">
+          <span>市场占比</span><span style="font-weight:600;">~55%（上升中）</span>
+        </div>
+        <div class="pct-bar"><div class="pct-fill" style="width:55%;background:var(--success);"></div></div>
+        <ul style="margin-top:12px;font-size:13px;color:var(--text-secondary);padding-left:16px;">
+          <li>收入更稳定、可预测</li>
+          <li>覆盖80%不愿付费用户</li>
+          <li>首日ROI可达110%，回收更快</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 2: 业务链路 -->
+  <section class="section" id="chain">
+    <div class="section-header">
+      <span class="section-number">2</span>
+      <h2 class="section-title">完整业务链路</h2>
+      <p class="section-desc">从版权获取到结算回款的六大环节</p>
+    </div>
+
+    <h3>CPS 付费模式链路</h3>
+    <div class="flow">
+      <div class="flow-step">
+        <div class="flow-step-num">1</div>
+        <div class="flow-step-title">拿授权</div>
+        <div class="flow-step-desc">对接版权方<br>获取片单</div>
+      </div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">
+        <div class="flow-step-num">2</div>
+        <div class="flow-step-title">选剧</div>
+        <div class="flow-step-desc">筛选爆款<br>核心竞争力</div>
+      </div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">
+        <div class="flow-step-num">3</div>
+        <div class="flow-step-title">做素材</div>
+        <div class="flow-step-desc">AI二创剪辑<br>混剪去重</div>
+      </div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">
+        <div class="flow-step-num">4</div>
+        <div class="flow-step-title">投放</div>
+        <div class="flow-step-desc">巨量引擎<br>信息流广告</div>
+      </div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">
+        <div class="flow-step-num">5</div>
+        <div class="flow-step-title">用户付费</div>
+        <div class="flow-step-desc">小程序充值<br>9.9~39.9元</div>
+      </div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">
+        <div class="flow-step-num">6</div>
+        <div class="flow-step-title">结算回款</div>
+        <div class="flow-step-desc">T+1 ~ T+7<br>佣金到账</div>
+      </div>
+    </div>
+
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr><th>环节</th><th>具体操作</th><th>关键要点</th><th>风险</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>1. 拿授权</strong></td>
+            <td>加入分销平台或直接对接版权方，获取授权和片源素材</td>
+            <td>优质剧版权方先自投，跑不动才放给分销</td>
+            <td>好剧难拿，独家授权抢手</td>
+          </tr>
+          <tr>
+            <td><strong>2. 选剧</strong></td>
+            <td>从片单中分析数据、判断爆款潜力</td>
+            <td>核心竞争力——80%项目亏损，选错全赔</td>
+            <td>题材同质化严重，审美疲劳</td>
+          </tr>
+          <tr>
+            <td><strong>3. 做素材</strong></td>
+            <td>下载官方高清素材，AI二次剪辑创作</td>
+            <td>必须"去重"处理，否则被判搬运限流</td>
+            <td>素材同质化导致效果递减</td>
+          </tr>
+          <tr>
+            <td><strong>4. 投放</strong></td>
+            <td>巨量引擎/腾讯广告投信息流广告</td>
+            <td>前3天是关键窗口，80%预算首周花完</td>
+            <td>投流成本占80-90%</td>
+          </tr>
+          <tr>
+            <td><strong>5. 用户付费</strong></td>
+            <td>用户在小程序充值，前几集免费后续付费</td>
+            <td>典型充值包9.9-39.9元</td>
+            <td>付费渗透率不足20%</td>
+          </tr>
+          <tr>
+            <td><strong>6. 结算</strong></td>
+            <td>佣金按比例分成，T+1到T+7回款</td>
+            <td>投流预充值 vs 回款延迟，需垫资</td>
+            <td>部分平台结算不透明</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="callout">
+      <div class="callout-title">IAA 免费模式 vs CPS 付费模式</div>
+      <div class="callout-body">
+        IAA模式下用户全程免费看广告解锁，2025年市场规模约350亿已超过付费模式。趋势是 <strong>IAAP混合模式</strong>（免费+付费结合），如抖音"短剧卡"。分销商在IAA模式中的角色主要是内容推广引流，分成来自广告收入而非用户充值。
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 3: 版权方对比 -->
+  <section class="section" id="platforms">
+    <div class="section-header">
+      <span class="section-number">3</span>
+      <h2 class="section-title">版权方深度对比</h2>
+      <p class="section-desc">番茄、点众、黑岩——三大版权方的定位差异与合作模式</p>
+    </div>
+
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr><th>维度</th><th>番茄/红果（字节系）</th><th>点众科技</th><th>黑岩网</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>核心角色</strong></td>
+            <td>版权方 + 分发平台 + 投流</td>
+            <td>版权方 + 制作 + 投流</td>
+            <td>IP版权方（网文）</td>
+          </tr>
+          <tr>
+            <td><strong>市场地位</strong></td>
+            <td><span class="tag tag-blue">行业第一</span> 25Q1热力值15.4亿</td>
+            <td><span class="tag tag-green">行业第二</span> 热力值6.4亿</td>
+            <td><span class="tag tag-yellow">IP平台TOP3</span></td>
+          </tr>
+          <tr>
+            <td><strong>短剧数量</strong></td>
+            <td>6700+部进入改编，3600+部已上线</td>
+            <td>4亿注册用户，月活1.6亿</td>
+            <td>400+部授权改编</td>
+          </tr>
+          <tr>
+            <td><strong>合作模式</strong></td>
+            <td>版权中心统一采购 + 90%分成</td>
+            <td>自投 + 分销 + 快应用分销</td>
+            <td>保底 + 阶梯分成 IP授权</td>
+          </tr>
+          <tr>
+            <td><strong>分销分成</strong></td>
+            <td>版权方拿90%净收益，达人分走纯利润90-100%</td>
+            <td>分销商获流水10-15%利润</td>
+            <td>IP授权费 + 阶梯分成</td>
+          </tr>
+          <tr>
+            <td><strong>特色</strong></td>
+            <td>闭环生态：番茄IP→抖音引流→红果变现</td>
+            <td>"微短剧+电商"创新者，海外DramaBox</td>
+            <td>悬疑民俗强项，"短片IP商业化专家"</td>
+          </tr>
+          <tr>
+            <td><strong>海外布局</strong></td>
+            <td>字节系多App矩阵</td>
+            <td>DramaBox，海外第二（1.2亿美元收入）</td>
+            <td>较少</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="alert alert-info">
+      <span class="alert-icon">ℹ</span>
+      <div>
+        <strong>关于"95%分成"：</strong>你提到的最高95%佣金比例，主要出现在<strong>腾讯广告的漫剧扶持政策</strong>中（85%基础 + 10%智能托管配赠），以及部分版权方面向大型分销商的定制合作条件。番茄/抖音体系版权方分成一般在90%，分销商实际利润空间为流水的10-15%。
+      </div>
+    </div>
+
+    <h3>其他重要版权方/平台</h3>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr><th>平台</th><th>类型</th><th>特点</th></tr>
+        </thead>
+        <tbody>
+          <tr><td><strong>九州文化</strong></td><td>版权方 + 平台</td><td>付费短剧小程序，混合模式（IAP+IAA），广告渗透率20%</td></tr>
+          <tr><td><strong>麦芽</strong></td><td>版权方 + 投流</td><td>投流热度TOP5，活跃承制方</td></tr>
+          <tr><td><strong>容量/美光盛世</strong></td><td>版权方</td><td>投流热度TOP5之一</td></tr>
+          <tr><td><strong>飞卢</strong></td><td>IP平台</td><td>年度最佳小说改编平台获奖</td></tr>
+          <tr><td><strong>七猫</strong></td><td>IP平台</td><td>年度最佳小说改编平台获奖</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- Section 4: 成为分销商 -->
+  <section class="section" id="distributor">
+    <div class="section-header">
+      <span class="section-number">4</span>
+      <h2 class="section-title">如何成为分销商</h2>
+      <p class="section-desc">各版权方的入驻流程、资质要求与分成比例</p>
+    </div>
+
+    <div id="distributor-content">
+      <div class="alert alert-info">
+        <span class="alert-icon">ℹ</span>
+        <div>以下为已确认的核心信息。分销商入驻的详细流程正在深度调研中，稍后将补充完整的申请链接和资质清单。</div>
+      </div>
+
+      <h3>两条路径：直接对接 vs 聚合平台</h3>
+      <div class="two-col">
+        <div class="card">
+          <div class="card-title">路径一：直接对接版权方</div>
+          <ul class="check-list">
+            <li>分成比例更高（可谈到85-95%）</li>
+            <li>优先获取优质片源</li>
+            <li>对接成本高，需要商务关系</li>
+            <li>通常需要营业执照和一定规模</li>
+            <li>适合有经验、有投放能力的团队</li>
+          </ul>
+        </div>
+        <div class="card">
+          <div class="card-title">路径二：通过聚合分销平台</div>
+          <ul class="check-list">
+            <li>入门门槛低，个人即可注册</li>
+            <li>一站式对接多个版权方的片源</li>
+            <li>佣金略低（平台抽成一层）</li>
+            <li>提供数据追踪和结算系统</li>
+            <li>适合新手和小团队快速起步</li>
+          </ul>
+        </div>
+      </div>
+
+      <h3>番茄/红果系分销入口</h3>
+      <div class="card">
+        <div class="card-title">番茄达人中心 / 抖音短剧版权中心</div>
+        <div class="table-wrap" style="margin-top:12px;">
+          <table>
+            <tbody>
+              <tr><td style="width:120px;font-weight:600;">入驻方式</td><td>番茄达人中心注册 → 选择短剧任务 → 获取推广授权</td></tr>
+              <tr><td style="font-weight:600;">版权中心</td><td>2025年7月成立，整合番茄+抖音内容合作平台，统一对外</td></tr>
+              <tr><td style="font-weight:600;">推广方式</td><td>别名推广（二创剪辑→抖音发布→引导搜索别名→佣金）</td></tr>
+              <tr><td style="font-weight:600;">分成</td><td>版权方90%净收益；达人/分销商可获纯利润的90-100%</td></tr>
+              <tr><td style="font-weight:600;">其他入口</td><td>巨量星图、星子助推小程序等第三方服务商</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <h3>快手分销撮合平台</h3>
+      <div class="card">
+        <div class="card-title">快手短剧分销撮合招募</div>
+        <div class="table-wrap" style="margin-top:12px;">
+          <table>
+            <tbody>
+              <tr><td style="width:120px;font-weight:600;">模式</td><td>版权方在平台发布招募任务 → 分销商在选剧广场选剧 → 提交申请 → 版权方确认 → 开始分销</td></tr>
+              <tr><td style="font-weight:600;">管控</td><td>版权方可控制同一部剧分销商数量上限、首次上架时间、合作时长等</td></tr>
+              <tr><td style="font-weight:600;">特点</td><td>在线接单，流程规范透明</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <h3>主流聚合分销平台</h3>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr><th>平台</th><th>佣金模式</th><th>佣金比例</th><th>特点</th></tr>
+          </thead>
+          <tbody>
+            <tr><td><strong>右豹</strong></td><td>CPA（按拉新量）</td><td>高</td><td>行业头部，强烈推荐</td></tr>
+            <tr><td><strong>好省短剧</strong></td><td>CPS + CPA</td><td>中高</td><td>对接项目最丰富，偏团队玩法</td></tr>
+            <tr><td><strong>麻雀短剧</strong></td><td>CPS</td><td>高（无门槛）</td><td>发展最早，新人直接高佣金</td></tr>
+            <tr><td><strong>千顺顺</strong></td><td>CPS</td><td>中高</td><td>剧场数量全网最丰富</td></tr>
+            <tr><td><strong>福猪生活</strong></td><td>CPS</td><td>72%-84%</td><td>已知CPS佣金最高</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3>抖音短剧版权中心（核心入口）</h3>
+      <div class="card" style="border-left:3px solid var(--accent);">
+        <div class="card-title">抖音集团短剧版权中心 — 2025年7月成立</div>
+        <div class="table-wrap" style="margin-top:12px;">
+          <table>
+            <tbody>
+              <tr><td style="width:120px;font-weight:600;">官方入口</td><td><strong>https://www.shortdramas.com/</strong>（抖音短剧版权中心）</td></tr>
+              <tr><td style="font-weight:600;">平台定位</td><td>融合番茄内容合作平台 + 抖音内容合作平台，统一对外合作、统一向多端供给</td></tr>
+              <tr><td style="font-weight:600;">登录方式</td><td>可用番茄内容合作平台账号 / 抖音内容平台母账号手机号直接登录</td></tr>
+              <tr><td style="font-weight:600;">入驻类型</td><td>内容方/制作方入驻（签约合作）、推广分销入驻（达人推广）</td></tr>
+              <tr><td style="font-weight:600;">签约流程</td><td>消息中心→任务通知→签约消息 → 合同管理→申请合同→填写信息 → 签约</td></tr>
+              <tr><td style="font-weight:600;">个人入驻</td><td>2026年起支持个人入驻：选个人身份→实名绑抖音号→签对私协议→上传作品</td></tr>
+              <tr><td style="font-weight:600;">分成</td><td>版权方90%净收益；达人纯利润90-100%；漫剧仿真人剧60倍、3D动画50倍</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <h3>推广分销具体操作</h3>
+      <div class="card">
+        <div class="card-title">番茄达人中心 + 星子助推（推广分销入口）</div>
+        <div class="table-wrap" style="margin-top:12px;">
+          <table>
+            <tbody>
+              <tr><td style="width:140px;font-weight:600;">番茄达人中心</td><td>注册登录 → 选择任务中心 → 短剧选项 → 选择榜单 → 点击"别名推广" → 选择推荐别名 → 提交 → 获得授权</td></tr>
+              <tr><td style="font-weight:600;">星子助推小程序</td><td>微信搜索"星子助推" → 填写邀请码注册 → 获取红果短剧专属推广链接 → 下载官方素材 → AI剪辑 → 多平台发布</td></tr>
+              <tr><td style="font-weight:600;">巨量星图</td><td>官方推广渠道之一，适合有一定粉丝基础的达人</td></tr>
+              <tr><td style="font-weight:600;">资质要求</td><td>推广分销门槛低：需自媒体账号（抖音/快手/小红书/视频号）+ 账号主页截图确认归属</td></tr>
+              <tr><td style="font-weight:600;">佣金结算</td><td>按别名推广带来的充值/观看量分成，通过平台自动结算</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <h3>红果短剧创作服务平台</h3>
+      <div class="card">
+        <div class="card-title">面向全链条从业者的综合服务平台（2025年10月成立）</div>
+        <p style="font-size:14px;color:var(--text-secondary);margin:8px 0 12px;">面向编剧、演员、制作方等，提供IP选取、剧本选取、演员合作、生产管理、数据复盘、签约结算等全流程服务。</p>
+        <div class="stats-grid">
+          <div class="stat-card accent">
+            <div class="stat-label">日活用户</div>
+            <div class="stat-value">1亿+</div>
+            <div class="stat-note">截至2026年1月</div>
+          </div>
+          <div class="stat-card success">
+            <div class="stat-label">月活用户</div>
+            <div class="stat-value">~3亿</div>
+            <div class="stat-note">接近全国网民的1/4</div>
+          </div>
+          <div class="stat-card warning">
+            <div class="stat-label">孵化增长</div>
+            <div class="stat-value">4x</div>
+            <div class="stat-note">2025年孵化短剧数量较年初增长近4倍</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="alert alert-success">
+        <span class="alert-icon">*</span>
+        <div>
+          <strong>好消息：2026年入驻门槛大幅降低。</strong>抖音短剧版权中心、腾讯火龙漫剧等平台已支持<strong>个人创作者</strong>挂靠平台资质间接合规，实名注册就能发片拿分成。制作成本填30万以下可免广电备案。这对你们初期试水非常友好。
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 5: 广告投放开户 -->
+  <section class="section" id="ad-account">
+    <div class="section-header">
+      <span class="section-number">5</span>
+      <h2 class="section-title">广告投放开户</h2>
+      <p class="section-desc">巨量引擎、腾讯广告、快手磁力引擎的开户资质与投放要求</p>
+    </div>
+
+    <div id="ad-content">
+      <div class="alert alert-info">
+        <span class="alert-icon">ℹ</span>
+        <div>以下为已确认的框架信息。广告开户的具体资质清单、CPM/CPC数据正在深度调研中。</div>
+      </div>
+
+      <h3>投放平台概览</h3>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr><th>平台</th><th>生态</th><th>适用场景</th><th>地位</th></tr>
+          </thead>
+          <tbody>
+            <tr><td><strong>巨量引擎 / 巨量千川</strong></td><td>抖音、头条、西瓜</td><td>抖音信息流投放（主战场）</td><td><span class="tag tag-blue">必选</span></td></tr>
+            <tr><td><strong>腾讯广告</strong></td><td>微信、QQ、视频号</td><td>微信小程序短剧投放</td><td><span class="tag tag-green">重要</span></td></tr>
+            <tr><td><strong>磁力引擎</strong></td><td>快手</td><td>快手短剧投放</td><td><span class="tag tag-yellow">补充</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3>开户基本要求（已知框架）</h3>
+      <div class="card">
+        <div class="card-title">巨量引擎开户</div>
+        <div class="two-col" style="margin-top:12px;">
+          <div>
+            <p style="font-size:13px;font-weight:600;color:var(--text-secondary);margin-bottom:8px;">基本资质</p>
+            <ul class="check-list">
+              <li>营业执照（经营范围含相关业务）</li>
+              <li>行业资质（短剧类目需特定许可）</li>
+              <li>投放资质（明星肖像授权、商标证等）</li>
+              <li>投放素材须通过人工+机器双审核</li>
+            </ul>
+          </div>
+          <div>
+            <p style="font-size:13px;font-weight:600;color:var(--text-secondary);margin-bottom:8px;">投放工具</p>
+            <ul class="check-list">
+              <li>巨量千川（短剧投放主力工具）</li>
+              <li>星广联投（短剧行业专用投放）</li>
+              <li>DataEye（短剧投放数据监测）</li>
+              <li>蝉妈妈/飞瓜（达人数据分析）</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <h3>素材审核框架</h3>
+      <div class="card">
+        <div class="card-title">巨量引擎微短剧广告素材管理规范</div>
+        <ul class="check-list" style="margin-top:8px;">
+          <li>内容合法：不涉及黄赌毒等违法内容</li>
+          <li>素材质量：清晰度、完整度达标</li>
+          <li>真实性：不得虚假宣传、误导用户</li>
+          <li>审核方式：人工审核员随机抓取 + AI语义模型双审</li>
+          <li>违禁词系统 + 语义模型自动检测</li>
+        </ul>
+      </div>
+
+      <h3>巨量引擎开户详细流程</h3>
+      <div class="card" style="border-left:3px solid var(--accent);">
+        <div class="card-title">开户步骤</div>
+        <div style="margin-top:12px;">
+          <div class="flow">
+            <div class="flow-step">
+              <div class="flow-step-num">1</div>
+              <div class="flow-step-title">注册账号</div>
+              <div class="flow-step-desc">巨量引擎官网<br>填写基本信息</div>
+            </div>
+            <div class="flow-arrow">→</div>
+            <div class="flow-step">
+              <div class="flow-step-num">2</div>
+              <div class="flow-step-title">企业认证</div>
+              <div class="flow-step-desc">上传营业执照<br>法人身份证</div>
+            </div>
+            <div class="flow-arrow">→</div>
+            <div class="flow-step">
+              <div class="flow-step-num">3</div>
+              <div class="flow-step-title">资质认证</div>
+              <div class="flow-step-desc">补充行业资质<br>短剧三证</div>
+            </div>
+            <div class="flow-arrow">→</div>
+            <div class="flow-step">
+              <div class="flow-step-num">4</div>
+              <div class="flow-step-title">审核通过</div>
+              <div class="flow-step-desc">企业户3-5天<br>个人户1天</div>
+            </div>
+            <div class="flow-arrow">→</div>
+            <div class="flow-step">
+              <div class="flow-step-num">5</div>
+              <div class="flow-step-title">充值投放</div>
+              <div class="flow-step-desc">代理户起充3000<br>自助户无门槛</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <h3>短剧投放特殊资质要求（重点）</h3>
+      <div class="alert alert-danger">
+        <span class="alert-icon">!</span>
+        <div>
+          <strong>抖音巨量已收紧短剧广告投放主体资质要求：</strong>投放短剧广告的新增户主体<strong>必须具备以下三证</strong>，且不支持代投——投放小程序/App主体必须与广告主一致。
+        </div>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr><th>资质</th><th>说明</th><th>办理难度</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>广播电视节目制作经营许可证</strong></td>
+              <td>从事短剧行业（含制作、备案、投流）必备</td>
+              <td><span class="tag tag-yellow">中等</span> 需3名专业人员</td>
+            </tr>
+            <tr>
+              <td><strong>增值电信业务经营许可证（ICP）</strong></td>
+              <td>涉及收费项目的准入资质</td>
+              <td><span class="tag tag-yellow">中等</span> 注册资本≥100万</td>
+            </tr>
+            <tr>
+              <td><strong>信息网络传播视听许可证 <em>或</em> 网络文化经营许可证</strong></td>
+              <td>视听许可证需国有控股（门槛极高），多数公司用文网文替代</td>
+              <td><span class="tag tag-red">视听证极难</span> / <span class="tag tag-yellow">文网文中等</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="callout">
+        <div class="callout-title">对你们的影响</div>
+        <div class="callout-body">
+          三证齐全才能在巨量引擎自主开户投放短剧广告，这是资质门槛最高的环节。<strong>建议初期先通过代理商或有资质的合作方进行投放</strong>，同步办理自己的三证（代办约2.8万元，周期2-3个月）。
+        </div>
+      </div>
+
+      <h3>三大投放平台对比</h3>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr><th>维度</th><th>巨量引擎（抖音）</th><th>腾讯广告（微信）</th><th>磁力引擎（快手）</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>资质要求</strong></td>
+              <td>三证齐全，不支持代投</td>
+              <td>微信小程序仅需广电证即可</td>
+              <td>门槛相对较低</td>
+            </tr>
+            <tr>
+              <td><strong>开户费用</strong></td>
+              <td>代理户起充3000元</td>
+              <td>代理商开户，预充值</td>
+              <td>代理商开户</td>
+            </tr>
+            <tr>
+              <td><strong>主要工具</strong></td>
+              <td>巨量千川、星广联投</td>
+              <td>腾讯广告投放平台</td>
+              <td>磁力金牛</td>
+            </tr>
+            <tr>
+              <td><strong>CPM参考</strong></td>
+              <td>150-200元（热门时段超300元）</td>
+              <td>相对较低，竞争没抖音激烈</td>
+              <td>低于抖音，性价比较高</td>
+            </tr>
+            <tr>
+              <td><strong>出价方式</strong></td>
+              <td>OCPM为主，CPC用于测试</td>
+              <td>oCPM / CPC</td>
+              <td>OCPM / CPC</td>
+            </tr>
+            <tr>
+              <td><strong>日耗大盘</strong></td>
+              <td>行业日耗约5000-6500万元</td>
+              <td>微信生态增长迅速</td>
+              <td>国庆日耗峰值突破3000万</td>
+            </tr>
+            <tr>
+              <td><strong>适合场景</strong></td>
+              <td><span class="tag tag-blue">主战场，必选</span></td>
+              <td><span class="tag tag-green">小程序短剧首选</span></td>
+              <td><span class="tag tag-yellow">补充渠道</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3>投放成本关键数据</h3>
+      <div class="stats-grid">
+        <div class="stat-card danger">
+          <div class="stat-label">CPM（千次曝光）</div>
+          <div class="stat-value">150-200元</div>
+          <div class="stat-note">2023年仅50-80元，3年翻倍</div>
+        </div>
+        <div class="stat-card warning">
+          <div class="stat-label">付费转化率中位数</div>
+          <div class="stat-value">2.3%</div>
+          <div class="stat-note">每100个点击仅2.3人付费</div>
+        </div>
+        <div class="stat-card accent">
+          <div class="stat-label">ROI保底线</div>
+          <div class="stat-value">1.2</div>
+          <div class="stat-note">低于此值单部剧无法盈利</div>
+        </div>
+        <div class="stat-card success">
+          <div class="stat-label">自动化渗透率</div>
+          <div class="stat-value">60%</div>
+          <div class="stat-note">巨量UBMax深度转化自动化</div>
+        </div>
+      </div>
+
+      <h3>投放实操要点</h3>
+      <div class="card">
+        <div class="card-title">首次测试配置建议</div>
+        <div class="two-col" style="margin-top:12px;">
+          <ul class="check-list">
+            <li>单计划预算：300元起</li>
+            <li>每条计划配 5-8 条素材</li>
+            <li>首日测试储备 15-20 条素材/剧</li>
+            <li>首周保障日均转化 > 1000</li>
+          </ul>
+          <ul class="check-list">
+            <li>付费ROI系数设置 > 1.05</li>
+            <li>加预算不超过50%（消耗达50-60%时加）</li>
+            <li>OCPM出价为主，CPC用于测试</li>
+            <li>多渠道测试：抖音 + 微信 + 快手</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 6: AI素材制作 -->
+  <section class="section" id="ai-content">
+    <div class="section-header">
+      <span class="section-number">6</span>
+      <h2 class="section-title">AI素材制作</h2>
+      <p class="section-desc">用AI工具批量生产高转化率的短剧推广素材</p>
+    </div>
+
+    <div id="ai-content-detail">
+      <div class="alert alert-info">
+        <span class="alert-icon">ℹ</span>
+        <div>以下为已确认的框架信息。AI工具链、批量生产流程、团队配置的详细数据正在调研中。</div>
+      </div>
+
+      <h3>素材制作基本流程</h3>
+      <div class="flow">
+        <div class="flow-step">
+          <div class="flow-step-num">1</div>
+          <div class="flow-step-title">获取素材</div>
+          <div class="flow-step-desc">从版权方下载<br>高清原片</div>
+        </div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-step">
+          <div class="flow-step-num">2</div>
+          <div class="flow-step-title">AI分析</div>
+          <div class="flow-step-desc">提取高光片段<br>情绪卡点</div>
+        </div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-step">
+          <div class="flow-step-num">3</div>
+          <div class="flow-step-title">二创剪辑</div>
+          <div class="flow-step-desc">混剪去重<br>加字幕/配乐</div>
+        </div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-step">
+          <div class="flow-step-num">4</div>
+          <div class="flow-step-title">去重处理</div>
+          <div class="flow-step-desc">避免搬运判定<br>提升原创度</div>
+        </div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-step">
+          <div class="flow-step-num">5</div>
+          <div class="flow-step-title">批量投放</div>
+          <div class="flow-step-desc">多条素材<br>A/B测试</div>
+        </div>
+      </div>
+
+      <h3>已知的AI工具生态</h3>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr><th>工具/平台</th><th>功能</th><th>特点</th></tr>
+          </thead>
+          <tbody>
+            <tr><td><strong>火山引擎 AI短剧二创</strong></td><td>自动化二创生产引擎</td><td>字节官方，提供原片→AI配音→二创解说一键生成</td></tr>
+            <tr><td><strong>剪映 / CapCut</strong></td><td>视频剪辑 + AI功能</td><td>字节系，AI字幕、智能剪辑、模板丰富</td></tr>
+            <tr><td><strong>万兴科技</strong></td><td>AI视频创作工具</td><td>全流程AI工具供应商</td></tr>
+            <tr><td><strong>AI漫剧工具链</strong></td><td>从小说→漫画→动态视频</td><td>制作成本降低90%，单部10-30万</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="callout">
+        <div class="callout-title">AI降低创作门槛80%</div>
+        <div class="callout-body">
+          2025年起，AI自动剪辑工具可自动提取高光片段，生成30秒引流视频。火山引擎的"AI短剧二创解说"功能，只需提供原始短剧视频和创作指令，即可通过API一键生成带AI配音和字幕的二创内容。这对你们"用AI做素材"的模式非常利好。
+        </div>
+      </div>
+
+      <h3>素材关键指标</h3>
+      <div class="stats-grid">
+        <div class="stat-card accent">
+          <div class="stat-label">日产素材量</div>
+          <div class="stat-value">30-100条</div>
+          <div class="stat-note">头部团队首日投入上千种策略</div>
+        </div>
+        <div class="stat-card warning">
+          <div class="stat-label">素材淘汰率</div>
+          <div class="stat-value">90%</div>
+          <div class="stat-note">首日90%素材被淘汰，靠量取胜</div>
+        </div>
+        <div class="stat-card success">
+          <div class="stat-label">剪辑师KPI</div>
+          <div class="stat-value">30-40条/天</div>
+          <div class="stat-note">1个投手配5-8个剪辑师</div>
+        </div>
+      </div>
+
+      <h3>一站式AI短剧创作平台</h3>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr><th>平台</th><th>公司</th><th>核心能力</th><th>特点</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>火山引擎 AI短剧二创</strong></td>
+              <td>字节跳动</td>
+              <td>原片→AI配音→二创解说一键生成</td>
+              <td><span class="tag tag-blue">官方推荐</span> 通过OpenAPI调用，自动化程度最高</td>
+            </tr>
+            <tr>
+              <td><strong>SkyReels</strong></td>
+              <td>昆仑万维</td>
+              <td>剧本生成→角色→分镜→配音→合成</td>
+              <td>全球首款AI短剧平台，1080P 60帧，单次180秒</td>
+            </tr>
+            <tr>
+              <td><strong>Seko 2.0</strong></td>
+              <td>商汤科技</td>
+              <td>漫剧制作周期缩短80-90%</td>
+              <td>单分钟成本降低99.5%</td>
+            </tr>
+            <tr>
+              <td><strong>有戏AI</strong></td>
+              <td>风平智能</td>
+              <td>剧本解析→角色设计→分镜→视频</td>
+              <td>2026年1月内测，解决角色一致性痛点</td>
+            </tr>
+            <tr>
+              <td><strong>阅文漫剧助手</strong></td>
+              <td>阅文集团</td>
+              <td>AI驱动一站式漫剧创作</td>
+              <td>2025年10月推出，解决周期长/成本高痛点</td>
+            </tr>
+            <tr>
+              <td><strong>度加创作工具</strong></td>
+              <td>百度</td>
+              <td>智能文本+多模态素材+影像生成</td>
+              <td>内容创作流程压缩60%+</td>
+            </tr>
+            <tr>
+              <td><strong>剪映 / CapCut</strong></td>
+              <td>字节跳动</td>
+              <td>视频剪辑+AI字幕+智能剪辑</td>
+              <td>模板丰富，短剧从业者使用最广泛</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3>批量剪辑 & 去重专用工具</h3>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr><th>工具</th><th>核心功能</th><th>效率提升</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>易剪媒（新媒工具箱）</strong></td>
+              <td>短剧混剪、AI场景识别、30+种剪辑手法、批量拆分重组、可存模板</td>
+              <td>批量处理，支持滤镜/模糊/变速/扫光/抽帧补帧</td>
+            </tr>
+            <tr>
+              <td><strong>小咖批量剪辑助手</strong></td>
+              <td>AI素材解析、混剪引擎（单素材→千条差异化视频）、动态字幕、多声线配音</td>
+              <td>单条制作从3小时→8分钟，原创过审率提升92%</td>
+            </tr>
+            <tr>
+              <td><strong>短剧自动剪辑解说软件</strong></td>
+              <td>一键高燃混剪、自动旁白生成、逐帧去重、自动解说文案</td>
+              <td>针对短剧情节和人物对白自动生成解说</td>
+            </tr>
+            <tr>
+              <td><strong>GhostCut</strong></td>
+              <td>AI字幕生成/移除、翻译、配音</td>
+              <td>批量处理+API接入，适合出海场景</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3>素材去重核心方法</h3>
+      <div class="card">
+        <div class="card-title">12种常用去重操作（可批量化）</div>
+        <div class="two-col" style="margin-top:12px;">
+          <div>
+            <p style="font-size:13px;font-weight:600;color:var(--text-secondary);margin-bottom:8px;">画面处理</p>
+            <ul class="check-list">
+              <li>变速（0.9-1.2倍）</li>
+              <li>镜像翻转</li>
+              <li>轻微放大/裁切尺寸</li>
+              <li>全局调色/滤镜</li>
+              <li>高斯模糊+色调偏移</li>
+              <li>加画中画（透明度1-5%）</li>
+            </ul>
+          </div>
+          <div>
+            <p style="font-size:13px;font-weight:600;color:var(--text-secondary);margin-bottom:8px;">结构处理</p>
+            <ul class="check-list">
+              <li>调整片段顺序</li>
+              <li>调整音量/换BGM</li>
+              <li>加贴纸/水印</li>
+              <li>添加AI解说旁白</li>
+              <li>混剪不同剧集片段</li>
+              <li>AI重新配音/换声线</li>
+            </ul>
+          </div>
+        </div>
+        <div class="alert alert-warning" style="margin-top:16px;">
+          <span class="alert-icon">!</span>
+          <div><strong>关键指标：</strong>MD5哈希值变化率需 ≥ 35% 才能有效避开平台查重算法。去重方法需与时俱进，平台算法不断升级。</div>
+        </div>
+      </div>
+
+      <h3>AI赋能后的团队配置</h3>
+      <div class="two-col">
+        <div class="card" style="border-left:3px solid var(--success);">
+          <div class="card-title" style="color:var(--success);">精简型（AI驱动，推荐起步）</div>
+          <div class="table-wrap" style="margin-top:8px;border:none;box-shadow:none;">
+            <table>
+              <tbody>
+                <tr><td><strong>投手/运营</strong> 1人</td><td>选剧+投放+数据分析</td></tr>
+                <tr><td><strong>AI剪辑</strong> 2-3人</td><td>使用批量工具日产30-100条</td></tr>
+                <tr><td><strong>合计</strong> 3-4人</td><td>AI工具使人力成本降低60%+</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <p style="font-size:13px;color:var(--text-muted);margin-top:8px;">借助AI工具可实现"一个人即一支团队"，月产出能力提升3-5倍</p>
+        </div>
+        <div class="card" style="border-left:3px solid var(--accent);">
+          <div class="card-title" style="color:var(--accent);">标准型（规模化阶段）</div>
+          <div class="table-wrap" style="margin-top:8px;border:none;box-shadow:none;">
+            <table>
+              <tbody>
+                <tr><td><strong>投手</strong> 1-2人</td><td>投放优化+数据驱动决策</td></tr>
+                <tr><td><strong>剪辑师</strong> 5-8人</td><td>每人日产30-40条素材</td></tr>
+                <tr><td><strong>运营/商务</strong> 1人</td><td>对接版权方+平台运营</td></tr>
+                <tr><td><strong>编剧/策划</strong> 1人</td><td>AI辅助剧本分析+选剧</td></tr>
+                <tr><td><strong>合计</strong> 8-12人</td><td>日产素材200-300条</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <div class="callout">
+        <div class="callout-title">你们的AI优势</div>
+        <div class="callout-body">
+          <p>用AI批量做素材是你们的核心策略方向。推荐组合：<strong>火山引擎AI二创</strong>（字节官方，对抖音投放最友好）+ <strong>小咖/易剪媒</strong>（批量去重混剪）+ <strong>剪映</strong>（精细化调整）。这套工具链可以将单条素材制作时间从3小时压缩到8分钟，原创过审率达92%。</p>
+          <p style="margin-top:8px;">AI漫剧是更大的机会——制作成本仅10-30万/部（真人剧的1/10），2025年市场规模已突破200亿元，预计2030年达850亿元。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 7: ROI与资金 -->
+  <section class="section" id="roi">
+    <div class="section-header">
+      <span class="section-number">7</span>
+      <h2 class="section-title">ROI模型与资金需求</h2>
+      <p class="section-desc">盈利模型、成本结构与资金规划</p>
+    </div>
+
+    <h3>行业ROI数据</h3>
+    <div class="stats-grid">
+      <div class="stat-card accent">
+        <div class="stat-label">爆款剧ROI</div>
+        <div class="stat-value">1.2~1.3</div>
+        <div class="stat-note">3日ROI平均1.1~1.2</div>
+      </div>
+      <div class="stat-card warning">
+        <div class="stat-label">分销商盈利门槛</div>
+        <div class="stat-value">ROI > 1.15</div>
+        <div class="stat-note">需覆盖投流成本+版权方分成</div>
+      </div>
+      <div class="stat-card danger">
+        <div class="stat-label">盈利项目占比</div>
+        <div class="stat-value">~20%</div>
+        <div class="stat-note">超八成项目亏损</div>
+      </div>
+      <div class="stat-card success">
+        <div class="stat-label">IAA首日ROI</div>
+        <div class="stat-value">~110%</div>
+        <div class="stat-note">免费模式回收更快更稳定</div>
+      </div>
+    </div>
+
+    <div class="alert alert-danger">
+      <span class="alert-icon">!</span>
+      <div><strong>3天定生死：</strong>首日回收率80-90%，3天不赚钱就是亏。新剧平均投放周期仅7天，80%预算首周花完。止损必须果断。</div>
+    </div>
+
+    <h3>影响ROI的关键因素</h3>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr><th>因素</th><th>影响程度</th><th>说明</th></tr>
+        </thead>
+        <tbody>
+          <tr><td><strong>选剧能力</strong></td><td><span class="tag tag-red">极高</span></td><td>"10部赘婿9部扑"，题材同质化严重</td></tr>
+          <tr><td><strong>素材质量</strong></td><td><span class="tag tag-red">极高</span></td><td>切片质量直接决定点击率和转化率</td></tr>
+          <tr><td><strong>投手能力</strong></td><td><span class="tag tag-red">极高</span></td><td>出价、定向、时段，前3天实时调控</td></tr>
+          <tr><td><strong>投放时机</strong></td><td><span class="tag tag-yellow">高</span></td><td>新剧首周消耗80%预算，错过黄金期ROI骤降</td></tr>
+          <tr><td><strong>素材数量</strong></td><td><span class="tag tag-yellow">高</span></td><td>头部首日上千种策略，90%第一天淘汰</td></tr>
+          <tr><td><strong>平台算法</strong></td><td><span class="tag tag-yellow">高</span></td><td>流量分配和竞价环境不可控</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3>资金需求规划</h3>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr><th>模式</th><th>起步资金</th><th>日均投放</th><th>适合对象</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>达人切片（零投流）</td><td>0 ~ 几千元</td><td>0</td><td>个人试水</td></tr>
+          <tr><td>小规模投流</td><td><strong>3~5万</strong></td><td>5,000~10,000</td><td>最低门槛付费投流</td></tr>
+          <tr><td>正规团队运营</td><td><strong>10~30万</strong></td><td>1~3万</td><td>小团队起步</td></tr>
+          <tr><td>规模化投放</td><td><strong>50~100万+</strong></td><td>5~20万</td><td>专业分销公司</td></tr>
+          <tr><td>头部级别</td><td>数百万+</td><td>50~100万+</td><td>大型MCN/投流公司</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3>成本结构</h3>
+    <div class="two-col">
+      <div class="card">
+        <div class="card-title">成本占比</div>
+        <div style="margin-top:12px;">
+          <div style="display:flex;justify-content:space-between;font-size:13px;margin-bottom:4px;">
+            <span>投流/买量成本</span><span style="font-weight:700;color:var(--danger);">80-90%</span>
+          </div>
+          <div class="pct-bar"><div class="pct-fill" style="width:85%;background:var(--danger);"></div></div>
+
+          <div style="display:flex;justify-content:space-between;font-size:13px;margin-bottom:4px;margin-top:12px;">
+            <span>版权方分成</span><span style="font-weight:700;color:var(--warning);">10-15%</span>
+          </div>
+          <div class="pct-bar"><div class="pct-fill" style="width:12%;background:var(--warning);"></div></div>
+
+          <div style="display:flex;justify-content:space-between;font-size:13px;margin-bottom:4px;margin-top:12px;">
+            <span>素材制作</span><span style="font-weight:700;color:var(--accent);">3-5%</span>
+          </div>
+          <div class="pct-bar"><div class="pct-fill" style="width:4%;background:var(--accent);"></div></div>
+
+          <div style="display:flex;justify-content:space-between;font-size:13px;margin-bottom:4px;margin-top:12px;">
+            <span>人员成本</span><span style="font-weight:700;color:var(--info);">3-5%</span>
+          </div>
+          <div class="pct-bar"><div class="pct-fill" style="width:4%;background:var(--info);"></div></div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-title">最小团队月运营成本</div>
+        <div class="table-wrap" style="margin-top:12px;border:none;box-shadow:none;">
+          <table>
+            <tbody>
+              <tr><td>投手 1人</td><td style="text-align:right;">8,000~15,000</td></tr>
+              <tr><td>剪辑师 3~5人</td><td style="text-align:right;">18,000~50,000</td></tr>
+              <tr><td>运营/商务 1人</td><td style="text-align:right;">6,000~8,000</td></tr>
+              <tr><td>办公 + 工具</td><td style="text-align:right;">5,000~10,000</td></tr>
+              <tr style="font-weight:700;"><td>人员固定成本合计</td><td style="text-align:right;">4~8万/月</td></tr>
+              <tr><td>投流预算（另计）</td><td style="text-align:right;">15~60万/月</td></tr>
+              <tr style="font-weight:700;background:#F8FAFC;"><td>月总成本</td><td style="text-align:right;color:var(--danger);">20~70万/月</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <h3>现金流周转</h3>
+    <div class="alert alert-warning">
+      <span class="alert-icon">!</span>
+      <div>
+        <strong>核心压力：</strong>投流费用是<strong>预充值即时消耗</strong>，收入回款有<strong>3~7天延迟</strong>。至少准备7~10天投放资金作为周转垫资。
+      </div>
+    </div>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr><th>平台/模式</th><th>结算周期</th><th>说明</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>抖音分账</td><td>0~3天</td><td>平台自动分账</td></tr>
+          <tr><td>分销平台佣金</td><td>T+3 ~ T+7</td><td>优质平台T+3，普遍T+7</td></tr>
+          <tr><td>CPS提现</td><td>满50元日结</td><td>部分平台微信直接到账</td></tr>
+          <tr><td>投流广告费</td><td>预充值即扣</td><td>需提前充值到广告账户</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- Section 8: 公司资质 -->
+  <section class="section" id="qualification">
+    <div class="section-header">
+      <span class="section-number">8</span>
+      <h2 class="section-title">公司资质准备</h2>
+      <p class="section-desc">根据不同模式，所需资质差异很大</p>
+    </div>
+
+    <h3>两种模式的资质需求</h3>
+    <div class="two-col">
+      <div class="card" style="border-left:3px solid var(--success);">
+        <div class="card-title" style="color:var(--success);">模式A：纯分销推广（推荐起步）</div>
+        <p style="font-size:14px;color:var(--text-secondary);margin-bottom:12px;">不自建平台，通过现有分销平台推广</p>
+        <ul class="check-list">
+          <li>营业执照即可（个体户或公司）</li>
+          <li>广告平台开户资质</li>
+          <li><strong>不需要"短剧三证"</strong></li>
+          <li>门槛低，快速起步</li>
+        </ul>
+      </div>
+      <div class="card" style="border-left:3px solid var(--warning);">
+        <div class="card-title" style="color:var(--warning);">模式B：自建短剧平台/小程序</div>
+        <p style="font-size:14px;color:var(--text-secondary);margin-bottom:12px;">自建播放平台，对接多个版权方片源</p>
+        <ul class="check-list">
+          <li>注册资本 ≥ 100万的有限公司</li>
+          <li>广播电视节目制作经营许可证</li>
+          <li>ICP经营许可证</li>
+          <li>网络文化经营许可证（文网文）</li>
+          <li>三证代办约2.8万元</li>
+        </ul>
+      </div>
+    </div>
+
+    <h3>"短剧三证"详情（模式B需要）</h3>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr><th>证照</th><th>用途</th><th>核心要求</th><th>周期</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>广播电视节目制作经营许可证</strong></td>
+            <td>合法制作/发行短剧</td>
+            <td>≥3名影视制作专业人员；固定办公场所</td>
+            <td>20-40工作日</td>
+          </tr>
+          <tr>
+            <td><strong>ICP经营许可证</strong></td>
+            <td>网络信息服务</td>
+            <td>注册资本≥100万；≥3名员工+1个月社保</td>
+            <td>20-40工作日</td>
+          </tr>
+          <tr>
+            <td><strong>网络文化经营许可证</strong></td>
+            <td>网络传播文化内容</td>
+            <td>经营范围含"网络文化经营"；负责人无犯罪记录</td>
+            <td>20-40工作日</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3>营业执照经营范围建议</h3>
+    <div class="card">
+      <ul class="check-list">
+        <li>广播电视节目制作</li>
+        <li>增值电信业务 / 经营电信业务</li>
+        <li>网络文化经营</li>
+        <li>互联网信息服务</li>
+        <li>影视策划、制作、发行</li>
+        <li>广告设计、制作、发布</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- Section 9: 政策监管 -->
+  <section class="section" id="policy">
+    <div class="section-header">
+      <span class="section-number">9</span>
+      <h2 class="section-title">政策与监管环境</h2>
+      <p class="section-desc">2025-2026年短剧行业监管趋严，合规是生命线</p>
+    </div>
+
+    <h3>备案审核制度（2026年1月1日起新标准）</h3>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr><th>类别</th><th>投资额度</th><th>审核主体</th></tr>
+        </thead>
+        <tbody>
+          <tr><td><strong>重点微短剧</strong></td><td>≥300万元，或涉及政治/军事等特殊题材</td><td>国家广电总局</td></tr>
+          <tr><td><strong>普通微短剧</strong></td><td>100万-300万元，一般题材</td><td>省级广电主管部门</td></tr>
+          <tr><td><strong>其他微短剧</strong></td><td>&lt;100万元，一般题材</td><td>播出平台负责审核，报省级备案</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="alert alert-danger">
+      <span class="alert-icon">!</span>
+      <div><strong>硬性要求：</strong>所有微短剧均须"持证上岗"，必须持有《网络剧片发行许可证》或完成上线报备登记。未标注备案号的微短剧不得上线传播。<strong>2026年4月1日起，所有AI生成短剧必须依法备案，未履行备案的存量作品将被强制下线。</strong></div>
+    </div>
+
+    <div class="alert alert-warning">
+      <span class="alert-icon">!</span>
+      <div><strong>2026年最新动向（国务院级别）：</strong>1月底国务院办公厅首次在正式文件中提及发展"微短剧"，《加快培育服务消费新增长点工作方案》提出"促进超高清视频、微短剧等网络视听服务市场有序竞争、创新发展"。行业获得国家层面背书。</div>
+    </div>
+
+    <h3>内容合规红线</h3>
+    <div class="two-col">
+      <div class="card" style="border-left:3px solid var(--danger);">
+        <div class="card-title" style="color:var(--danger);">严禁内容</div>
+        <ul class="check-list x-list">
+          <li>无底线恶搞、低俗擦边</li>
+          <li>以暴制暴、极端复仇</li>
+          <li>畸形婚恋观（霸道总裁强占等）</li>
+          <li>淫秽色情、暴力血腥</li>
+          <li>AI魔改四大名著/历史题材</li>
+          <li>使用丑闻劣迹人员形象/声音</li>
+          <li>儿童类短剧"成人化""工具化"</li>
+        </ul>
+      </div>
+      <div class="card" style="border-left:3px solid var(--warning);">
+        <div class="card-title" style="color:var(--warning);">处罚力度</div>
+        <ul class="check-list">
+          <li>红果累计拦截违规短剧 462部</li>
+          <li>AI魔改治理清理违规视频近 23,000条</li>
+          <li>处置违规账号 100余个</li>
+          <li>建立跨平台联合惩戒机制</li>
+          <li>处罚梯度：限流→降权→封禁→行业黑名单</li>
+          <li>《微短剧管理办法》正在制定中</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 10: 风险分析 -->
+  <section class="section" id="risk">
+    <div class="section-header">
+      <span class="section-number">10</span>
+      <h2 class="section-title">风险分析</h2>
+      <p class="section-desc">看清风险才能做好风控</p>
+    </div>
+
+    <h3>五大核心风险</h3>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr><th>风险</th><th>等级</th><th>说明</th><th>应对策略</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>投流亏损</strong></td>
+            <td><span class="tag tag-red">极高</span></td>
+            <td>投流占80-90%成本，素材跑不动钱就打水漂。"两天赚16万，一晚亏10万"</td>
+            <td>严格止损线：3日ROI&lt;1.15立即停投</td>
+          </tr>
+          <tr>
+            <td><strong>选剧失败</strong></td>
+            <td><span class="tag tag-red">极高</span></td>
+            <td>80%项目亏损，选错剧整个投放周期资金浪费</td>
+            <td>建立选剧评估体系，小预算测试后再放量</td>
+          </tr>
+          <tr>
+            <td><strong>现金流断裂</strong></td>
+            <td><span class="tag tag-yellow">高</span></td>
+            <td>投流预充值 vs 回款T+3~7延迟</td>
+            <td>至少备7-10天投放资金作为垫资</td>
+          </tr>
+          <tr>
+            <td><strong>政策收紧</strong></td>
+            <td><span class="tag tag-yellow">高</span></td>
+            <td>内容审核越来越严，素材可能被下架</td>
+            <td>严格合规，建立内容审核机制</td>
+          </tr>
+          <tr>
+            <td><strong>竞争加剧</strong></td>
+            <td><span class="tag tag-yellow">高</span></td>
+            <td>头部厂商日耗百万，中小团队难抢流量</td>
+            <td>差异化选剧，避开红海题材</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3>新手常见踩坑</h3>
+    <div class="card">
+      <div class="two-col">
+        <ul class="check-list x-list">
+          <li>被"月入过万"培训割韭菜（CCTV专门报道过）</li>
+          <li>低估投流难度，以为剪几条视频就能赚钱</li>
+          <li>止损不果断，ROI不达标还继续追投</li>
+        </ul>
+        <ul class="check-list x-list">
+          <li>资金不足，测试期就耗尽</li>
+          <li>不做数据分析，凭感觉投放</li>
+          <li>使用未授权素材导致账号被封</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 11: 行动方案 -->
+  <section class="section" id="action">
+    <div class="section-header">
+      <span class="section-number">11</span>
+      <h2 class="section-title">CEO建议 · 行动方案</h2>
+      <p class="section-desc">分阶段推进，控制风险，验证模型后再放量</p>
+    </div>
+
+    <h3>推荐路径：三阶段递进</h3>
+
+    <div class="card" style="border-left:3px solid var(--accent);margin-bottom:16px;">
+      <div style="display:flex;gap:12px;align-items:center;margin-bottom:12px;">
+        <span class="tag tag-blue">第一阶段</span>
+        <strong style="font-size:16px;">试水验证（第1-2个月）</strong>
+      </div>
+      <div class="two-col">
+        <div>
+          <p style="font-size:13px;font-weight:600;color:var(--text-secondary);margin-bottom:8px;">目标</p>
+          <ul class="check-list" style="font-size:14px;">
+            <li>跑通完整链路</li>
+            <li>验证AI素材产能和质量</li>
+            <li>测试3-5部剧的ROI</li>
+          </ul>
+        </div>
+        <div>
+          <p style="font-size:13px;font-weight:600;color:var(--text-secondary);margin-bottom:8px;">投入</p>
+          <ul class="check-list" style="font-size:14px;">
+            <li>资金：5-10万（含投流测试）</li>
+            <li>团队：1投手 + 2-3剪辑（可兼职）</li>
+            <li>通过聚合平台入手，降低门槛</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="card" style="border-left:3px solid var(--success);margin-bottom:16px;">
+      <div style="display:flex;gap:12px;align-items:center;margin-bottom:12px;">
+        <span class="tag tag-green">第二阶段</span>
+        <strong style="font-size:16px;">优化放量（第3-4个月）</strong>
+      </div>
+      <div class="two-col">
+        <div>
+          <p style="font-size:13px;font-weight:600;color:var(--text-secondary);margin-bottom:8px;">目标</p>
+          <ul class="check-list" style="font-size:14px;">
+            <li>ROI稳定在1.15以上</li>
+            <li>直接对接版权方拿更高分成</li>
+            <li>日投放预算提升到1-3万</li>
+          </ul>
+        </div>
+        <div>
+          <p style="font-size:13px;font-weight:600;color:var(--text-secondary);margin-bottom:8px;">投入</p>
+          <ul class="check-list" style="font-size:14px;">
+            <li>资金：20-30万/月</li>
+            <li>团队：1投手 + 5剪辑 + 1运营</li>
+            <li>注册公司，开设巨量引擎账户</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="card" style="border-left:3px solid var(--warning);margin-bottom:16px;">
+      <div style="display:flex;gap:12px;align-items:center;margin-bottom:12px;">
+        <span class="tag tag-yellow">第三阶段</span>
+        <strong style="font-size:16px;">规模化经营（第5个月+）</strong>
+      </div>
+      <div class="two-col">
+        <div>
+          <p style="font-size:13px;font-weight:600;color:var(--text-secondary);margin-bottom:8px;">目标</p>
+          <ul class="check-list" style="font-size:14px;">
+            <li>多部剧同时投放</li>
+            <li>探索IAA免费模式</li>
+            <li>考虑自建分销平台或AI漫剧</li>
+          </ul>
+        </div>
+        <div>
+          <p style="font-size:13px;font-weight:600;color:var(--text-secondary);margin-bottom:8px;">投入</p>
+          <ul class="check-list" style="font-size:14px;">
+            <li>资金：50万+/月</li>
+            <li>团队：扩充至10人+</li>
+            <li>办理"短剧三证"（如自建平台）</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <h3>关键成功因素总结</h3>
+    <div class="stats-grid">
+      <div class="stat-card accent">
+        <div class="stat-label">核心能力 #1</div>
+        <div class="stat-value" style="font-size:20px;">选剧能力</div>
+        <div class="stat-note">快速判断爆款潜力，是核心壁垒</div>
+      </div>
+      <div class="stat-card success">
+        <div class="stat-label">核心能力 #2</div>
+        <div class="stat-value" style="font-size:20px;">素材产能</div>
+        <div class="stat-note">日产30-100条，AI批量化生产</div>
+      </div>
+      <div class="stat-card warning">
+        <div class="stat-label">核心能力 #3</div>
+        <div class="stat-value" style="font-size:20px;">数据驱动</div>
+        <div class="stat-note">严格按ROI数据决策，果断止损</div>
+      </div>
+      <div class="stat-card danger">
+        <div class="stat-label">核心纪律</div>
+        <div class="stat-value" style="font-size:20px;">3日止损</div>
+        <div class="stat-note">ROI不达标立即停投，绝不恋战</div>
+      </div>
+    </div>
+
+    <h3>2026年最新行业变局（交叉验证）</h3>
+    <div class="alert alert-danger">
+      <span class="alert-icon">!</span>
+      <div>
+        <strong>红果短剧重大调整（2026年3月最新）：</strong>红果已<strong>取消真人短剧保底机制</strong>，大量中小制作公司项目暂停。同时AI短剧享受超级红利——仿真人剧分账系数高达60倍，享受分级保底+永久分账双重红利。真人剧自负盈亏、审核趋严。
+      </div>
+    </div>
+
+    <div class="stats-grid">
+      <div class="stat-card danger">
+        <div class="stat-label">投流ROI恶化</div>
+        <div class="stat-value">1:2.5</div>
+        <div class="stat-note">2025年为1:4，竞争加剧导致下滑</div>
+      </div>
+      <div class="stat-card warning">
+        <div class="stat-label">头部集中度</div>
+        <div class="stat-value">62%</div>
+        <div class="stat-note">2026年Q1头部公司市占率（之前45%）</div>
+      </div>
+      <div class="stat-card success">
+        <div class="stat-label">AI短剧分账系数</div>
+        <div class="stat-value">60x</div>
+        <div class="stat-note">仿真人剧，3D动画50x，2D动画40x</div>
+      </div>
+      <div class="stat-card accent">
+        <div class="stat-label">红果日活</div>
+        <div class="stat-value">1亿+</div>
+        <div class="stat-note">2026年1月突破，字节第五款过亿App</div>
+      </div>
+    </div>
+
+    <div class="callout">
+      <div class="callout-title">CEO顾问核心判断（结合2026年最新形势）</div>
+      <div class="callout-body">
+        <p>1. 这是一个<strong>"高投入、高风险、技术驱动"</strong>的生意。80%项目亏损是行业现实，但20%的盈利项目利润可观。</p>
+        <p style="margin-top:8px;">2. <strong>AI短剧是2026年唯一确定性主线。</strong>真人剧保底取消、审核趋严，而AI短剧享受分级保底+永久分账+60倍分账系数的超级红利。你们"用AI做素材"的方向完全正确，甚至可以考虑更进一步——直接做AI短剧内容。</p>
+        <p style="margin-top:8px;">3. <strong>投流ROI持续恶化（1:4→1:2.5），头部集中度从45%升至62%。</strong>中小团队纯靠投流越来越难，必须在素材质量和选剧能力上建立壁垒。</p>
+        <p style="margin-top:8px;">4. 建议<strong>从小到大验证</strong>：先用5-10万跑通模型，证明ROI>1的能力后再放量。千万不要一上来就大投入。</p>
+        <p style="margin-top:8px;">5. <strong>关注IAA免费模式+AI漫剧双重机会</strong>——IAA是增量市场且收入更稳定；AI漫剧制作成本仅10-30万/部（真人剧的1/10），市场规模2025年已破200亿，预计2030年达850亿。</p>
+        <p style="margin-top:8px;">6. <strong>投手是关键人才</strong>——好投手月入十几万，因为他们能决定几十万甚至上百万的ROI走向。建议初期找1个有经验的投手带队。</p>
+        <p style="margin-top:8px;">7. <strong>资质是硬门槛。</strong>巨量引擎已收紧短剧投放资质（三证齐全+不支持代投）。建议第一步先通过代理商投放，同步办理自有三证（约2.8万，2-3个月）。</p>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<div class="footer">
+  <p>短剧分销生意全链路调研报告 · 2026年3月 · v2.0</p>
+  <p style="margin-top:4px;">数据来源：<a href="https://36kr.com/p/3596043151573249" target="_blank">36氪</a> · <a href="https://www.vzkoo.com/read/20250604e53ab0c8f5dbdf42b62a96cd.html" target="_blank">未来智库</a> · <a href="https://www.stcn.com/article/detail/1145718.html" target="_blank">证券时报</a> · <a href="https://news.pedaily.cn/202506/550686.shtml" target="_blank">投资界</a> · <a href="https://www.huxiu.com/article/4830108.html" target="_blank">虎嗅</a> · <a href="https://www.chinanews.com/cj/2025/12-04/10526627.shtml" target="_blank">中新网</a> · <a href="https://finance.sina.com.cn/wm/2026-03-23/doc-inhrzcpn2173265.shtml" target="_blank">新浪财经</a> · <a href="https://www.21jingji.com/article/20260310/herald/67ed9b3cf6b9812a943ea1324fa463ed.html" target="_blank">21经济</a> · <a href="https://zhuanlan.zhihu.com/p/1955590524573587445" target="_blank">知乎</a> · <a href="https://www.cls.cn/detail/1522686" target="_blank">财联社</a> · 各平台官方公告</p>
+  <p style="margin-top:4px;font-size:12px;">已通过多源交叉验证，包含2026年3月最新政策与行业动态</p>
+</div>
+
+</body>
+</html>

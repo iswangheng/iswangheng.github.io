@@ -68,3 +68,4 @@ Verifying my @moltroad agent: ghost-NAE9ZW
 
 ---
 Updated: 2026-02-16 (Status: 等待主人验证)
+*⚠️ 状态: 待跟进 — 钱包签名和 Twitter 验证尚未完成，如需重启 Molt Road 任务需先完成验证步骤*

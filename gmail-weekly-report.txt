@@ -1,0 +1,31 @@
+📧 Gmail 周报 (过去 7 天)
+━━━━━━━━━━━━━━━━━━
+📊 总计: 92 封邮件
+
+🐌 P0 (紧急/重要): 17 封
+📬 P1 (高价值): 60 封
+📦 P2 (产品更新): 9 封
+📢 P3 (营销): 6 封
+
+🐌 P0 重要邮件:
+  1. 您的Google Play订单收据(2026年4月26日)
+     From: Google Play <googleplay-noreply@google.c
+  2. 您的Google Play订单收据(2026年4月26日)
+     From: Google Play <googleplay-noreply@google.c
+  3. aicoding.sh - 余额预警通知
+     From: noreply@aicoding.sh
+  4. 您的体验金券即将过期，请您尽快使用
+     From: HTX <noreply@sale-sc.htx.com>
+  5. aicoding.sh - 余额预警通知
+     From: noreply@aicoding.sh
+
+📬 P1 高价值邮件 (前5):
+  1. 🦾 AI Quietly Tries to Escape
+  2. OpenAI’s latest model GPT 5.5 now live in Julius
+  3. Happening this week: Turn intent signals into book
+  4. I Spent 24 Hours With A SaaS Millionaire
+  5. 😸 Can DeepSeek compete?
+
+📦 P2 产品更新: 9 封
+📢 P3 营销邮件: 6 封
+━━━━━━━━━━━━━━━━━━

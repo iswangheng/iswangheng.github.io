@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>集思电商 AI · 爆款素材学习系统</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@300;400;600;700;900&family=Noto+Sans+SC:wght@300;400;500;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{--primary:#2D5BFF;--primary-light:#5B7FFF;--ink:#FAFBFC;--ink2:#FFF;--smoke:#0F172A;--smoke-dim:#64748B;--smoke-lt:#94A3B8;--grid:rgba(45,91,255,0.05);--c1:#06B6D4;--c2:#8B5CF6;--c3:#EC4899;--c4:#F59E0B;--accent:#06B6D4;--accent2:#8B5CF6}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--ink);color:var(--smoke);font-family:'Noto Sans SC',sans-serif;font-weight:300;line-height:1.6;overflow-x:hidden}
+body::before{content:'';position:fixed;inset:0;background-image:linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px);background-size:60px 60px;pointer-events:none;z-index:0}
+
+/* ── Nav ── */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:0 60px;height:70px;display:flex;align-items:center;justify-content:space-between;background:rgba(250,251,252,0.94);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);border-bottom:1px solid rgba(45,91,255,0.12);transition:box-shadow .3s}
+nav.scrolled{box-shadow:0 4px 30px rgba(0,0,0,0.06)}
+.nav-brand{font-family:'Noto Serif SC',serif;font-weight:700;font-size:18px;color:var(--primary);letter-spacing:.05em;text-decoration:none;cursor:pointer}
+.nav-links{display:flex;gap:8px}
+.nav-links a{font-size:15px;font-weight:500;color:var(--smoke-dim);text-decoration:none;padding:8px 18px;border-radius:10px;transition:all .25s;cursor:pointer}
+.nav-links a:hover,.nav-links a.active{color:var(--primary);background:rgba(45,91,255,0.08)}
+
+/* ── 二级导航 ── */
+.sub-nav{position:fixed;top:70px;left:0;right:0;z-index:99;padding:0 60px;height:44px;display:flex;align-items:center;gap:4px;background:rgba(250,251,252,0.92);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-bottom:1px solid rgba(45,91,255,0.08);transform:translateY(-100%);opacity:0;transition:all .3s}
+.sub-nav.show{transform:translateY(0);opacity:1}
+.sub-nav a{font-size:13px;font-weight:500;color:var(--smoke-lt);text-decoration:none;padding:5px 14px;border-radius:8px;transition:all .25s;white-space:nowrap}
+.sub-nav a:hover,.sub-nav a.active{color:var(--primary);background:rgba(45,91,255,0.08)}
+
+/* ── Sections ── */
+.screen{position:relative;z-index:1;min-height:100vh;padding:100px 60px 60px;display:flex;flex-direction:column;justify-content:center;max-width:1500px;margin:0 auto;scroll-margin-top:120px}
+.screen-divider{height:1px;max-width:1320px;margin:0 auto;background:linear-gradient(90deg,transparent,rgba(45,91,255,0.12),transparent);position:relative;z-index:1}
+
+/* ── Section Headers ── */
+.s-eyebrow{font-family:'Space Mono',monospace;font-size:12px;letter-spacing:.35em;text-transform:uppercase;margin-bottom:16px;opacity:0;transform:translateY(16px)}
+.s-title{font-family:'Noto Serif SC',serif;font-size:clamp(36px,5vw,52px);font-weight:900;line-height:1.25;letter-spacing:-.02em;margin-bottom:16px;opacity:0;transform:translateY(16px)}
+.s-desc{font-size:18px;color:var(--smoke-dim);line-height:1.8;max-width:800px;margin-bottom:40px;opacity:0;transform:translateY(16px)}
+.visible .s-eyebrow{animation:fadeUp .6s .1s forwards}
+.visible .s-title{animation:fadeUp .6s .15s forwards}
+.visible .s-desc{animation:fadeUp .6s .25s forwards}
+
+/* ── Hero ── */
+.hero{position:relative;min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:100px 60px 80px;overflow:hidden}
+.hero::before{content:'';position:absolute;top:-200px;left:50%;transform:translateX(-50%);width:1200px;height:800px;background:radial-gradient(ellipse at center,rgba(6,182,212,0.08) 0%,rgba(139,92,246,0.04) 40%,transparent 70%);pointer-events:none}
+.hero-eyebrow{font-family:'Space Mono',monospace;font-size:12px;letter-spacing:.35em;color:var(--accent);text-transform:uppercase;margin-bottom:32px;opacity:0;animation:fadeUp .7s .3s forwards}
+.hero-title{font-family:'Noto Serif SC',serif;font-size:clamp(42px,7vw,72px);font-weight:900;line-height:1.15;letter-spacing:-.02em;margin-bottom:24px;opacity:0;animation:fadeUp .8s .5s forwards;background:linear-gradient(135deg,var(--smoke) 30%,var(--accent) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.hero-sub{font-size:19px;color:var(--smoke-dim);letter-spacing:.02em;margin-bottom:56px;opacity:0;animation:fadeUp .8s .65s forwards;max-width:720px;line-height:1.8}
+.hero-tags{display:flex;gap:12px;flex-wrap:wrap;justify-content:center;opacity:0;animation:fadeUp .8s .8s forwards}
+.hero-tag{padding:10px 24px;border-radius:40px;font-size:15px;font-weight:500;border:1px solid rgba(6,182,212,0.2);color:var(--accent);background:rgba(6,182,212,0.06);transition:all .3s}
+.hero-tag:hover{background:rgba(6,182,212,0.12);transform:translateY(-2px)}
+
+/* ── PPT Row ── */
+.ppt-row{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start;opacity:0;transform:translateY(16px)}
+.visible .ppt-row{animation:fadeUp .6s .3s forwards}
+.ppt-left,.ppt-right{display:flex;flex-direction:column;gap:24px}
+
+/* ── Flow ── */
+.flow{display:flex;gap:0;margin-bottom:32px;opacity:0;transform:translateY(16px);flex-wrap:wrap}
+.visible .flow{animation:fadeUp .6s .3s forwards}
+.flow-item{flex:1;min-width:120px;text-align:center;position:relative;padding:0 6px}
+.flow-item:not(:last-child)::after{content:'';position:absolute;top:20px;left:calc(50% + 22px);width:calc(100% - 44px);height:2px;background:rgba(0,0,0,0.08);z-index:1}
+.flow-dot{width:40px;height:40px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Space Mono',monospace;font-size:14px;font-weight:700;color:#fff;margin:0 auto 10px;position:relative;z-index:2}
+.flow-label{font-size:14px;font-weight:600;color:var(--smoke);line-height:1.4;margin-bottom:4px}
+.flow-sub{font-size:13px;color:var(--smoke-lt);margin-top:2px}
+
+/* ── Feat Grid ── */
+.feat-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+.feat{background:var(--ink2);border:1px solid rgba(0,0,0,0.05);border-radius:16px;padding:24px 20px;transition:all .35s cubic-bezier(.4,0,.2,1);position:relative;overflow:hidden}
+.feat::before{content:'';position:absolute;top:0;left:0;right:0;bottom:0;background:linear-gradient(135deg,rgba(6,182,212,0.03),rgba(139,92,246,0.03));opacity:0;transition:opacity .35s}
+.feat:hover{transform:translateY(-6px);box-shadow:0 16px 40px rgba(6,182,212,0.12);border-color:rgba(6,182,212,0.25)}
+.feat:hover::before{opacity:1}
+.feat-icon{font-size:32px;margin-bottom:12px;transition:transform .35s cubic-bezier(.4,0,.2,1)}
+.feat:hover .feat-icon{transform:scale(1.15) rotate(5deg)}
+.feat-title{font-size:18px;font-weight:700;margin-bottom:8px;font-family:'Noto Serif SC',serif;position:relative;z-index:1}
+.feat-desc{font-size:15px;color:var(--smoke-dim);line-height:1.7;position:relative;z-index:1}
+
+/* ── Banner ── */
+.banner{border-radius:20px;padding:36px 40px;color:#fff;display:grid;grid-template-columns:1fr 1fr;gap:32px;align-items:center;opacity:0;transform:translateY(16px)}
+.visible .banner{animation:fadeUp .6s .4s forwards}
+.banner h3{font-family:'Noto Serif SC',serif;font-size:24px;font-weight:700;margin-bottom:10px;line-height:1.3}
+.banner p{font-size:15px;opacity:.9;line-height:1.8}
+.banner-stats{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.stat{background:rgba(255,255,255,.12);border-radius:14px;padding:20px 16px;text-align:center;backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,.15);transition:all .3s}
+.stat:hover{background:rgba(255,255,255,.18);transform:translateY(-3px)}
+.stat-num{font-family:'Space Mono',monospace;font-size:28px;font-weight:700;margin-bottom:6px}
+.stat-lbl{font-size:13px;opacity:.85}
+
+/* ── Layers ── */
+.layers{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.layer{background:var(--ink2);border:1px solid rgba(0,0,0,0.05);border-radius:16px;padding:24px 20px;transition:all .35s cubic-bezier(.4,0,.2,1);position:relative;overflow:hidden}
+.layer::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(135deg,#06B6D4,#22D3EE);transform:scaleX(0);transform-origin:left;transition:transform .35s cubic-bezier(.4,0,.2,1)}
+.layer:hover{transform:translateY(-6px);box-shadow:0 16px 40px rgba(6,182,212,0.15);border-color:rgba(6,182,212,0.3)}
+.layer:hover::before{transform:scaleX(1)}
+.layer-hd{display:flex;align-items:center;gap:10px;margin-bottom:14px}
+.layer-ic{width:40px;height:40px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:20px;transition:transform .35s cubic-bezier(.4,0,.2,1)}
+.layer:hover .layer-ic{transform:scale(1.1) rotate(5deg)}
+.layer-nm{font-family:'Noto Serif SC',serif;font-size:17px;font-weight:700}
+.layer-tags{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:12px}
+.layer-tag{font-size:12px;font-weight:500;padding:4px 12px;border-radius:14px;transition:all .25s}
+.layer:hover .layer-tag{transform:translateY(-2px)}
+.layer-desc{font-size:14px;color:var(--smoke-dim);line-height:1.7}
+
+/* ── VS Compare ── */
+.vs{display:grid;grid-template-columns:1fr auto 1fr;gap:24px;align-items:center;margin:32px 0}
+.vs-item{text-align:center;padding:28px 24px;background:var(--ink2);border:1px solid rgba(0,0,0,0.06);border-radius:16px;transition:all 0.3s ease}
+.vs-item:hover{border-color:rgba(45,91,255,0.15);box-shadow:0 8px 30px rgba(0,0,0,0.06)}
+.vs-icon{font-size:40px;margin-bottom:12px}
+.vs-label{font-size:16px;color:var(--smoke-dim);font-weight:500;margin-bottom:8px}
+.vs-detail{font-size:13px;color:var(--smoke-lt);line-height:1.6}
+.vs-arrow{font-size:28px;color:var(--primary);font-weight:600;animation:arrowPulse 2s ease-in-out infinite}
+
+/* ── Timeline ── */
+.timeline{position:relative;padding-left:40px;margin:24px 0}
+.timeline::before{content:'';position:absolute;left:15px;top:0;bottom:0;width:2px;background:linear-gradient(180deg,var(--accent),var(--accent2))}
+.timeline-item{position:relative;margin-bottom:24px;opacity:0;transform:translateY(16px)}
+.visible .timeline-item{animation:fadeUp .5s forwards}
+.visible .timeline-item:nth-child(1){animation-delay:.2s}
+.visible .timeline-item:nth-child(2){animation-delay:.3s}
+.visible .timeline-item:nth-child(3){animation-delay:.4s}
+.visible .timeline-item:nth-child(4){animation-delay:.5s}
+.timeline-dot{position:absolute;left:-33px;top:6px;width:12px;height:12px;border-radius:50%;background:var(--accent);border:3px solid var(--ink);box-shadow:0 0 0 2px var(--accent)}
+.timeline-content{background:var(--ink2);border:1px solid rgba(0,0,0,0.05);border-radius:14px;padding:20px 24px;transition:all .3s}
+.timeline-content:hover{border-color:rgba(6,182,212,0.2);box-shadow:0 8px 24px rgba(6,182,212,0.08)}
+.timeline-title{font-family:'Noto Serif SC',serif;font-size:16px;font-weight:700;margin-bottom:6px}
+.timeline-desc{font-size:14px;color:var(--smoke-dim);line-height:1.7}
+
+/* ── Footer ── */
+footer{position:relative;z-index:1;padding:60px;text-align:center;border-top:1px solid rgba(45,91,255,0.12);background:rgba(250,251,252,0.8);backdrop-filter:blur(20px)}
+
+/* ── Animations ── */
+@keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+@keyframes arrowPulse{0%,100%{transform:translateX(0)}50%{transform:translateX(6px)}}
+
+/* ── Responsive ── */
+@media(max-width:1024px){.ppt-row,.banner{grid-template-columns:1fr}.layers{grid-template-columns:1fr}.feat-grid{grid-template-columns:repeat(2,1fr)}.vs{grid-template-columns:1fr;gap:12px}.vs-arrow{transform:rotate(90deg);margin:0 auto}}
+@media(max-width:768px){nav{padding:0 20px;height:56px}.nav-links{display:none}.screen{padding:70px 20px 30px}.hero{padding:70px 20px 40px}.hero-title{font-size:32px}.feat-grid{grid-template-columns:1fr}.flow{flex-direction:column;gap:10px}.flow-item{text-align:left;display:flex;align-items:center;gap:12px;padding:0}.flow-item:not(:last-child)::after{display:none}.flow-dot{margin:0;flex-shrink:0}footer{padding:32px 20px}}
+</style>
+</head>
+<body>
+
+<nav id="navbar">
+  <a class="nav-brand" href="ai-ecom.html">集思电商 AI</a>
+  <div class="nav-links">
+    <a href="ai-ecom.html">视频工作流</a>
+    <a href="ai-ecom-learn.html" class="active">素材学习</a>
+    <a href="ai-ecom-video.html">视频生成</a>
+  </div>
+</nav>
+
+<!-- 二级导航 -->
+<div class="sub-nav" id="subNav">
+  <a href="#s1">为什么需要</a>
+  <a href="#s2">工作流程</a>
+  <a href="#s3">分析维度</a>
+  <a href="#s4">知识库沉淀</a>
+  <a href="#s5">全天候运转</a>
+</div>
+
+<!-- ═══ HERO ═══ -->
+<section class="hero">
+  <p class="hero-eyebrow">集思电商 AI · 爆款素材学习系统</p>
+  <h1 class="hero-title">7x24 全天候学习<br>全球爆款广告素材</h1>
+  <p class="hero-sub">自动化采集 TikTok / Meta 平台最新爆款广告素材<br>AI 深度分析剪辑手法，持续沉淀行业经验知识库</p>
+  <div class="hero-tags">
+    <span class="hero-tag">TikTok 素材采集</span>
+    <span class="hero-tag">Meta 广告分析</span>
+    <span class="hero-tag">剪辑手法解析</span>
+    <span class="hero-tag">知识库沉淀</span>
+    <span class="hero-tag">7x24 全天候</span>
+  </div>
+</section>
+<div class="screen-divider"></div>
+
+<!-- ═══ Section 1: Why ═══ -->
+<section id="s1" class="screen">
+  <p class="s-eyebrow" style="color:var(--accent)">01 · 为什么需要</p>
+  <h2 class="s-title">人工追爆款 vs AI 全天候学习</h2>
+  <p class="s-desc">传统方式依赖人工浏览平台、手动收集素材，效率低且容易错过转瞬即逝的爆款趋势。AI 系统 7x24 不间断运转，确保不遗漏任何爆款机会。</p>
+
+  <div class="vs">
+    <div class="vs-item">
+      <div class="vs-icon">👤</div>
+      <div class="vs-label">人工追踪模式</div>
+      <div class="vs-detail">每天 2-3 小时浏览平台<br>凭经验主观判断<br>容易遗漏热门素材<br>分析维度单一</div>
+    </div>
+    <div class="vs-arrow">→</div>
+    <div class="vs-item" style="border-color:rgba(6,182,212,0.25);background:rgba(6,182,212,0.03)">
+      <div class="vs-icon">🤖</div>
+      <div class="vs-label">AI 全天候学习</div>
+      <div class="vs-detail">7x24 不间断采集<br>数据驱动客观分析<br>全平台覆盖无遗漏<br>多维度深度解析</div>
+    </div>
+  </div>
+
+  <div class="ppt-row">
+    <div class="ppt-left">
+      <div class="feat-grid">
+        <div class="feat">
+          <div class="feat-icon">⏰</div>
+          <div class="feat-title">全天候运转</div>
+          <div class="feat-desc">不需要人工值守，系统自动化采集与分析</div>
+        </div>
+        <div class="feat">
+          <div class="feat-icon">📊</div>
+          <div class="feat-title">数据驱动</div>
+          <div class="feat-desc">基于播放量、互动率等客观数据筛选爆款</div>
+        </div>
+      </div>
+    </div>
+    <div class="ppt-right">
+      <div class="feat-grid">
+        <div class="feat">
+          <div class="feat-icon">🌐</div>
+          <div class="feat-title">多平台覆盖</div>
+          <div class="feat-desc">TikTok、Meta (Facebook/Instagram) 全覆盖</div>
+        </div>
+        <div class="feat">
+          <div class="feat-icon">🧠</div>
+          <div class="feat-title">持续进化</div>
+          <div class="feat-desc">知识库不断积累，分析能力持续增强</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="screen-divider"></div>
+
+<!-- ═══ Section 2: Workflow ═══ -->
+<section id="s2" class="screen">
+  <p class="s-eyebrow" style="color:var(--accent2)">02 · 工作流程</p>
+  <h2 class="s-title">数据采集 → 智能分析 → 知识沉淀</h2>
+  <p class="s-desc">全自动化的三阶段工作流，从发现爆款到沉淀经验，形成完整的学习闭环。</p>
+
+  <div class="flow">
+    <div class="flow-item">
+      <div class="flow-dot" style="background:linear-gradient(135deg,#06B6D4,#22D3EE)">1</div>
+      <div class="flow-label">平台监控<div class="flow-sub">追踪热门广告</div></div>
+    </div>
+    <div class="flow-item">
+      <div class="flow-dot" style="background:linear-gradient(135deg,#06B6D4,#22D3EE)">2</div>
+      <div class="flow-label">数据采集<div class="flow-sub">PiPiAds/BigSpy</div></div>
+    </div>
+    <div class="flow-item">
+      <div class="flow-dot" style="background:linear-gradient(135deg,#8B5CF6,#A78BFA)">3</div>
+      <div class="flow-label">AI 分析<div class="flow-sub">多维度深度解析</div></div>
+    </div>
+    <div class="flow-item">
+      <div class="flow-dot" style="background:linear-gradient(135deg,#8B5CF6,#A78BFA)">4</div>
+      <div class="flow-label">结构化提取<div class="flow-sub">剪辑手法拆解</div></div>
+    </div>
+    <div class="flow-item">
+      <div class="flow-dot" style="background:linear-gradient(135deg,#EC4899,#F472B6)">5</div>
+      <div class="flow-label">知识入库<div class="flow-sub">沉淀爆款公式</div></div>
+    </div>
+    <div class="flow-item">
+      <div class="flow-dot" style="background:linear-gradient(135deg,#EC4899,#F472B6)">6</div>
+      <div class="flow-label">趋势洞察<div class="flow-sub">行业报告输出</div></div>
+    </div>
+  </div>
+
+  <div class="ppt-row">
+    <div class="ppt-left">
+      <h3 style="font-family:'Noto Serif SC',serif;font-size:22px;font-weight:700;margin-bottom:20px;color:var(--smoke)">阶段一：数据采集</h3>
+      <div class="timeline">
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <div class="timeline-title">平台热门广告监控</div>
+            <div class="timeline-desc">通过 PiPiAds、BigSpy 等工具自动追踪 TikTok 和 Meta 平台上的热门广告素材</div>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-dot" style="background:var(--accent2);box-shadow:0 0 0 2px var(--accent2)"></div>
+          <div class="timeline-content">
+            <div class="timeline-title">爆款数据筛选</div>
+            <div class="timeline-desc">基于播放量、互动率、投放时长等数据维度自动筛选真正的爆款素材</div>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-dot" style="background:var(--c3);box-shadow:0 0 0 2px var(--c3)"></div>
+          <div class="timeline-content">
+            <div class="timeline-title">素材下载存档</div>
+            <div class="timeline-desc">自动下载视频素材、截取关键帧、记录元数据信息</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="ppt-right">
+      <h3 style="font-family:'Noto Serif SC',serif;font-size:22px;font-weight:700;margin-bottom:20px;color:var(--smoke)">阶段二：智能分析</h3>
+      <div class="timeline">
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <div class="timeline-title">AI 多模态视频理解</div>
+            <div class="timeline-desc">利用 LLM 多模态能力理解视频画面、音频、文字等多层内容</div>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-dot" style="background:var(--accent2);box-shadow:0 0 0 2px var(--accent2)"></div>
+          <div class="timeline-content">
+            <div class="timeline-title">剪辑手法结构化拆解</div>
+            <div class="timeline-desc">分析视频的节奏、转场、镜头运用、文案结构等关键剪辑要素</div>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-dot" style="background:var(--c3);box-shadow:0 0 0 2px var(--c3)"></div>
+          <div class="timeline-content">
+            <div class="timeline-title">爆款要素标注</div>
+            <div class="timeline-desc">标注 Hook 开头、痛点呈现、产品展示、CTA 等关键节点</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="screen-divider"></div>
+
+<!-- ═══ Section 3: Analysis Dimensions ═══ -->
+<section id="s3" class="screen">
+  <p class="s-eyebrow" style="color:var(--c3)">03 · 分析维度</p>
+  <h2 class="s-title">六大维度深度拆解爆款密码</h2>
+  <p class="s-desc">从视频节奏到文案结构，从转场手法到音效运用，全方位解析每一条爆款素材的成功要素。</p>
+
+  <div class="layers" style="grid-template-columns:repeat(3,1fr)">
+    <div class="layer">
+      <div class="layer-hd">
+        <div class="layer-ic" style="background:linear-gradient(135deg,rgba(6,182,212,.15),rgba(6,182,212,.25))">🎬</div>
+        <div class="layer-nm">剪辑节奏</div>
+      </div>
+      <div class="layer-tags">
+        <span class="layer-tag" style="background:rgba(6,182,212,.1);color:#06B6D4">切镜频率</span>
+        <span class="layer-tag" style="background:rgba(6,182,212,.1);color:#06B6D4">节拍点</span>
+        <span class="layer-tag" style="background:rgba(6,182,212,.1);color:#06B6D4">时长分布</span>
+      </div>
+      <div class="layer-desc">分析视频切镜频率、节奏快慢变化、每段时长分配规律</div>
+    </div>
+
+    <div class="layer">
+      <div class="layer-hd">
+        <div class="layer-ic" style="background:linear-gradient(135deg,rgba(139,92,246,.15),rgba(139,92,246,.25))">🔀</div>
+        <div class="layer-nm">转场手法</div>
+      </div>
+      <div class="layer-tags">
+        <span class="layer-tag" style="background:rgba(139,92,246,.1);color:#8B5CF6">硬切</span>
+        <span class="layer-tag" style="background:rgba(139,92,246,.1);color:#8B5CF6">叠化</span>
+        <span class="layer-tag" style="background:rgba(139,92,246,.1);color:#8B5CF6">遮罩</span>
+      </div>
+      <div class="layer-desc">识别转场类型、使用频率、不同场景下的转场搭配策略</div>
+    </div>
+
+    <div class="layer">
+      <div class="layer-hd">
+        <div class="layer-ic" style="background:linear-gradient(135deg,rgba(236,72,153,.15),rgba(236,72,153,.25))">📝</div>
+        <div class="layer-nm">文案结构</div>
+      </div>
+      <div class="layer-tags">
+        <span class="layer-tag" style="background:rgba(236,72,153,.1);color:#EC4899">Hook</span>
+        <span class="layer-tag" style="background:rgba(236,72,153,.1);color:#EC4899">痛点</span>
+        <span class="layer-tag" style="background:rgba(236,72,153,.1);color:#EC4899">CTA</span>
+      </div>
+      <div class="layer-desc">解析开头 Hook、痛点呈现、利益承诺、CTA 行动号召结构</div>
+    </div>
+
+    <div class="layer">
+      <div class="layer-hd">
+        <div class="layer-ic" style="background:linear-gradient(135deg,rgba(245,158,11,.15),rgba(245,158,11,.25))">🎵</div>
+        <div class="layer-nm">音效与 BGM</div>
+      </div>
+      <div class="layer-tags">
+        <span class="layer-tag" style="background:rgba(245,158,11,.1);color:#F59E0B">配乐风格</span>
+        <span class="layer-tag" style="background:rgba(245,158,11,.1);color:#F59E0B">音效节点</span>
+        <span class="layer-tag" style="background:rgba(245,158,11,.1);color:#F59E0B">热门音乐</span>
+      </div>
+      <div class="layer-desc">分析 BGM 风格选择、音效使用时机、热门音乐搭配趋势</div>
+    </div>
+
+    <div class="layer">
+      <div class="layer-hd">
+        <div class="layer-ic" style="background:linear-gradient(135deg,rgba(16,185,129,.15),rgba(16,185,129,.25))">📐</div>
+        <div class="layer-nm">画面构图</div>
+      </div>
+      <div class="layer-tags">
+        <span class="layer-tag" style="background:rgba(16,185,129,.1);color:#10B981">镜头运动</span>
+        <span class="layer-tag" style="background:rgba(16,185,129,.1);color:#10B981">构图比例</span>
+        <span class="layer-tag" style="background:rgba(16,185,129,.1);color:#10B981">色彩风格</span>
+      </div>
+      <div class="layer-desc">分析镜头推拉摇移、产品特写比例、整体色彩氛围</div>
+    </div>
+
+    <div class="layer">
+      <div class="layer-hd">
+        <div class="layer-ic" style="background:linear-gradient(135deg,rgba(45,91,255,.15),rgba(45,91,255,.25))">📊</div>
+        <div class="layer-nm">投放数据</div>
+      </div>
+      <div class="layer-tags">
+        <span class="layer-tag" style="background:rgba(45,91,255,.1);color:#2D5BFF">播放量</span>
+        <span class="layer-tag" style="background:rgba(45,91,255,.1);color:#2D5BFF">互动率</span>
+        <span class="layer-tag" style="background:rgba(45,91,255,.1);color:#2D5BFF">投放时长</span>
+      </div>
+      <div class="layer-desc">关联投放数据，分析爆款素材与投放效果的因果关系</div>
+    </div>
+  </div>
+</section>
+<div class="screen-divider"></div>
+
+<!-- ═══ Section 4: Knowledge Base ═══ -->
+<section id="s4" class="screen">
+  <p class="s-eyebrow" style="color:var(--c4)">04 · 知识库沉淀</p>
+  <h2 class="s-title">从爆款素材到爆款公式<br>构建行业经验知识库</h2>
+  <p class="s-desc">将分析结果结构化沉淀为可复用的爆款公式和行业趋势洞察，让每一次学习都成为团队的共享资产。</p>
+
+  <div class="ppt-row">
+    <div class="ppt-left">
+      <div class="feat-grid">
+        <div class="feat">
+          <div class="feat-icon">🧬</div>
+          <div class="feat-title">爆款公式提炼</div>
+          <div class="feat-desc">从大量爆款素材中提炼通用创作公式，如"Hook 3 秒开头 + 痛点放大 + 产品展示 + CTA"</div>
+        </div>
+        <div class="feat">
+          <div class="feat-icon">📁</div>
+          <div class="feat-title">行业分类沉淀</div>
+          <div class="feat-desc">按行业、品类、平台等维度分类存储，精准匹配不同产品的创作需求</div>
+        </div>
+        <div class="feat">
+          <div class="feat-icon">📈</div>
+          <div class="feat-title">趋势追踪分析</div>
+          <div class="feat-desc">持续追踪剪辑风格变化趋势，发现新兴创作手法和平台偏好</div>
+        </div>
+        <div class="feat">
+          <div class="feat-icon">🔍</div>
+          <div class="feat-title">智能检索推荐</div>
+          <div class="feat-desc">输入产品信息即可获取匹配的爆款公式和参考素材推荐</div>
+        </div>
+      </div>
+    </div>
+    <div class="ppt-right">
+      <div class="banner" style="background:linear-gradient(135deg,#F59E0B,#D97706)">
+        <div>
+          <h3>从数据到知识<br>从知识到创作</h3>
+          <p>知识库不断积累成长，让团队的创作能力随时间持续进化，每个人都能站在巨人的肩膀上</p>
+        </div>
+        <div class="banner-stats">
+          <div class="stat"><div class="stat-num">N+</div><div class="stat-lbl">爆款公式</div></div>
+          <div class="stat"><div class="stat-num">全</div><div class="stat-lbl">行业覆盖</div></div>
+          <div class="stat"><div class="stat-num">日</div><div class="stat-lbl">更新频率</div></div>
+          <div class="stat"><div class="stat-num">AI</div><div class="stat-lbl">智能推荐</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="screen-divider"></div>
+
+<!-- ═══ Section 5: 7x24 ═══ -->
+<section id="s5" class="screen">
+  <p class="s-eyebrow" style="color:var(--primary)">05 · 全天候运转</p>
+  <h2 class="s-title">7x24 不间断<br>爆款素材永不过期</h2>
+  <p class="s-desc">系统全自动运转，从采集到分析到入库，全流程无需人工干预。你的素材库每天都在变得更强。</p>
+
+  <div class="banner" style="background:linear-gradient(135deg,#2D5BFF,#5B7FFF)">
+    <div>
+      <h3>自动化运转 · 持续学习 · 不断进化</h3>
+      <p>定时任务自动触发采集、分析、入库全流程。支持告警通知，发现高价值素材时第一时间推送给团队。系统性能监控确保稳定运行。</p>
+    </div>
+    <div class="banner-stats">
+      <div class="stat"><div class="stat-num">7x24</div><div class="stat-lbl">全天候运转</div></div>
+      <div class="stat"><div class="stat-num">0</div><div class="stat-lbl">人工干预</div></div>
+      <div class="stat"><div class="stat-num">实时</div><div class="stat-lbl">告警通知</div></div>
+      <div class="stat"><div class="stat-num">稳定</div><div class="stat-lbl">系统监控</div></div>
+    </div>
+  </div>
+
+  <div class="feat-grid" style="margin-top:40px">
+    <div class="feat">
+      <div class="feat-icon">🔄</div>
+      <div class="feat-title">定时采集任务</div>
+      <div class="feat-desc">可配置采集频率和采集规则，系统按计划自动执行</div>
+    </div>
+    <div class="feat">
+      <div class="feat-icon">🔔</div>
+      <div class="feat-title">智能告警推送</div>
+      <div class="feat-desc">发现高互动率爆款素材时，自动推送通知给团队</div>
+    </div>
+    <div class="feat">
+      <div class="feat-icon">📊</div>
+      <div class="feat-title">运行状态监控</div>
+      <div class="feat-desc">系统健康度、采集成功率、分析任务进度一目了然</div>
+    </div>
+    <div class="feat">
+      <div class="feat-icon">🛡️</div>
+      <div class="feat-title">异常自动恢复</div>
+      <div class="feat-desc">遇到采集异常自动重试，确保数据采集连续性</div>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer>
+  <div style="font-family:'Noto Serif SC',serif;font-size:24px;font-weight:600;background:linear-gradient(135deg,#3b82f6 0%,#8b5cf6 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:12px;">集思电商</div>
+  <div style="color:var(--smoke-dim);font-size:14px;margin-bottom:24px;">AI 驱动的跨境电商内容创作平台</div>
+  <div style="display:flex;gap:24px;justify-content:center;margin-bottom:24px">
+    <a href="ai-ecom.html" style="color:var(--smoke-dim);text-decoration:none;font-size:14px;transition:color .2s">视频工作流</a>
+    <a href="ai-ecom-learn.html" style="color:var(--primary);text-decoration:none;font-size:14px;font-weight:500">素材学习系统</a>
+    <a href="ai-ecom-video.html" style="color:var(--smoke-dim);text-decoration:none;font-size:14px;transition:color .2s">视频生成系统</a>
+  </div>
+  <div style="color:var(--smoke-lt);font-size:12px;">© 2026 集思电商. All rights reserved.</div>
+</footer>
+
+<script>
+const observerOptions = { threshold: 0.1, rootMargin: '0px 0px -100px 0px' };
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) entry.target.classList.add('visible');
+  });
+}, observerOptions);
+document.querySelectorAll('.screen, .feat, .layer, .timeline-item').forEach(el => observer.observe(el));
+
+const subNav = document.getElementById('subNav');
+window.addEventListener('scroll', () => {
+  const nav = document.querySelector('nav');
+  nav.style.boxShadow = window.scrollY > 50 ? '0 4px 20px rgba(0,0,0,0.15)' : 'none';
+
+  if (window.scrollY > window.innerHeight * 0.6) {
+    subNav.classList.add('show');
+  } else {
+    subNav.classList.remove('show');
+  }
+
+  const sections = ['s1', 's2', 's3', 's4', 's5'];
+  let currentSection = '';
+  sections.forEach(id => {
+    const section = document.getElementById(id);
+    if (section) {
+      const rect = section.getBoundingClientRect();
+      if (rect.top <= 150 && rect.bottom >= 150) {
+        currentSection = id;
+      }
+    }
+  });
+
+  subNav.querySelectorAll('a').forEach(link => {
+    if (link.getAttribute('href') === '#' + currentSection) {
+      link.classList.add('active');
+    } else {
+      link.classList.remove('active');
+    }
+  });
+});
+
+document.querySelectorAll('nav a[href^="#"]').forEach(link => {
+  link.addEventListener('click', (e) => {
+    e.preventDefault();
+    const target = document.querySelector(link.getAttribute('href'));
+    if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  });
+});
+</script>
+</body>
+</html>

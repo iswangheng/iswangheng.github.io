@@ -1,0 +1,1502 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>复旦合作项目介绍 | 短剧爆款潜力评分模型</title>
+  <style>
+    :root {
+      --bg: #efe9df;
+      --paper: rgba(255, 251, 245, 0.9);
+      --paper-strong: rgba(255, 253, 249, 0.96);
+      --ink: #171513;
+      --muted: #685e54;
+      --line: rgba(23, 21, 19, 0.08);
+      --gold: #b7883e;
+      --gold-deep: #8b6223;
+      --navy: #11192c;
+      --teal: #0d736c;
+      --shadow: 0 24px 80px rgba(52, 38, 18, 0.12);
+      --radius-xl: 34px;
+      --radius-lg: 26px;
+      --radius-md: 18px;
+      --max: 1680px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      color: var(--ink);
+      font-family: "Avenir Next", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+      background:
+        radial-gradient(circle at top left, rgba(183, 136, 62, 0.16), transparent 22rem),
+        radial-gradient(circle at top right, rgba(17, 25, 44, 0.12), transparent 26rem),
+        linear-gradient(180deg, #f8f2ea 0%, #ede5d8 100%);
+      min-height: 100vh;
+      scroll-snap-type: y proximity;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .shell {
+      width: min(var(--max), calc(100vw - 28px));
+      margin: 18px auto 44px;
+    }
+
+    .topbar {
+      position: sticky;
+      top: 12px;
+      z-index: 40;
+      display: flex;
+      gap: 16px;
+      align-items: center;
+      justify-content: space-between;
+      padding: 12px 18px;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      background: rgba(255, 248, 240, 0.72);
+      backdrop-filter: blur(18px);
+      box-shadow: 0 10px 28px rgba(58, 41, 18, 0.08);
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      min-width: 0;
+    }
+
+    .brand-mark {
+      width: 42px;
+      height: 42px;
+      border-radius: 15px;
+      display: grid;
+      place-items: center;
+      color: #fff;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      background: linear-gradient(135deg, var(--gold), var(--gold-deep));
+      box-shadow: 0 10px 24px rgba(146, 102, 28, 0.22);
+      flex: 0 0 auto;
+    }
+
+    .brand-copy {
+      min-width: 0;
+    }
+
+    .brand-copy .eyebrow {
+      color: var(--muted);
+      font-size: 12px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+
+    .brand-copy .title {
+      font-size: 15px;
+      font-weight: 700;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      justify-content: flex-end;
+    }
+
+    .nav a {
+      padding: 9px 13px;
+      border-radius: 999px;
+      font-size: 13px;
+      color: var(--muted);
+      background: rgba(23, 21, 19, 0.04);
+      transition: all 0.2s ease;
+    }
+
+    .nav a:hover {
+      background: rgba(23, 21, 19, 0.08);
+      color: var(--ink);
+      transform: translateY(-1px);
+    }
+
+    .hero {
+      position: relative;
+      overflow: hidden;
+      margin-top: 18px;
+      min-height: calc(100vh - 54px);
+      scroll-margin-top: 86px;
+      border-radius: 42px;
+      background:
+        radial-gradient(circle at 18% 18%, rgba(183, 136, 62, 0.22), transparent 26rem),
+        radial-gradient(circle at 88% 24%, rgba(54, 91, 188, 0.16), transparent 24rem),
+        linear-gradient(145deg, #18233a 0%, #0f1626 100%);
+      color: #fffaf4;
+      box-shadow: 0 28px 90px rgba(16, 18, 34, 0.32);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      scroll-snap-align: start;
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 22px;
+      border-radius: 30px;
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      pointer-events: none;
+    }
+
+    .hero-grid {
+      position: relative;
+      display: grid;
+      grid-template-columns: 1.35fr 0.95fr;
+      gap: 28px;
+      min-height: calc(100vh - 54px);
+      align-items: center;
+      padding: 54px 52px;
+    }
+
+    .capsule {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 13px;
+      border-radius: 999px;
+      border: 1px solid rgba(255, 228, 181, 0.18);
+      background: rgba(255, 255, 255, 0.06);
+      color: #f3d7a0;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    h1, h2, h3 {
+      margin: 0;
+      font-family: "Source Han Serif SC", "Songti SC", "STSong", serif;
+      letter-spacing: -0.025em;
+    }
+
+    h1 {
+      margin-top: 20px;
+      font-size: clamp(52px, 5.6vw, 88px);
+      line-height: 0.94;
+      max-width: 11ch;
+    }
+
+    .hero-sub {
+      margin-top: 18px;
+      max-width: 54rem;
+      color: rgba(255, 249, 239, 0.76);
+      font-size: 21px;
+      line-height: 1.9;
+    }
+
+    .hero-notes {
+      display: grid;
+      gap: 12px;
+      margin-top: 28px;
+    }
+
+    .hero-note {
+      display: flex;
+      gap: 14px;
+      align-items: flex-start;
+      padding: 18px 18px;
+      border-radius: 20px;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+    }
+
+    .hero-note .bullet {
+      width: 10px;
+      height: 10px;
+      margin-top: 8px;
+      border-radius: 999px;
+      background: linear-gradient(135deg, #f3d39d, #b7883e);
+      flex: 0 0 auto;
+    }
+
+    .hero-note strong {
+      display: block;
+      margin-bottom: 4px;
+      font-size: 16px;
+      color: #fff5e5;
+    }
+
+    .hero-note span {
+      color: rgba(255, 249, 239, 0.72);
+      line-height: 1.7;
+      font-size: 15px;
+    }
+
+    .hero-aside {
+      display: grid;
+      gap: 14px;
+      align-content: start;
+    }
+
+    .hero-panel {
+      padding: 24px;
+      border-radius: 24px;
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      backdrop-filter: blur(8px);
+    }
+
+    .hero-panel .label {
+      color: rgba(255, 239, 208, 0.72);
+      font-size: 12px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+
+    .hero-panel .headline {
+      font-size: 36px;
+      font-weight: 800;
+      line-height: 1.06;
+      margin-bottom: 10px;
+    }
+
+    .hero-panel p {
+      margin: 0;
+      color: rgba(255, 249, 239, 0.74);
+      line-height: 1.9;
+      font-size: 15px;
+    }
+
+    .mini-matrix {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .mini-cell {
+      padding: 18px;
+      border-radius: 20px;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+    }
+
+    .mini-cell .num {
+      color: #f7dfb4;
+      font-size: 34px;
+      font-weight: 800;
+      line-height: 1;
+      margin-bottom: 8px;
+    }
+
+    .mini-cell .lbl {
+      color: rgba(255, 249, 239, 0.76);
+      font-size: 14px;
+      line-height: 1.8;
+    }
+
+    .section {
+      margin-top: 22px;
+      min-height: calc(100vh - 58px);
+      scroll-margin-top: 86px;
+      padding: 42px 44px;
+      border-radius: 38px;
+      background: var(--paper);
+      border: 1px solid rgba(23, 21, 19, 0.06);
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(14px);
+      scroll-snap-align: start;
+      display: grid;
+      align-content: center;
+    }
+
+    .section-header {
+      display: flex;
+      gap: 18px;
+      align-items: flex-end;
+      justify-content: space-between;
+      margin-bottom: 28px;
+    }
+
+    .section-header .eyebrow {
+      color: var(--gold);
+      font-size: 12px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+
+    .section-header h2 {
+      font-size: clamp(34px, 3.4vw, 56px);
+      line-height: 1.02;
+    }
+
+    .section-header .desc {
+      max-width: 50rem;
+      margin-top: 10px;
+      color: var(--muted);
+      font-size: 18px;
+      line-height: 1.95;
+    }
+
+    .grid-3,
+    .grid-2 {
+      display: grid;
+      gap: 16px;
+    }
+
+    .grid-3 {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .grid-2 {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .card {
+      padding: 28px;
+      border-radius: 28px;
+      background: var(--paper-strong);
+      border: 1px solid rgba(23, 21, 19, 0.05);
+      min-height: 100%;
+    }
+
+    .card h3 {
+      font-size: 28px;
+      margin-bottom: 12px;
+    }
+
+    .card p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.9;
+      font-size: 16px;
+    }
+
+    .list {
+      display: grid;
+      gap: 10px;
+      margin-top: 14px;
+    }
+
+    .list-item {
+      display: flex;
+      gap: 14px;
+      align-items: flex-start;
+      padding: 14px 0;
+      border-top: 1px solid rgba(23, 21, 19, 0.06);
+    }
+
+    .list-item:first-child {
+      border-top: none;
+      padding-top: 0;
+    }
+
+    .tag {
+      width: 34px;
+      height: 34px;
+      border-radius: 999px;
+      display: grid;
+      place-items: center;
+      background: rgba(183, 136, 62, 0.12);
+      color: var(--gold-deep);
+      font-size: 13px;
+      font-weight: 800;
+      flex: 0 0 auto;
+      margin-top: 1px;
+    }
+
+    .list-item .body {
+      color: var(--muted);
+      font-size: 15px;
+      line-height: 1.9;
+    }
+
+    .list-item .body strong {
+      display: block;
+      color: var(--ink);
+      font-size: 17px;
+      margin-bottom: 4px;
+    }
+
+    .framework-grid {
+      display: grid;
+      grid-template-columns: 1.06fr 0.94fr;
+      gap: 18px;
+    }
+
+    .factor-stack {
+      display: grid;
+      gap: 16px;
+    }
+
+    .factor-group {
+      padding: 24px;
+      border-radius: 28px;
+      background: linear-gradient(180deg, rgba(255, 253, 249, 0.96), rgba(248, 241, 232, 0.92));
+      border: 1px solid rgba(23, 21, 19, 0.05);
+    }
+
+    .factor-group h3 {
+      font-size: 26px;
+      margin-bottom: 8px;
+    }
+
+    .factor-group p {
+      margin: 0 0 14px;
+      color: var(--muted);
+      font-size: 15px;
+      line-height: 1.85;
+    }
+
+    .factor-matrix {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px;
+    }
+
+    .factor-item {
+      display: grid;
+      grid-template-columns: 40px 1fr;
+      gap: 12px;
+      align-items: start;
+      padding: 14px 14px 15px;
+      border-radius: 20px;
+      background: rgba(255, 255, 255, 0.82);
+      border: 1px solid rgba(23, 21, 19, 0.05);
+    }
+
+    .factor-index {
+      width: 40px;
+      height: 40px;
+      border-radius: 14px;
+      display: grid;
+      place-items: center;
+      font-size: 14px;
+      font-weight: 800;
+      color: #fff;
+      background: linear-gradient(145deg, var(--gold), var(--gold-deep));
+      box-shadow: 0 8px 18px rgba(146, 102, 28, 0.2);
+    }
+
+    .factor-copy strong {
+      display: block;
+      color: var(--ink);
+      font-size: 15px;
+      margin-bottom: 4px;
+      line-height: 1.35;
+    }
+
+    .factor-copy span {
+      display: block;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.75;
+    }
+
+    .signal-panel {
+      padding: 28px;
+      border-radius: 30px;
+      background: linear-gradient(135deg, rgba(17, 25, 44, 0.06), rgba(183, 136, 62, 0.08));
+      border: 1px solid rgba(17, 25, 44, 0.08);
+    }
+
+    .signal-panel h3 {
+      font-size: 30px;
+      margin-bottom: 10px;
+    }
+
+    .signal-panel p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 16px;
+      line-height: 1.95;
+    }
+
+    .signal-list {
+      display: grid;
+      gap: 14px;
+      margin-top: 18px;
+    }
+
+    .signal-item {
+      padding: 16px 18px;
+      border-radius: 22px;
+      background: rgba(255, 255, 255, 0.7);
+      border: 1px solid rgba(23, 21, 19, 0.05);
+    }
+
+    .signal-item strong {
+      display: block;
+      margin-bottom: 5px;
+      font-size: 17px;
+      color: var(--ink);
+    }
+
+    .signal-item span {
+      color: var(--muted);
+      font-size: 15px;
+      line-height: 1.85;
+    }
+
+    .roadmap {
+      display: grid;
+      gap: 12px;
+    }
+
+    .roadmap-step {
+      display: grid;
+      grid-template-columns: 62px 1fr;
+      gap: 18px;
+      padding: 24px;
+      border-radius: 28px;
+      background: rgba(255, 255, 255, 0.54);
+      border: 1px solid rgba(23, 21, 19, 0.05);
+    }
+
+    .roadmap-step .num {
+      width: 62px;
+      height: 62px;
+      border-radius: 18px;
+      display: grid;
+      place-items: center;
+      color: #fff;
+      font-weight: 800;
+      font-size: 24px;
+      background: linear-gradient(145deg, var(--gold), var(--gold-deep));
+      box-shadow: 0 10px 22px rgba(146, 102, 28, 0.24);
+    }
+
+    .roadmap-step h3 {
+      font-size: 28px;
+      margin-bottom: 8px;
+    }
+
+    .roadmap-step p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 16px;
+      line-height: 1.9;
+    }
+
+    .statement {
+      padding: 28px;
+      border-radius: 28px;
+      background: linear-gradient(135deg, rgba(17, 25, 44, 0.06), rgba(183, 136, 62, 0.1));
+      border: 1px solid rgba(17, 25, 44, 0.08);
+    }
+
+    .statement h3 {
+      font-size: 28px;
+      margin-bottom: 12px;
+    }
+
+    .statement p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.95;
+      font-size: 16px;
+    }
+
+    .market-matrix {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+      margin-top: 12px;
+    }
+
+    .market-stat {
+      padding: 20px 18px;
+      border-radius: 24px;
+      background: rgba(255, 255, 255, 0.72);
+      border: 1px solid rgba(23, 21, 19, 0.05);
+    }
+
+    .market-stat .value {
+      display: block;
+      color: var(--ink);
+      font-size: 30px;
+      line-height: 1;
+      font-weight: 800;
+      margin-bottom: 8px;
+    }
+
+    .market-stat .label {
+      display: block;
+      color: var(--muted);
+      font-size: 13px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+
+    .market-stat .copy {
+      color: var(--muted);
+      font-size: 15px;
+      line-height: 1.8;
+    }
+
+    .sample-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .sample-card {
+      position: relative;
+      overflow: hidden;
+      padding: 28px;
+      border-radius: 32px;
+      background:
+        linear-gradient(145deg, rgba(255, 253, 249, 0.98), rgba(247, 239, 229, 0.9));
+      border: 1px solid rgba(23, 21, 19, 0.06);
+      box-shadow: 0 18px 48px rgba(60, 42, 19, 0.08);
+    }
+
+    .sample-card::after {
+      content: "";
+      position: absolute;
+      right: -60px;
+      bottom: -70px;
+      width: 180px;
+      height: 180px;
+      border-radius: 999px;
+      background: radial-gradient(circle, rgba(183, 136, 62, 0.14), transparent 70%);
+      pointer-events: none;
+    }
+
+    .sample-tag {
+      display: inline-flex;
+      padding: 6px 10px;
+      border-radius: 999px;
+      font-size: 12px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      font-weight: 700;
+      color: var(--teal);
+      background: rgba(13, 115, 108, 0.1);
+      margin-bottom: 12px;
+    }
+
+    .sample-card h3 {
+      position: relative;
+      font-size: clamp(24px, 1.9vw, 28px);
+      margin-bottom: 18px;
+      white-space: nowrap;
+      letter-spacing: -0.02em;
+    }
+
+    .sample-data-note {
+      margin-top: 16px;
+      padding: 18px 20px;
+      border-radius: 22px;
+      background: rgba(17, 25, 44, 0.05);
+      border: 1px solid rgba(17, 25, 44, 0.07);
+      color: var(--muted);
+      font-size: 15px;
+      line-height: 1.9;
+    }
+
+    .sample-data-note strong {
+      color: var(--ink);
+    }
+
+    .sample-data-note .note-line {
+      display: block;
+    }
+
+    .sample-data-note .note-line + .note-line {
+      margin-top: 6px;
+    }
+
+    .sample-data-note .note-line.minor {
+      font-size: 14px;
+      opacity: 0.9;
+    }
+
+    .sample-metrics {
+      position: relative;
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px;
+      margin: 0 0 18px;
+    }
+
+    .metric-chip {
+      padding: 12px 14px;
+      border-radius: 18px;
+      background: rgba(255, 255, 255, 0.78);
+      border: 1px solid rgba(23, 21, 19, 0.05);
+    }
+
+    .metric-chip .k {
+      display: block;
+      margin-bottom: 5px;
+      color: var(--muted);
+      font-size: 12px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .metric-chip .v {
+      color: var(--ink);
+      font-size: 16px;
+      font-weight: 700;
+      line-height: 1.35;
+    }
+
+    .episode-links {
+      position: relative;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .episode-links a {
+      padding: 12px 16px;
+      border-radius: 999px;
+      font-size: 14px;
+      color: var(--ink);
+      background: rgba(23, 21, 19, 0.05);
+      border: 1px solid rgba(23, 21, 19, 0.04);
+      transition: all 0.2s ease;
+    }
+
+    .episode-links a:hover {
+      background: rgba(183, 136, 62, 0.12);
+      border-color: rgba(183, 136, 62, 0.28);
+      transform: translateY(-1px);
+    }
+
+    .footer {
+      margin: 22px 0 34px;
+      padding: 22px 26px;
+      border-radius: 28px;
+      background: rgba(255, 248, 240, 0.72);
+      border: 1px solid rgba(23, 21, 19, 0.05);
+      color: var(--muted);
+      font-size: 15px;
+      line-height: 1.9;
+    }
+
+    code {
+      padding: 2px 8px;
+      border-radius: 999px;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+      background: rgba(23, 21, 19, 0.06);
+      color: var(--ink);
+    }
+
+    @media (max-width: 1100px) {
+      .hero-grid,
+      .grid-3,
+      .grid-2,
+      .sample-grid,
+      .framework-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .factor-matrix {
+        grid-template-columns: 1fr;
+      }
+
+      .hero,
+      .section {
+        min-height: auto;
+      }
+
+      .hero-grid {
+        min-height: auto;
+      }
+    }
+
+    @media (max-width: 760px) {
+      .shell {
+        width: min(var(--max), calc(100vw - 18px));
+      }
+
+      .hero-grid,
+      .hero {
+        padding: 22px;
+      }
+
+      .section {
+        min-height: auto;
+        padding: 24px;
+      }
+
+      .nav {
+        display: none;
+      }
+
+      .topbar {
+        border-radius: 28px;
+      }
+
+      .section {
+        border-radius: 28px;
+      }
+
+      .hero {
+        border-radius: 30px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="shell">
+    <div class="topbar">
+      <div class="brand">
+        <div class="brand-mark">FD</div>
+        <div class="brand-copy">
+          <div class="eyebrow">Project Introduction · 2026-04-22</div>
+          <div class="title">短剧爆款潜力评分模型 · 项目介绍</div>
+        </div>
+      </div>
+      <div class="nav">
+        <a href="#top">项目概览</a>
+        <a href="#questions">研究问题</a>
+        <a href="#framework">评估框架</a>
+        <a href="#collaboration">合作机制</a>
+        <a href="#phase">阶段目标</a>
+        <a href="#samples">样本库</a>
+      </div>
+    </div>
+
+    <section class="hero" id="top">
+      <div class="hero-grid">
+        <div>
+          <div class="capsule">Fudan University · Collaborative Project</div>
+          <h1>短剧爆款潜力评分模型</h1>
+          <div class="hero-sub">
+            项目聚焦于短剧上线前的潜力评估与策略支持。研究对象包括原始剧集视频、少量基础信息、历史爆款样本与后验表现数据；预期形成可运行的评分模型、解释框架、验证方法与持续迭代机制。
+          </div>
+
+          <div class="hero-notes">
+            <div class="hero-note">
+              <div class="bullet"></div>
+              <div>
+                <strong>核心应用场景</strong>
+                <span>面向选剧、优先级排序、资源投入与投放前判断，为短剧业务提供更稳定的前置决策依据。</span>
+              </div>
+            </div>
+            <div class="hero-note">
+              <div class="bullet"></div>
+              <div>
+                <strong>合作价值</strong>
+                <span>以真实业务数据和持续样本供给为基础，把学术方法、模型设计与产业落地结合成一个可验证、可迭代、可交付的项目。</span>
+              </div>
+            </div>
+            <div class="hero-note">
+              <div class="bullet"></div>
+              <div>
+                <strong>本页内容</strong>
+                <span>本页包含项目概览、合作边界、阶段目标，以及已准备好的原剧样本 CDN 链接，便于现场讨论与演示。</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="hero-aside">
+          <div class="hero-panel">
+            <div class="label">研究准备</div>
+            <div class="headline">项目启动所需的<br />基础条件已具备</div>
+            <p>
+              已完成近期热门短剧线索抓取、原剧样本获取、样本文件统一发布。正式启动后，将按日更新热门短剧样本，并持续沉淀到统一 COS 样本库。
+            </p>
+          </div>
+
+          <div class="mini-matrix">
+            <div class="mini-cell">
+              <div class="num">日更</div>
+              <div class="lbl">热门短剧线索与样本将持续更新</div>
+            </div>
+            <div class="mini-cell">
+              <div class="num">统一</div>
+              <div class="lbl">原始剧集进入统一 COS 样本库管理</div>
+            </div>
+            <div class="mini-cell">
+              <div class="num">可验</div>
+              <div class="lbl">样本、评分与后验结果可持续回看</div>
+            </div>
+            <div class="mini-cell">
+              <div class="num">可交付</div>
+              <div class="lbl">目标包含模型、程序、代码与文档</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="overview">
+      <div class="section-header">
+        <div>
+          <div class="eyebrow">Project Overview</div>
+          <h2>项目关注什么、准备解决什么</h2>
+          <div class="desc">
+            本项目希望回答的是：一部新短剧在上线前，是否已经具备成为爆款的潜力；这种潜力能否转化为可量化的评分体系；以及这套判断能否被做成真正可运行的模型和程序能力。
+          </div>
+        </div>
+      </div>
+
+      <div class="grid-3">
+        <div class="card">
+          <h3>研究对象</h3>
+          <p>
+            短剧原始剧集视频、剧目级基础信息、历史爆款样本与真实市场后验数据。项目将结合内容理解与结构化信号，对剧目本身的潜力进行分析。
+          </p>
+        </div>
+        <div class="card">
+          <h3>核心输出</h3>
+          <p>
+            可比较的爆款潜力评分、排序结果、关键因子画像、解释摘要，以及支持后验验证和模型持续修正的基础方法与程序实现。
+          </p>
+        </div>
+        <div class="card">
+          <h3>应用价值</h3>
+          <p>
+            项目成果可用于新剧筛选、优先级排序、资源配置和投放前判断，也可以作为后续内容策略和业务复盘的长期参考依据。
+          </p>
+        </div>
+      </div>
+
+      <div class="grid-2" style="margin-top: 18px;">
+        <div class="statement">
+          <h3>首版统一验证口径</h3>
+          <p>
+            启动阶段先以“上线后 7 日内进入 DataEye 任一热门榜前 200”作为首版爆款目标定义，用于样本标注、评分验证和回测分析。后续可以在真实推进中继续细化，但第一阶段先固定统一目标更有利于快速开工。
+          </p>
+        </div>
+        <div class="statement">
+          <h3>启动方式</h3>
+          <p>
+            整个项目按持续迭代方式推进；启动阶段先压缩为 4 周，优先把问题定义、样本口径、首版评分原型和首轮回测跑通，再继续做精度优化与规模扩展。
+          </p>
+        </div>
+      </div>
+
+      <div class="grid-2" style="margin-top: 18px;">
+        <div class="statement">
+          <h3>行业背景与市场窗口</h3>
+          <p>
+            这件事之所以值得现在启动，不只是因为技术上可做，更因为 AI 短剧在 2026 年已经进入高速扩张阶段。供给规模、在播体量和广告投放都在快速抬升，意味着“如何判断一部新剧更可能爆”正在从经验问题变成必须系统化解决的问题。
+          </p>
+          <p style="margin-top: 12px;">
+            这一组数字更适合作为项目启动时的行业背景说明，用来解释项目价值和时机，不直接作为模型标签本身。
+          </p>
+        </div>
+
+        <div class="statement">
+          <h3>2026 年一季度公开行业观察</h3>
+          <div class="market-matrix">
+            <div class="market-stat">
+              <span class="label">2026 年 1 月</span>
+              <span class="value">470 部 / 日</span>
+              <div class="copy">中国各平台 AI 短剧日均上线规模，单月新增超过 14600 部。</div>
+            </div>
+            <div class="market-stat">
+              <span class="label">截至 2 月底</span>
+              <span class="value">12.78 万部</span>
+              <div class="copy">在播 AI 剧目累计体量，说明供给已经形成持续性规模。</div>
+            </div>
+            <div class="market-stat">
+              <span class="label">2026 年 3 月</span>
+              <span class="value">7000 万 / 日</span>
+              <div class="copy">抖音 AI 短剧日均广告投放额，历史上首次超过真人短剧。</div>
+            </div>
+            <div class="market-stat">
+              <span class="label">2026 年 3 月新增</span>
+              <span class="value">39239 部</span>
+              <div class="copy">当月新上线 AI 短剧数量，反映题材、供给和竞争密度都在迅速上升。</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="questions">
+      <div class="section-header">
+        <div>
+          <div class="eyebrow">Research Questions</div>
+          <h2>合作围绕这三个核心问题展开</h2>
+          <div class="desc">
+            启动阶段不需要把所有工程细节一次性定满，但研究问题必须尽快收紧，后续样本构造、模型验证和交付形式都将围绕这几个问题展开。
+          </div>
+        </div>
+      </div>
+
+      <div class="grid-3">
+        <div class="card">
+          <h3>Q1 · 爆款特征</h3>
+          <p>
+            一部短剧在题材、人设、节奏、结构、情绪密度、视觉呈现等方面，通常呈现出哪些更稳定的爆款特征？
+          </p>
+        </div>
+        <div class="card">
+          <h3>Q2 · 评分机制</h3>
+          <p>
+            如何把这些特征转成一套可量化、可比较、可解释的评分体系，使不同新剧之间具备相对稳定的比较基础？
+          </p>
+        </div>
+        <div class="card">
+          <h3>Q3 · 验证与迭代</h3>
+          <p>
+            如何利用后续真实表现数据进行回测、校准和优化，使评分结果与真实市场表现之间逐步形成更高的一致性？
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="framework">
+      <div class="section-header">
+        <div>
+          <div class="eyebrow">Evaluation Framework</div>
+          <h2>评分框架可以同时覆盖场内因子、场外因子和实时信号</h2>
+          <div class="desc">
+            爆款潜力的判断不适合只看视频内容本身，也不适合只看外部热度。更合理的方式，是把剧目内容画像、项目背景信息和当下流量池偏好一起纳入观察，再形成评分与排序。
+          </div>
+        </div>
+      </div>
+
+      <div class="framework-grid">
+        <div class="factor-stack">
+          <div class="factor-group">
+            <h3>场内因子 · 18 项剧目画像</h3>
+            <p>当前已沉淀出 18 个可量化因子，可作为首版评分模型的核心输入。它们覆盖内容张力、视觉表现和结构节奏三类信息。</p>
+            <div class="factor-matrix">
+              <div class="factor-item"><div class="factor-index">01</div><div class="factor-copy"><strong>冲突密度</strong><span>单位时长内是否持续出现对抗、矛盾和强刺激。</span></div></div>
+              <div class="factor-item"><div class="factor-index">02</div><div class="factor-copy"><strong>反转频率</strong><span>剧情推进过程中，立场、信息和结果反转是否足够频繁。</span></div></div>
+              <div class="factor-item"><div class="factor-index">03</div><div class="factor-copy"><strong>情绪钩子强度</strong><span>人物情绪、压迫感、爽感和痛点是否足以牵引继续观看。</span></div></div>
+              <div class="factor-item"><div class="factor-index">04</div><div class="factor-copy"><strong>前 30 秒钩子</strong><span>开场半分钟内是否能迅速建立悬念、冲突或利益点。</span></div></div>
+              <div class="factor-item"><div class="factor-index">05</div><div class="factor-copy"><strong>台词传播性</strong><span>有没有容易记住、容易转述、容易切成传播片段的台词。</span></div></div>
+              <div class="factor-item"><div class="factor-index">06</div><div class="factor-copy"><strong>代入感</strong><span>观众是否容易把自己投射到主角处境和情绪之中。</span></div></div>
+              <div class="factor-item"><div class="factor-index">07</div><div class="factor-copy"><strong>愿望满足</strong><span>逆袭、复仇、甜宠、权力兑现等满足感是否明确。</span></div></div>
+              <div class="factor-item"><div class="factor-index">08</div><div class="factor-copy"><strong>信息差</strong><span>角色之间、角色与观众之间的信息不对称是否足够强。</span></div></div>
+              <div class="factor-item"><div class="factor-index">09</div><div class="factor-copy"><strong>风险升级</strong><span>人物 stakes 是否层层提高，问题是否越滚越大。</span></div></div>
+              <div class="factor-item"><div class="factor-index">10</div><div class="factor-copy"><strong>新鲜感</strong><span>题材表达、设定包装或情节打开方式是否有记忆点。</span></div></div>
+            </div>
+          </div>
+
+          <div class="factor-group">
+            <h3>视觉与角色表现</h3>
+            <p>这组因子关注的是第一眼观感、画面识别度和角色吸引力，对封面点击、停留和短期起量非常敏感。</p>
+            <div class="factor-matrix">
+              <div class="factor-item"><div class="factor-index">11</div><div class="factor-copy"><strong>制作质量</strong><span>摄影、布景、妆造、表演完成度是否足够稳定。</span></div></div>
+              <div class="factor-item"><div class="factor-index">12</div><div class="factor-copy"><strong>画面辨识度</strong><span>视觉风格是否有独特感，能否在同类内容里被快速识别。</span></div></div>
+              <div class="factor-item"><div class="factor-index">13</div><div class="factor-copy"><strong>人设吸引力</strong><span>主角和关键配角的人设是否足够讨喜、强势或有话题性。</span></div></div>
+              <div class="factor-item"><div class="factor-index">14</div><div class="factor-copy"><strong>缩略图潜力</strong><span>封面画面、人物关系和视觉符号是否天然适合点击。</span></div></div>
+            </div>
+          </div>
+
+          <div class="factor-group">
+            <h3>结构与节奏组织</h3>
+            <p>这组因子关注爆点是不是前置、节奏是否紧、章节悬念是否持续存在，以及人物关系是否足够复杂。</p>
+            <div class="factor-matrix">
+              <div class="factor-item"><div class="factor-index">15</div><div class="factor-copy"><strong>节奏紧凑度</strong><span>空镜、过渡、无效情节是否少，推进是否足够利落。</span></div></div>
+              <div class="factor-item"><div class="factor-index">16</div><div class="factor-copy"><strong>爆点前置</strong><span>关键冲突、主卖点和爽点是否在前几集就快速交代。</span></div></div>
+              <div class="factor-item"><div class="factor-index">17</div><div class="factor-copy"><strong>章节悬念质量</strong><span>每集结尾或关键切口是否能形成继续追看的驱动力。</span></div></div>
+              <div class="factor-item"><div class="factor-index">18</div><div class="factor-copy"><strong>关系复杂度</strong><span>人物关系网是否多层、纠缠、可持续制造后续冲突。</span></div></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="signal-panel">
+          <h3>场外因子与实时大盘</h3>
+          <p>除了内容本身，还可以把项目背景和当下市场信号纳入评分。这样形成的判断会更接近真实业务场景，而不是只看一部剧的静态画像。</p>
+          <div class="signal-list">
+            <div class="signal-item">
+              <strong>项目背景信息</strong>
+              <span>出品方、导演、编剧、原创小说版权、发行渠道、投放窗口、版权合规情况，都可以作为场外因子进入模型。</span>
+            </div>
+            <div class="signal-item">
+              <strong>剧目基础规则</strong>
+              <span>短剧类型、真人或漫剧、总集数、是否适合做 IA 变现、是否属于新剧抢跑窗口，都会影响基础判断。</span>
+            </div>
+            <div class="signal-item">
+              <strong>实时题材热度</strong>
+              <span>如果近 3 天热播榜或黑马榜里，“修仙 / 老祖 / 穿越”这类题材明显升温，那么同题材剧目在当前时间点通常更容易放大潜力。</span>
+            </div>
+            <div class="signal-item">
+              <strong>市场跟盘机制</strong>
+              <span>这部分可以参考股票交易中的板块轮动逻辑：题材热度、竞争密度、窗口期变化，都会影响同类剧目的短期爆发概率。</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </section>
+
+    <section class="section">
+      <div class="section-header">
+        <div>
+          <div class="eyebrow">Data Foundation</div>
+          <h2>数据基础与样本供给方式</h2>
+          <div class="desc">
+            项目正式启动后，样本供给将采用持续更新的动态样本池方式。当前阶段已准备一批可直接打开的样本，用于说明数据链路和项目可行性。
+          </div>
+        </div>
+      </div>
+
+      <div class="grid-2">
+        <div class="card">
+          <h3>持续供给的样本链路</h3>
+          <div class="list">
+            <div class="list-item">
+              <div class="tag">1</div>
+              <div class="body">
+                <strong>热门线索抓取</strong>
+                持续关注近期热门短剧与相关市场信号，形成样本入口。
+              </div>
+            </div>
+            <div class="list-item">
+              <div class="tag">2</div>
+              <div class="body">
+                <strong>原始剧集获取</strong>
+                对命中的目标剧目获取原始剧集视频，构成模型分析的直接输入。
+              </div>
+            </div>
+            <div class="list-item">
+              <div class="tag">3</div>
+              <div class="body">
+                <strong>统一存储与更新</strong>
+                样本统一沉淀到 COS 样本库，按日更新、持续扩充，便于团队共享与后续复验。
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <h3>首批规模与更新节奏</h3>
+          <div class="list">
+            <div class="list-item">
+              <div class="tag">A</div>
+              <div class="body">
+                <strong>历史爆款样本</strong>
+                首批可提供约 100 部历史爆款剧目，并在项目推进中持续迭代补充，不是一次性交付后就停止更新。
+              </div>
+            </div>
+            <div class="list-item">
+              <div class="tag">B</div>
+              <div class="body">
+                <strong>新剧原始视频</strong>
+                每天可继续提供约 50-100 部新剧原始视频，进入样本池后用于评分、比较、回测和后续验证。
+              </div>
+            </div>
+            <div class="list-item">
+              <div class="tag">C</div>
+              <div class="body">
+                <strong>日更机制</strong>
+                样本、热度信号、后验表现和研究记录都会按日持续沉淀，样本规模和覆盖面会远高于当前这批展示示例。
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="grid-2" style="margin-top: 18px;">
+        <div class="card">
+          <h3>首批结构化信息</h3>
+          <div class="list">
+            <div class="list-item">
+              <div class="tag">基</div>
+              <div class="body"><strong>剧目基础字段</strong>剧名、别名、类型、集数、题材、男女频、简介、上线时间等基础信息。</div>
+            </div>
+            <div class="list-item">
+              <div class="tag">热</div>
+              <div class="body"><strong>榜单与热度字段</strong>榜单类型、候选位置、曝光、播放、点赞、评论、分享、下载、素材数、创意数等动态字段。</div>
+            </div>
+            <div class="list-item">
+              <div class="tag">扩</div>
+              <div class="body"><strong>扩展背景字段</strong>出品方、导演、编剧、原创小说/IP、版权来源、发行渠道和后验表现等信息可逐步补齐。</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <h3>数据交付方式</h3>
+          <div class="list">
+            <div class="list-item">
+              <div class="tag">COS</div>
+              <div class="body"><strong>原始视频</strong>统一通过 COS 样本库提供，便于团队共享、访问与复验。</div>
+            </div>
+            <div class="list-item">
+              <div class="tag">WEB</div>
+              <div class="body"><strong>结构化信息</strong>通过网页化工作台提供，支持信息表、链接、字段查看和后续持续扩展。</div>
+            </div>
+            <div class="list-item">
+              <div class="tag">追</div>
+              <div class="body"><strong>持续留痕</strong>样本、评分、后验结果和研究记录可持续回看，不会停留在一次性文件交接。</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="collaboration">
+      <div class="section-header">
+        <div>
+          <div class="eyebrow">Collaboration Framework</div>
+          <h2>合作机制、分工与边界</h2>
+          <div class="desc">
+            这部分用于明确双方在合作起点的共同基础：一边持续提供真实样本与业务场景，一边推进模型、方法与验证体系，最终形成可运行、可评分、可验证、可迭代的成果。
+          </div>
+        </div>
+      </div>
+
+      <div class="grid-3">
+        <div class="card">
+          <h3>项目可提供的数据与工程条件</h3>
+          <div class="list">
+            <div class="list-item">
+              <div class="tag">样</div>
+              <div class="body"><strong>样本与数据</strong>首批约 100 部历史爆款样本、每天 50-100 部新剧原始视频、持续更新的榜单与后验表现数据。</div>
+            </div>
+            <div class="list-item">
+              <div class="tag">业</div>
+              <div class="body"><strong>业务口径</strong>题材、男女频、集数、简介、发布时间、投放背景与运营复盘反馈，以及逐步补齐的项目背景字段。</div>
+            </div>
+            <div class="list-item">
+              <div class="tag">工</div>
+              <div class="body"><strong>工程底座</strong>样本获取、统一存储、网页化信息工作台、接入验证、运行环境与后续落地场景。</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <h3>合作团队的重点工作方向</h3>
+          <div class="list">
+            <div class="list-item">
+              <div class="tag">因</div>
+              <div class="body"><strong>因子体系</strong>定义影响爆款表现的关键模式、核心因子与分析框架。</div>
+            </div>
+            <div class="list-item">
+              <div class="tag">模</div>
+              <div class="body"><strong>模型方法</strong>评分机制、样本构造、验证方法、后验回测与校准思路。</div>
+            </div>
+            <div class="list-item">
+              <div class="tag">释</div>
+              <div class="body"><strong>解释能力</strong>结果解释、可迁移性分析、异常样本识别和结果复盘方法。</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <h3>边界条件</h3>
+          <div class="list">
+            <div class="list-item">
+              <div class="tag">界</div>
+              <div class="body"><strong>面向上线前决策</strong>项目主要关注剧目潜力评估与策略支持，不讨论终端用户内容分发推荐。</div>
+            </div>
+            <div class="list-item">
+              <div class="tag">交</div>
+              <div class="body"><strong>成果要可运行</strong>交付应包含程序、模型、代码与说明材料，而不止停留在结论层面。</div>
+            </div>
+            <div class="list-item">
+              <div class="tag">视</div>
+              <div class="body"><strong>原始视频是关键输入</strong>项目会以原始剧集视频为核心研究对象之一，不仅依赖结构化数据表。</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="grid-2" style="margin-top: 18px;">
+        <div class="statement">
+          <h3>协作节奏</h3>
+          <p>
+            项目启动后建议每周固定沟通一次，平时通过群内即时讨论样本、问题、实验结果和阶段进展；重要节点再做阶段演示和集中复盘。
+          </p>
+        </div>
+        <div class="statement">
+          <h3>共同工作方式</h3>
+          <p>
+            一边持续补样本、补字段、补后验数据，一边持续修正因子体系、评分逻辑和回测方法。这样更容易把研究问题、工程实现和真实业务反馈保持在同一节奏里。
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="phase">
+      <div class="section-header">
+        <div>
+          <div class="eyebrow">Phase Goals</div>
+          <h2>阶段目标与验收关注点</h2>
+          <div class="desc">
+            启动阶段先按 4 周推进，聚焦问题定义、样本口径、评分逻辑和首版原型，不必一开始就把所有精度和覆盖面做满。更重要的是尽快形成一套可跑、可看、可讨论、可回测的基础版本。
+          </div>
+        </div>
+      </div>
+
+      <div class="roadmap">
+        <div class="roadmap-step">
+          <div class="num">1</div>
+          <div>
+            <h3>第 1 周 · 对齐口径与字段</h3>
+            <p>明确爆款定义、样本边界、核心字段、输入输出形式，以及首版验证目标。</p>
+          </div>
+        </div>
+        <div class="roadmap-step">
+          <div class="num">2</div>
+          <div>
+            <h3>第 2 周 · 形成基线样本与初版方法</h3>
+            <p>基于首批历史爆款样本和新剧样本，形成第一版样本构造方式、因子框架和 baseline 思路。</p>
+          </div>
+        </div>
+        <div class="roadmap-step">
+          <div class="num">3</div>
+          <div>
+            <h3>第 3 周 · 跑通首版评分原型</h3>
+            <p>至少能够对一批新剧原始视频输出初步评分、相对比较结果和基础解释，并支持演示与复盘。</p>
+          </div>
+        </div>
+        <div class="roadmap-step">
+          <div class="num">4</div>
+          <div>
+            <h3>第 4 周 · 完成首轮回测与误差分析</h3>
+            <p>结合已有后验信号做首轮验证、误差分析和修正建议，为后续持续优化建立工作起点。</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="grid-2" style="margin-top: 18px;">
+        <div class="statement">
+          <h3>首轮交付形态</h3>
+          <p>
+            可运行原型、首版评分模型、说明文档、关键因子与解释框架、阶段性测试报告，以及后续优化方向。
+          </p>
+        </div>
+        <div class="statement">
+          <h3>首轮验收关注点</h3>
+          <p>
+            能稳定运行；能对新剧输出可比较评分；结果与后续真实表现有基本一致性；成果可以继续使用、继续验证、继续迭代。
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="samples">
+      <div class="section-header">
+        <div>
+          <div class="eyebrow">Demo Sample Library</div>
+          <h2>首批样本与当前 DataEye 数据快照</h2>
+          <div class="desc">
+            以下内容是一组首批展示样本。每部剧除了提供前 5 集的 CDN 访问入口，也同步展示当前已抓到的基础指标，包括曝光、点赞、评论、分享、下载、素材活跃度等，用来说明数据基础已经具备一定实质性。
+          </div>
+        </div>
+      </div>
+
+      <div class="sample-data-note">
+        <span class="note-line"><strong>数据说明：</strong>当前样本快照来自 2026-04-21 的 DataEye 抓取结果。页面优先展示已经稳定可取的曝光、点赞、评论、分享、下载量、素材数、创意数、出现时间区间等字段；后续可以继续叠加更细的榜单榜位和近 3 日变化趋势。</span>
+        <span class="note-line"><strong>曝光量：</strong>被平台分发、被用户刷到的次数。</span>
+        <span class="note-line"><strong>播放量：</strong>平台回传的实际播放次数。</span>
+        <span class="note-line minor">两者不是同一个概念，播放量通常小于曝光量；至于按起播、停留几秒还是有效播放来统计，要以底层平台口径为准。部分样本当前只有曝光量、播放量暂未稳定回传，这不等于该剧没有被观看。</span>
+      </div>
+
+      <div class="sample-grid">
+        <article class="sample-card">
+          <div class="sample-tag">样本一</div>
+          <h3>真千金她是学霸</h3>
+          <div class="sample-metrics">
+            <div class="metric-chip"><span class="k">候选顺位</span><span class="v">#1</span></div>
+            <div class="metric-chip"><span class="k">平台 / 产品</span><span class="v">今日头条 · 散柔剧场</span></div>
+            <div class="metric-chip"><span class="k">曝光量 · 被看到</span><span class="v">6.75 亿</span></div>
+            <div class="metric-chip"><span class="k">下载量</span><span class="v">173.8 万</span></div>
+            <div class="metric-chip"><span class="k">点赞 / 评论</span><span class="v">50.3 万 / 2728</span></div>
+            <div class="metric-chip"><span class="k">分享量</span><span class="v">9.48 万</span></div>
+            <div class="metric-chip"><span class="k">素材 / 创意</span><span class="v">3529 / 1968</span></div>
+            <div class="metric-chip"><span class="k">时间跨度</span><span class="v">2025-09-11 至 2026-04-21 · 218 天</span></div>
+          </div>
+          <div class="episode-links">
+            <a href="https://drama-editing.waymedia.cn/learning-samples/fudan-kickoff/2026-04-21/%E7%9C%9F%E5%8D%83%E9%87%91%E5%A5%B9%E6%98%AF%E5%AD%A6%E9%9C%B8/1.mp4" target="_blank" rel="noreferrer">第 1 集</a>
+            <a href="https://drama-editing.waymedia.cn/learning-samples/fudan-kickoff/2026-04-21/%E7%9C%9F%E5%8D%83%E9%87%91%E5%A5%B9%E6%98%AF%E5%AD%A6%E9%9C%B8/2.mp4" target="_blank" rel="noreferrer">第 2 集</a>
+            <a href="https://drama-editing.waymedia.cn/learning-samples/fudan-kickoff/2026-04-21/%E7%9C%9F%E5%8D%83%E9%87%91%E5%A5%B9%E6%98%AF%E5%AD%A6%E9%9C%B8/3.mp4" target="_blank" rel="noreferrer">第 3 集</a>
+            <a href="https://drama-editing.waymedia.cn/learning-samples/fudan-kickoff/2026-04-21/%E7%9C%9F%E5%8D%83%E9%87%91%E5%A5%B9%E6%98%AF%E5%AD%A6%E9%9C%B8/4.mp4" target="_blank" rel="noreferrer">第 4 集</a>
+            <a href="https://drama-editing.waymedia.cn/learning-samples/fudan-kickoff/2026-04-21/%E7%9C%9F%E5%8D%83%E9%87%91%E5%A5%B9%E6%98%AF%E5%AD%A6%E9%9C%B8/5.mp4" target="_blank" rel="noreferrer">第 5 集</a>
+          </div>
+        </article>
+
+        <article class="sample-card">
+          <div class="sample-tag">样本二</div>
+          <h3>总裁妈咪，老爸他真的无敌啊</h3>
+          <div class="sample-metrics">
+            <div class="metric-chip"><span class="k">候选顺位</span><span class="v">#2</span></div>
+            <div class="metric-chip"><span class="k">平台 / 产品</span><span class="v">今日头条 · 溪流剧场</span></div>
+            <div class="metric-chip"><span class="k">曝光量 · 被看到</span><span class="v">10.0 亿</span></div>
+            <div class="metric-chip"><span class="k">播放量 · 平台回传</span><span class="v">2929 万</span></div>
+            <div class="metric-chip"><span class="k">点赞 / 评论</span><span class="v">18.2 万 / 4503</span></div>
+            <div class="metric-chip"><span class="k">分享 / 下载</span><span class="v">6504 / 245 万</span></div>
+            <div class="metric-chip"><span class="k">素材 / 创意</span><span class="v">1200 / 194</span></div>
+            <div class="metric-chip"><span class="k">时间跨度</span><span class="v">2024-11-08 至 2026-04-20 · 382 天</span></div>
+          </div>
+          <div class="episode-links">
+            <a href="https://drama-editing.waymedia.cn/learning-samples/fudan-kickoff/2026-04-21/%E6%80%BB%E8%A3%81%E5%A6%88%E5%92%AA%EF%BC%8C%E8%80%81%E7%88%B8%E4%BB%96%E7%9C%9F%E7%9A%84%E6%97%A0%E6%95%8C%E5%95%8A/1.mp4" target="_blank" rel="noreferrer">第 1 集</a>
+            <a href="https://drama-editing.waymedia.cn/learning-samples/fudan-kickoff/2026-04-21/%E6%80%BB%E8%A3%81%E5%A6%88%E5%92%AA%EF%BC%8C%E8%80%81%E7%88%B8%E4%BB%96%E7%9C%9F%E7%9A%84%E6%97%A0%E6%95%8C%E5%95%8A/2.mp4" target="_blank" rel="noreferrer">第 2 集</a>
+            <a href="https://drama-editing.waymedia.cn/learning-samples/fudan-kickoff/2026-04-21/%E6%80%BB%E8%A3%81%E5%A6%88%E5%92%AA%EF%BC%8C%E8%80%81%E7%88%B8%E4%BB%96%E7%9C%9F%E7%9A%84%E6%97%A0%E6%95%8C%E5%95%8A/3.mp4" target="_blank" rel="noreferrer">第 3 集</a>
+            <a href="https://drama-editing.waymedia.cn/learning-samples/fudan-kickoff/2026-04-21/%E6%80%BB%E8%A3%81%E5%A6%88%E5%92%AA%EF%BC%8C%E8%80%81%E7%88%B8%E4%BB%96%E7%9C%9F%E7%9A%84%E6%97%A0%E6%95%8C%E5%95%8A/4.mp4" target="_blank" rel="noreferrer">第 4 集</a>
+            <a href="https://drama-editing.waymedia.cn/learning-samples/fudan-kickoff/2026-04-21/%E6%80%BB%E8%A3%81%E5%A6%88%E5%92%AA%EF%BC%8C%E8%80%81%E7%88%B8%E4%BB%96%E7%9C%9F%E7%9A%84%E6%97%A0%E6%95%8C%E5%95%8A/5.mp4" target="_blank" rel="noreferrer">第 5 集</a>
+          </div>
+        </article>
+
+        <article class="sample-card">
+          <div class="sample-tag">样本三</div>
+          <h3>修好铁疙瘩转身踏青云</h3>
+          <div class="sample-metrics">
+            <div class="metric-chip"><span class="k">候选顺位</span><span class="v">#7</span></div>
+            <div class="metric-chip"><span class="k">平台 / 产品</span><span class="v">今日头条 · 夕葵剧场</span></div>
+            <div class="metric-chip"><span class="k">曝光量 · 被看到</span><span class="v">6.5 亿</span></div>
+            <div class="metric-chip"><span class="k">下载量</span><span class="v">162.5 万</span></div>
+            <div class="metric-chip"><span class="k">点赞 / 评论</span><span class="v">2401 / 40</span></div>
+            <div class="metric-chip"><span class="k">分享量</span><span class="v">38</span></div>
+            <div class="metric-chip"><span class="k">素材 / 创意</span><span class="v">4235 / 2111</span></div>
+            <div class="metric-chip"><span class="k">时间跨度</span><span class="v">2025-12-23 至 2026-04-21 · 118 天</span></div>
+          </div>
+          <div class="episode-links">
+            <a href="https://drama-editing.waymedia.cn/learning-samples/fudan-kickoff/2026-04-21/%E4%BF%AE%E5%A5%BD%E9%93%81%E7%96%99%E7%98%A9%E8%BD%AC%E8%BA%AB%E8%B8%8F%E9%9D%92%E4%BA%91/1.mp4" target="_blank" rel="noreferrer">第 1 集</a>
+            <a href="https://drama-editing.waymedia.cn/learning-samples/fudan-kickoff/2026-04-21/%E4%BF%AE%E5%A5%BD%E9%93%81%E7%96%99%E7%98%A9%E8%BD%AC%E8%BA%AB%E8%B8%8F%E9%9D%92%E4%BA%91/2.mp4" target="_blank" rel="noreferrer">第 2 集</a>
+            <a href="https://drama-editing.waymedia.cn/learning-samples/fudan-kickoff/2026-04-21/%E4%BF%AE%E5%A5%BD%E9%93%81%E7%96%99%E7%98%A9%E8%BD%AC%E8%BA%AB%E8%B8%8F%E9%9D%92%E4%BA%91/3.mp4" target="_blank" rel="noreferrer">第 3 集</a>
+            <a href="https://drama-editing.waymedia.cn/learning-samples/fudan-kickoff/2026-04-21/%E4%BF%AE%E5%A5%BD%E9%93%81%E7%96%99%E7%98%A9%E8%BD%AC%E8%BA%AB%E8%B8%8F%E9%9D%92%E4%BA%91/4.mp4" target="_blank" rel="noreferrer">第 4 集</a>
+            <a href="https://drama-editing.waymedia.cn/learning-samples/fudan-kickoff/2026-04-21/%E4%BF%AE%E5%A5%BD%E9%93%81%E7%96%99%E7%98%A9%E8%BD%AC%E8%BA%AB%E8%B8%8F%E9%9D%92%E4%BA%91/5.mp4" target="_blank" rel="noreferrer">第 5 集</a>
+          </div>
+        </article>
+
+        <article class="sample-card">
+          <div class="sample-tag">样本四</div>
+          <h3>陛下天天被咖妃肘击</h3>
+          <div class="sample-metrics">
+            <div class="metric-chip"><span class="k">候选顺位</span><span class="v">#8</span></div>
+            <div class="metric-chip"><span class="k">平台 / 产品</span><span class="v">今日头条 · 鸣宜剧场</span></div>
+            <div class="metric-chip"><span class="k">曝光量 · 被看到</span><span class="v">7.5 亿</span></div>
+            <div class="metric-chip"><span class="k">下载量</span><span class="v">183.8 万</span></div>
+            <div class="metric-chip"><span class="k">点赞 / 评论</span><span class="v">2.45 万 / 399</span></div>
+            <div class="metric-chip"><span class="k">分享量</span><span class="v">1456</span></div>
+            <div class="metric-chip"><span class="k">素材 / 创意</span><span class="v">1148 / 173</span></div>
+            <div class="metric-chip"><span class="k">时间跨度</span><span class="v">2025-07-04 至 2026-04-20 · 225 天</span></div>
+          </div>
+          <div class="episode-links">
+            <a href="https://drama-editing.waymedia.cn/learning-samples/fudan-kickoff/2026-04-21/%E9%99%9B%E4%B8%8B%E5%A4%A9%E5%A4%A9%E8%A2%AB%E5%92%96%E5%A6%83%E8%82%98%E5%87%BB/1.mp4" target="_blank" rel="noreferrer">第 1 集</a>
+            <a href="https://drama-editing.waymedia.cn/learning-samples/fudan-kickoff/2026-04-21/%E9%99%9B%E4%B8%8B%E5%A4%A9%E5%A4%A9%E8%A2%AB%E5%92%96%E5%A6%83%E8%82%98%E5%87%BB/2.mp4" target="_blank" rel="noreferrer">第 2 集</a>
+            <a href="https://drama-editing.waymedia.cn/learning-samples/fudan-kickoff/2026-04-21/%E9%99%9B%E4%B8%8B%E5%A4%A9%E5%A4%A9%E8%A2%AB%E5%92%96%E5%A6%83%E8%82%98%E5%87%BB/3.mp4" target="_blank" rel="noreferrer">第 3 集</a>
+            <a href="https://drama-editing.waymedia.cn/learning-samples/fudan-kickoff/2026-04-21/%E9%99%9B%E4%B8%8B%E5%A4%A9%E5%A4%A9%E8%A2%AB%E5%92%96%E5%A6%83%E8%82%98%E5%87%BB/4.mp4" target="_blank" rel="noreferrer">第 4 集</a>
+            <a href="https://drama-editing.waymedia.cn/learning-samples/fudan-kickoff/2026-04-21/%E9%99%9B%E4%B8%8B%E5%A4%A9%E5%A4%A9%E8%A2%AB%E5%92%96%E5%A6%83%E8%82%98%E5%87%BB/5.mp4" target="_blank" rel="noreferrer">第 5 集</a>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <div class="footer">
+      本页用于项目启动阶段的正式介绍，内容聚焦于项目背景、合作框架、阶段目标与样本基础。<br />
+      首批样本已统一发布至独立样本库前缀，便于后续共享、讨论与持续扩充。
+    </div>
+  </div>
+</body>
+</html>
